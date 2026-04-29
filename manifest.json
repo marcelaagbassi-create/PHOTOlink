@@ -1,14 +1,14 @@
 {
-  "name": "PHOTOLINK",
-  "short_name": "PhotoLink",
-  "description": "Le réseau social des photographes professionnels",
+  "name": "PHOTOlink",
+  "short_name": "PHOTOlink",
+  "description": "Le réseau des photographes professionnels — capturer, partager, briller.",
   "start_url": "./PHOTOLINK.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#080e14",
   "theme_color": "#2eb8c4",
-  "orientation": "portrait-primary",
   "lang": "fr",
-  "categories": ["social", "photography"],
+  "categories": ["social", "photo", "lifestyle"],
   "icons": [
     {
       "src": "icon-192.png",
@@ -23,21 +23,22 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [],
   "shortcuts": [
     {
-      "name": "Publier",
+      "name": "Publier une photo",
       "short_name": "Publier",
       "description": "Créer une nouvelle publication",
-      "url": "./PHOTOLINK.html#post",
+      "url": "./PHOTOLINK.html#publish",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Messages",
-      "short_name": "Messages",
-      "description": "Voir vos messages",
-      "url": "./PHOTOLINK.html#messages",
+      "name": "Explorer",
+      "short_name": "Explorer",
+      "description": "Découvrir des photographes",
+      "url": "./PHOTOLINK.html#explore",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     }
-  ]
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
 }
