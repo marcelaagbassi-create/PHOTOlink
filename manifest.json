@@ -2,25 +2,52 @@
   "name": "PHOTOlink",
   "short_name": "PHOTOlink",
   "description": "Le réseau des photographes professionnels — capturer, partager, briller.",
-  "start_url": "./PHOTOLINK.html",
+  "id": "com.davieslay.photolink",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#080e14",
   "theme_color": "#2eb8c4",
   "lang": "fr",
+  "dir": "ltr",
   "categories": ["social", "photo", "lifestyle"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "related_applications": [],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "PHOTOlink — Fil d'actualité"
     }
   ],
   "shortcuts": [
@@ -28,17 +55,30 @@
       "name": "Publier une photo",
       "short_name": "Publier",
       "description": "Créer une nouvelle publication",
-      "url": "./PHOTOLINK.html#publish",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "url": "./index.html#publish",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Explorer",
       "short_name": "Explorer",
       "description": "Découvrir des photographes",
-      "url": "./PHOTOLINK.html#explore",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "url": "./index.html#explore",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
     }
   ],
-  "screenshots": [],
-  "prefer_related_applications": false
+  "protocol_handlers": [],
+  "edge_side_panel": {},
+  "display_override": ["standalone", "minimal-ui"],
+  "launch_handler": {
+    "client_mode": "auto"
+  },
+  "share_target": {
+    "action": "./index.html",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }
