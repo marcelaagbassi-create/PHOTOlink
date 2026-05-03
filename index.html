@@ -351,7 +351,7 @@ select.inp{appearance:none;cursor:pointer}
 
 /* ─── EXPLORE TIKTOK STYLE ─── */
 #page-explore{background:#000;position:relative;overflow:hidden}
-.explore-topbar{position:absolute;top:0;left:0;right:0;z-index:20;padding:10px 0 8px;background:linear-gradient(to bottom,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.4) 70%,transparent 100%);pointer-events:auto}
+.explore-topbar{position:absolute;top:0;left:0;right:0;z-index:30;padding:8px 0 12px;background:linear-gradient(to bottom,rgba(0,0,0,0.95) 0%,rgba(0,0,0,0.85) 60%,rgba(0,0,0,0.5) 80%,transparent 100%);pointer-events:auto;min-height:88px}
 .explore-cats{display:flex;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
 .explore-cats::-webkit-scrollbar{display:none}
 
@@ -360,13 +360,13 @@ select.inp{appearance:none;cursor:pointer}
 .explore-search-inp{flex:1;background:none;border:none;outline:none;color:#fff;font-size:13px;font-weight:500}
 .explore-search-inp::placeholder{color:rgba(255,255,255,0.5)}
 
-.explore-cat{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);cursor:pointer;transition:.2s;white-space:nowrap;border:1px solid rgba(255,255,255,0.15)}
+.explore-cat{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);cursor:pointer;transition:.2s;white-space:nowrap;border:1.5px solid rgba(255,255,255,0.3);background:rgba(0,0,0,0.35);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .explore-cat.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 0 12px rgba(46,184,196,0.4)}
 
 /* TikTok-style vertical snap scroll */
-.tiktok-feed{position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tiktok-feed{position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-top:0}
 .tiktok-feed::-webkit-scrollbar{display:none}
-.tiktok-card{position:relative;width:100%;height:100vh;height:100svh;scroll-snap-align:start;scroll-snap-stop:always;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.tiktok-card{position:relative;width:100%;height:100vh;height:100svh;scroll-snap-align:start;scroll-snap-stop:always;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;flex-direction:column}
 .tiktok-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;image-rendering:crisp-edges}
 .tiktok-blur-bg{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(30px) brightness(0.35) saturate(1.2);transform:scale(1.15)}
 .tiktok-emoji-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;opacity:0.15}
@@ -750,7 +750,9 @@ select.inp{appearance:none;cursor:pointer}
   <div class="page-inner" style="padding-top:16px">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0 12px">
       <div class="sec-title" style="margin-bottom:0;font-size:22px">Messages</div>
-      <button onclick="openNewConvModal()" style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(46,184,196,0.35)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <button onclick="openNewConvModal()" style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(46,184,196,0.35)" title="Nouvelle conversation">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
     </div>
     <div style="position:relative;margin-bottom:14px">
       <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%)" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -949,7 +951,7 @@ select.inp{appearance:none;cursor:pointer}
     </div>
 
     <div class="settings-section" style="margin-top:16px">
-      <div class="settings-section-title">Thème de l'application</div>
+      <div class="settings-section-title">Thème de l\x27application</div>
       <div class="theme-grid">
         <div class="theme-card active" id="theme-dark" onclick="setTheme('dark')">
           <div class="theme-card-preview" style="background:#0f1923;border:1px solid #1e3347"></div>
@@ -1345,6 +1347,89 @@ function showApp(){
   showPage('feed', document.querySelectorAll('.nav-item')[0]);
   listenNotifications();
   listenMessages();
+  // Request contacts permission on first launch (like WhatsApp)
+  var hasAskedContacts = localStorage.getItem('pl_contacts_asked');
+  if(!hasAskedContacts){
+    setTimeout(requestContactsPermission, 1500);
+  } else {
+    // Reload contacts silently in background
+    loadContactsBackground();
+  }
+}
+
+function requestContactsPermission(){
+  // Show permission dialog
+  var overlay = document.createElement('div');
+  overlay.id = 'contactsPermOverlay';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:700;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px';
+  overlay.innerHTML = '<div style="background:var(--surface);border-radius:20px;padding:28px;max-width:340px;width:100%;border:1px solid var(--border)">'
+    +'<div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;margin:0 auto 16px">'
+      +'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
+    +'</div>'
+    +'<div style="font-size:18px;font-weight:800;color:var(--text);text-align:center;margin-bottom:8px;font-family:sans-serif">Trouver vos amis</div>'
+    +'<div style="font-size:13px;color:var(--text2);text-align:center;line-height:1.6;margin-bottom:20px">PHOTOlink peut accéder à vos contacts pour trouver lesquels utilisent déjà l\x27application, comme WhatsApp.</div>'
+    +'<div style="display:flex;flex-direction:column;gap:10px">'
+      +'<button onclick="doAccessContacts()" style="padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:800;font-size:15px;cursor:pointer;font-family:sans-serif">Autoriser l\x27accès</button>'
+      +'<button onclick="skipContactsPermission()" style="padding:12px;border-radius:12px;background:var(--surface2);color:var(--text3);border:1px solid var(--border);font-weight:600;font-size:13px;cursor:pointer">Pas maintenant</button>'
+    +'</div>'
+  +'</div>';
+  document.body.appendChild(overlay);
+}
+
+function doAccessContacts(){
+  var overlay = document.getElementById('contactsPermOverlay');
+  if(overlay) overlay.remove();
+  localStorage.setItem('pl_contacts_asked','1');
+  // Try Web Contacts API
+  if('contacts' in navigator && 'ContactsManager' in window){
+    navigator.contacts.select(['name','tel','email'],{multiple:true})
+      .then(function(contacts){
+        if(!contacts.length){ showToast('Aucun contact trouv\u00e9'); return; }
+        // Save contacts locally and find PHOTOlink users
+        var saved = contacts.map(function(c){
+          return { name:(c.name&&c.name[0])||'', tel:(c.tel&&c.tel[0])||'', email:(c.email&&c.email[0])||'' };
+        });
+        localStorage.setItem('pl_phone_contacts', JSON.stringify(saved));
+        matchContactsWithPhotolink(saved);
+        showToast(saved.length+' contacts synchronisés');
+      })
+      .catch(function(err){
+        showToast('Accès aux contacts refusé');
+        console.log('Contacts error:', err);
+      });
+  } else {
+    // Fallback: ask for permission via prompt (mobile browser workaround)
+    showToast('Contacts disponibles depuis l\x27app install\u00e9e (PWA)');
+  }
+}
+
+function skipContactsPermission(){
+  var overlay = document.getElementById('contactsPermOverlay');
+  if(overlay) overlay.remove();
+  localStorage.setItem('pl_contacts_asked','1');
+}
+
+function loadContactsBackground(){
+  // Reload saved contacts without prompt
+  var saved = JSON.parse(localStorage.getItem('pl_phone_contacts')||'[]');
+  if(saved.length) matchContactsWithPhotolink(saved);
+}
+
+function matchContactsWithPhotolink(contacts){
+  // Check which contacts are on PHOTOlink
+  // In demo mode: compare with known users in localStorage
+  var knownUsers = JSON.parse(localStorage.getItem('pl_known_users')||'[]');
+  var matched = [];
+  contacts.forEach(function(c){
+    var found = knownUsers.find(function(u){
+      return u.phone === c.tel || u.email === c.email;
+    });
+    if(found) matched.push({...found, contactName: c.name});
+  });
+  if(matched.length){
+    localStorage.setItem('pl_matched_contacts', JSON.stringify(matched));
+    showToast(matched.length+' ami(s) sur PHOTOlink');
+  }
 }
 
 function showAuthScreen(){
@@ -1369,7 +1454,23 @@ function initDemoMode(){
   }
 }
 
-function demoSave(){ if(currentUserData) localStorage.setItem('pl_user', JSON.stringify(currentUserData)); }
+function demoSave(){
+  if(!currentUserData) return;
+  // Save full profile including base64 avatar/banner
+  // But base64 can be huge - store avatar/banner separately to avoid quota issues
+  var toSave = Object.assign({}, currentUserData);
+  try {
+    localStorage.setItem('pl_user', JSON.stringify(toSave));
+  } catch(e) {
+    // If quota exceeded (large base64), save without banner
+    var slim = Object.assign({}, toSave);
+    slim.banner = null;
+    try { localStorage.setItem('pl_user', JSON.stringify(slim)); } catch(e2) {
+      slim.avatar = null;
+      localStorage.setItem('pl_user', JSON.stringify(slim));
+    }
+  }
+}
 
 // ────── AUTH ──────
 function switchAuthTab(tab){
@@ -1614,7 +1715,11 @@ function renderProfile(){
       topAv.textContent = p.avatar||'';
     }
   }
-  document.getElementById('pName').textContent = p.name||'Votre nom';
+  var nameEl = document.getElementById('pName');
+  nameEl.textContent = p.name||'Votre nom';
+  nameEl.title = 'Appuyer pour modifier';
+  nameEl.style.cursor = 'pointer';
+  nameEl.ondblclick = function(){ editProfileName(); };
   document.getElementById('pHandle').textContent = p.handle?'@'+p.handle:'@…';
   const roleBadge = document.getElementById('pRoleBadge');
   roleBadge.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> ${p.role==='client'?'Client':'Photographe'}`;
@@ -1623,6 +1728,8 @@ function renderProfile(){
   document.getElementById('statSvcs').textContent = p.svcCount||0;
   document.getElementById('statMsgs').textContent = p.msgCount||0;
   switchPTab(document.querySelector('.p-tab.active')||document.querySelectorAll('.p-tab')[0],'posts');
+  // Always load latest posts
+  setTimeout(loadMyPosts, 100);
 }
 
 function openEditProfile(){
@@ -1731,6 +1838,101 @@ function buildEmptyTab(iconSvg, label, sub){
   return wrapper.innerHTML;
 }
 
+
+function loadMyPosts(){
+  var grid = document.getElementById('profileGrid');
+  if(!grid) return;
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px"><div class="loading"></div></div>';
+
+  if(db && currentUser){
+    db.collection('posts')
+      .where('authorId','==',currentUser.uid)
+      .orderBy('createdAt','desc')
+      .get()
+      .then(function(snap){
+        var posts = snap.docs.map(function(d){ return {id:d.id, ...d.data()}; });
+        if(!posts.length){ showEmptyPostGrid(grid); return; }
+        renderMyPostsGrid(posts, grid);
+        // Update count
+        if(currentUserData) currentUserData.postCount = posts.length;
+        document.getElementById('statPosts').textContent = posts.length;
+      }).catch(function(){ loadMyPostsLocal(grid); });
+  } else {
+    loadMyPostsLocal(grid);
+  }
+}
+
+function loadMyPostsLocal(grid){
+  var uid = currentUser ? currentUser.uid : 'demo';
+  var allPosts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
+  var myPosts = allPosts.filter(function(p){ return p.authorId === uid || uid === 'demo'; });
+  if(!myPosts.length){ showEmptyPostGrid(grid); return; }
+  renderMyPostsGrid(myPosts, grid);
+  document.getElementById('statPosts').textContent = myPosts.length;
+}
+
+function showEmptyPostGrid(grid){
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 20px">'
+    +'<div style="width:60px;height:60px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">'
+      +'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
+    +'</div>'
+    +'<div style="font-size:14px;font-weight:600;color:var(--text2)">Aucun post</div>'
+    +'<div style="font-size:12px;color:var(--text3);margin-top:6px;margin-bottom:14px">Publiez votre premier contenu</div>'
+    +'<button onclick="openPostModal()" style="padding:10px 24px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:700;font-size:13px;cursor:pointer">+ Publier</button>'
+  +'</div>';
+}
+
+function renderMyPostsGrid(posts, grid){
+  grid.innerHTML = posts.map(function(p){
+    var imgContent = (p.imageUrl && p.imageUrl.length > 0)
+      ? '<img src="'+p.imageUrl+'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:4px" loading="lazy"/>'
+      : '<div style="width:100%;height:100%;background:linear-gradient(135deg,var(--surface2),var(--surface3));display:flex;align-items:center;justify-content:center;border-radius:4px;position:absolute;inset:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>';
+    return '<div class="p-grid-item" style="position:relative" onclick="showPostDetail(\x27"+p.id+"\x27)">'
+      +imgContent
+      +'<div class="p-grid-overlay" style="border-radius:4px">'
+        +'<svg width="11" height="11" viewBox="0 0 24 24" fill="#fff"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+        +(p.likes||0)
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function loadMyServices(){
+  var grid = document.getElementById('profileGrid');
+  if(!grid) return;
+  var allSvcs = JSON.parse(localStorage.getItem('pl_services')||'[]');
+  var uid = currentUser ? currentUser.uid : 'demo';
+  var mySvcs = allSvcs.filter(function(s){ return s.authorId===uid || uid==='demo'; });
+  if(!mySvcs.length){
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 20px">'
+      +'<div style="font-size:14px;font-weight:600;color:var(--text2)">Aucun service</div>'
+      +'<div style="font-size:12px;color:var(--text3);margin-top:6px;margin-bottom:14px">Proposez votre premier service</div>'
+      +'<button onclick="openModal(\x27modalService\x27)" style="padding:10px 24px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:700;font-size:13px;cursor:pointer">+ Ajouter</button>'
+    +'</div>';
+    return;
+  }
+  grid.innerHTML = mySvcs.map(function(s){
+    return '<div class="p-grid-item" style="position:relative;background:linear-gradient(135deg,var(--surface2),var(--surface3))">'
+      +'<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;padding:6px">'
+        +'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>'
+        +'<div style="font-size:9px;font-weight:700;color:var(--text2);text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%;padding:0 4px">'+(s.name||'Service').substring(0,12)+'</div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function editProfileName(){
+  openEditProfile();
+}
+
+function showPostDetail(postId){
+  // Long-press menu style
+  var posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
+  var post = posts.find(function(p){ return p.id===postId; });
+  if(post && post.authorId === (currentUser&&currentUser.uid)){
+    showPostMenu({clientX:window.innerWidth/2,clientY:window.innerHeight/2}, postId, true);
+  }
+}
 
 function renderProfileGridItems(items, grid){
   grid.innerHTML = items.map(function(p){
@@ -1993,12 +2195,19 @@ async function submitPost(){
     }
 
     closeModal('modalPost');
+    showToast('Post publié !');
     // reset
     document.getElementById('postCaption').value='';
     document.getElementById('postTags').value='';
     document.getElementById('postPrice').value='';
     document.getElementById('postLocation').value='';
     document.getElementById('postCat').value='';
+    // Refresh profile grid if visible
+    if(document.getElementById('page-profile').classList.contains('active')){
+      setTimeout(loadMyPosts, 300);
+    }
+    // Refresh feed
+    loadFeed();
     document.getElementById('postImagePreview').style.display='none';
     document.getElementById('uploadPrompt').style.display='block';
     fileInput.value='';
@@ -3204,8 +3413,8 @@ function previewBannerPhoto(input){
 // ────── OPEN NEW CONV ──────
 function openNewConvModal(){
   openModal('modalNewConv');
-  // Load PHOTOlink users for suggestions
-  loadConvSuggestions();
+  // Load contacts
+  setTimeout(loadConvSuggestions, 100);
 }
 
 function switchConvTab(tab, el){
@@ -3219,23 +3428,50 @@ function switchConvTab(tab, el){
 function loadConvSuggestions(){
   var list = document.getElementById('contactsList');
   if(!list) return;
-  // Load from pl_users or show current user's connections
-  var users = JSON.parse(localStorage.getItem('pl_known_users')||'[]');
-  if(!users.length){
-    // Keep empty state
+  var phoneContacts = JSON.parse(localStorage.getItem('pl_phone_contacts')||'[]');
+  var plUsers = JSON.parse(localStorage.getItem('pl_known_users')||'[]');
+  var allContacts = [];
+  plUsers.forEach(function(u){
+    if(u.uid !== (currentUser&&currentUser.uid)){
+      allContacts.push({name:u.name||u.handle||'',phone:u.phone||'',handle:u.handle||'',isPL:true,avatar:u.avatar||''});
+    }
+  });
+  phoneContacts.forEach(function(c){
+    var already = plUsers.find(function(u){ return u.phone===c.tel; });
+    if(!already && c.name){
+      allContacts.push({name:c.name,phone:c.tel||'',handle:'',isPL:false,avatar:''});
+    }
+  });
+  if(!allContacts.length){
+    list.innerHTML = '<div style="text-align:center;padding:16px 20px">'
+      +'<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.5" style="display:block;margin:0 auto 8px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>'
+      +'<div style="font-size:13px;font-weight:600;color:var(--text2);margin-bottom:4px">Trouver des contacts</div>'
+      +'<div style="font-size:11px;color:var(--text3);margin-bottom:10px">Synchronisez vos contacts pour voir qui est sur PHOTOlink</div>'
+      +'<button onclick="doAccessContacts()" style="padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:700;font-size:12px;cursor:pointer">Synchroniser les contacts</button>'
+    +'</div>';
     return;
   }
-  list.innerHTML = users.map(function(u){
-    var avHtml = (u.avatar&&(u.avatar.startsWith('data:')||u.avatar.startsWith('http')))
-      ? '<img src="'+u.avatar+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>'
-      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-    return '<div onclick="selectConvContact(\x27'+u.uid+'\x27,\x27'+(u.name||u.handle||'')+'\x27)" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;cursor:pointer;transition:.15s;hover:background:var(--surface2)">'
-      +'<div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">'+avHtml+'</div>'
-      +'<div><div style="font-size:13px;font-weight:700;color:var(--text)">'+(u.name||u.handle||'Utilisateur')+'</div>'
-      +'<div style="font-size:11px;color:var(--text3)">@'+(u.handle||'')+'</div></div>'
+  var html = '';
+  allContacts.forEach(function(c){
+    var initial = (c.name[0]||'?').toUpperCase();
+    var avHtml = (c.avatar&&(c.avatar.startsWith('data:')||c.avatar.startsWith('http')))
+      ? '<img src="'+c.avatar+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>'
+      : '<span style="font-size:16px;font-weight:700;color:#000">'+initial+'</span>';
+    var plBadge = c.isPL ? '<span style="font-size:9px;font-weight:700;background:var(--primary);color:#000;padding:1px 6px;border-radius:8px;margin-left:4px">PHOTOlink</span>' : '';
+    html += '<div onclick="selectConvContact(this)" data-name="'+c.name+'" style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid var(--border);cursor:pointer">'
+      +'<div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">'+avHtml+'</div>'
+      +'<div style="flex:1;min-width:0">'
+        +'<div style="display:flex;align-items:center">'+
+          '<span style="font-size:14px;font-weight:700;color:var(--text)">'+c.name+'</span>'+plBadge
+        +'</div>'
+        +'<div style="font-size:11px;color:var(--text3);margin-top:1px">'+(c.phone||('@'+c.handle))+'</div>'
+      +'</div>'
+      +'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>'
     +'</div>';
-  }).join('');
+  });
+  list.innerHTML = html;
 }
+
 
 function selectConvContact(elOrUid, name){
   var inp = document.getElementById('newConvName');
@@ -3253,7 +3489,7 @@ function syncContacts(){
   // Request contacts permission via Web Contacts API if available
   if('contacts' in navigator && 'ContactsManager' in window){
     navigator.contacts.select(['name','tel'],{multiple:true}).then(function(contacts){
-      if(!contacts.length){ showToast('Aucun contact trouvé'); return; }
+      if(!contacts.length){ showToast('Aucun contact trouv\u00e9'); return; }
       var list = document.getElementById('contactsList');
       if(list){
         list.innerHTML = contacts.map(function(c){
