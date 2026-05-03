@@ -61,7 +61,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 
 /* ─── SPLASH ─── */
 #splash{position:fixed;inset:0;z-index:500;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
-.splash-logo{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.splash-logo{font-family:serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .splash-sub{font-size:13px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
 .splash-spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin-top:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -70,7 +70,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 /* ─── AUTH SCREEN ─── */
 #authScreen{display:none;position:fixed;inset:0;z-index:400;background:var(--bg);overflow-y:auto;padding:40px 20px}
 .auth-wrap{max-width:400px;margin:0 auto}
-.auth-logo{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:6px}
+.auth-logo{font-family:serif;font-size:36px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:6px}
 .auth-tagline{text-align:center;color:var(--text3);font-size:13px;margin-bottom:36px;letter-spacing:.5px}
 .auth-tabs{display:flex;background:var(--surface);border-radius:12px;padding:4px;margin-bottom:24px;border:1px solid var(--border)}
 .auth-tab{flex:1;text-align:center;padding:8px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text3);transition:.15s}
@@ -91,7 +91,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 
 /* ─── TOPBAR ─── */
 .topbar{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:var(--surface);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 18px;display:none}
-.logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
+.logo{font-family:serif;font-size:22px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
 .logo em{font-weight:400;font-style:italic}
 .topbar-right{display:flex;align-items:center;gap:10px}
 .icon-btn{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:.15s;position:relative;color:var(--text2)}
@@ -120,13 +120,13 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 .fab.visible{display:flex}
 
 /* ─── SECTION TITLE ─── */
-.sec-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-title{font-family:serif;font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .sec-title span{color:var(--primary)}
 
 /* ─── EMPTY STATE ─── */
 .empty-state{text-align:center;padding:60px 20px}
 .empty-icon{font-size:52px;margin-bottom:14px;opacity:.3}
-.empty-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--text2);margin-bottom:8px}
+.empty-title{font-family:serif;font-size:18px;color:var(--text2);margin-bottom:8px}
 .empty-sub{font-size:13px;color:var(--text3);line-height:1.6}
 .empty-cta{margin-top:18px;padding:10px 22px;border-radius:25px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:.15s}
 
@@ -167,7 +167,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 .post-caption{padding:10px 14px 4px;font-size:13.5px;color:var(--text2);line-height:1.55}
 .post-caption strong{color:var(--text);font-weight:600;cursor:pointer}
 .post-hashtags{display:flex;gap:6px;flex-wrap:wrap;padding:4px 14px 8px}
-.hash{font-size:12px;color:var(--primary);font-family:'DM Mono',monospace;cursor:pointer}
+.hash{font-size:12px;color:var(--primary);font-family:monospace;cursor:pointer}
 
 .post-actions{display:flex;align-items:center;gap:2px;padding:6px 10px 10px;border-top:1px solid var(--border)}
 .act-btn{display:flex;align-items:center;gap:5px;padding:6px 9px;border-radius:8px;cursor:pointer;font-size:12px;color:var(--text3);font-weight:500;transition:.15s;border:none;background:none}
@@ -216,7 +216,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 .community-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;animation:fadeUp .3s ease both}
 .comm-banner{height:76px;display:flex;align-items:center;justify-content:center;font-size:38px;position:relative}
 .comm-info{padding:12px 14px}
-.comm-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:4px}
+.comm-name{font-family:serif;font-size:17px;font-weight:700;margin-bottom:4px}
 .comm-desc{font-size:12.5px;color:var(--text3);line-height:1.45;margin-bottom:10px}
 .comm-footer{display:flex;align-items:center;justify-content:space-between}
 .comm-members{font-size:11px;color:var(--text3)}
@@ -320,7 +320,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 .sheet{width:100%;max-width:680px;background:var(--surface);border-radius:20px 20px 0 0;border:1px solid var(--border);border-bottom:none;padding:16px;animation:slideUp .3s cubic-bezier(.34,1.56,.64,1);max-height:88vh;overflow-y:auto}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .sheet-handle{width:40px;height:4px;background:var(--border2);border-radius:2px;margin:0 auto 16px}
-.sheet-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.sheet-title{font-family:serif;font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
 .sheet-close{width:28px;height:28px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;flex-shrink:0;border:none;color:var(--text2)}
 .field-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;margin-top:12px}
 .inp{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-size:13.5px;outline:none;transition:.15s}
@@ -367,8 +367,8 @@ select.inp{appearance:none;cursor:pointer}
 .tiktok-feed{position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tiktok-feed::-webkit-scrollbar{display:none}
 .tiktok-card{position:relative;width:100%;height:100vh;height:100svh;scroll-snap-align:start;scroll-snap-stop:always;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
-.tiktok-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(0px)}
-.tiktok-blur-bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;filter:blur(24px) brightness(0.4);transform:scale(1.1)}
+.tiktok-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;image-rendering:crisp-edges}
+.tiktok-blur-bg{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(30px) brightness(0.35) saturate(1.2);transform:scale(1.15)}
 .tiktok-emoji-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;opacity:0.15}
 .tiktok-emoji-main{font-size:90px;position:relative;z-index:2;text-shadow:0 4px 24px rgba(0,0,0,0.5)}
 /* Gradient overlays */
@@ -399,7 +399,7 @@ select.inp{appearance:none;cursor:pointer}
 @keyframes heartPop{0%{opacity:0;transform:translate(-50%,-50%) scale(0.2)}40%{opacity:1;transform:translate(-50%,-50%) scale(1.3)}70%{transform:translate(-50%,-50%) scale(0.9)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.1)}}
 .tiktok-music-text{font-size:11px;color:rgba(255,255,255,0.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* Video card */
-.tiktok-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.tiktok-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;image-rendering:auto}
 .tiktok-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.2);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;z-index:8;transition:.2s;pointer-events:none;opacity:0}
 .tiktok-card.paused .tiktok-play-btn{opacity:1}
 .tiktok-progress{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.2);z-index:15}
@@ -427,14 +427,14 @@ select.inp{appearance:none;cursor:pointer}
 .p-avatar-ring{position:absolute;inset:-3px;border-radius:50%;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);z-index:0;opacity:.7}
 .p-edit-badge{position:absolute;bottom:4px;right:4px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;color:#fff;z-index:2}
 .p-info{margin-bottom:14px}
-.p-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:3px;color:var(--text)}
-.p-handle{font-size:13px;color:var(--text3);margin-bottom:8px;font-family:'DM Mono',monospace}
+.p-name{font-family:serif;font-size:22px;font-weight:700;margin-bottom:3px;color:var(--text)}
+.p-handle{font-size:13px;color:var(--text3);margin-bottom:8px;font-family:monospace}
 .p-role-badge{display:inline-flex;align-items:center;gap:5px;background:var(--primary-glow);color:var(--primary);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:1px solid rgba(46,184,196,.3);margin-bottom:8px}
 .p-bio{font-size:13px;color:var(--text2);line-height:1.5}
 .p-stats-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;display:flex;align-items:stretch;margin-bottom:14px;overflow:hidden}
 .p-stat{flex:1;text-align:center;padding:14px 8px}
 .p-stat-divider{width:1px;background:var(--border);align-self:stretch;margin:10px 0}
-.p-stat-num{font-size:20px;font-weight:800;font-family:'Playfair Display',serif;color:var(--text);margin-bottom:4px}
+.p-stat-num{font-size:20px;font-weight:800;font-family:serif;color:var(--text);margin-bottom:4px}
 .p-stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;justify-content:center;gap:3px}
 .p-action-row{display:flex;gap:10px;margin-bottom:4px}
 .p-action-btn{flex:1;padding:11px 14px;border-radius:12px;border:none;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:7px;transition:.15s}
@@ -473,7 +473,7 @@ select.inp{appearance:none;cursor:pointer}
 /* ─── SETTINGS PAGE ─── */
 .settings-page{padding:0 0 20px}
 .settings-header{padding:24px 16px 16px;border-bottom:1px solid var(--border)}
-.settings-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--text);margin-bottom:4px}
+.settings-title{font-family:serif;font-size:24px;font-weight:900;color:var(--text);margin-bottom:4px}
 .settings-sub{font-size:13px;color:var(--text3);font-style:italic}
 .settings-section{padding:16px 16px 0}
 .settings-section-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
@@ -494,11 +494,11 @@ select.inp{appearance:none;cursor:pointer}
 .logout-settings-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 16px;padding:12px;border-radius:12px;background:rgba(224,92,92,.08);border:1.5px solid rgba(224,92,92,.25);color:var(--red);font-size:13px;font-weight:700;cursor:pointer;transition:.15s;letter-spacing:.3px}
 .logout-settings-btn:hover{background:rgba(224,92,92,.15);border-color:rgba(224,92,92,.5)}
 .about-card{margin:0 16px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:32px 20px;text-align:center}
-.about-logo-text{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.about-logo-text{font-family:serif;font-size:30px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
 .about-version{font-size:13px;color:var(--text3);margin-bottom:6px}
 .about-tagline{font-size:13px;color:var(--text2);font-style:italic;line-height:1.5}
 .about-dev-card{margin:0 16px 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px}
-.about-dev-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:2px}
+.about-dev-name{font-family:serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:2px}
 .about-dev-handle{font-size:12px;font-weight:700;color:var(--primary);letter-spacing:.5px;margin-bottom:10px}
 .about-dev-bio{font-size:12.5px;color:var(--text3);line-height:1.55;font-style:italic}
 .about-info-table{margin:0 16px 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
@@ -590,17 +590,17 @@ select.inp{appearance:none;cursor:pointer}
 
 <!-- CONFIG BANNER -->
 <div id="configBanner">
-  ⚙️ <strong>Configuration Firebase requise</strong> — Remplacez les clés Firebase dans le code pour activer toutes les fonctionnalités.
-  <a onclick="document.getElementById('configBanner').style.display='none'"> ✕ Fermer</a>
+  ️ <strong>Configuration Firebase requise</strong> — Remplacez les clés Firebase dans le code pour activer toutes les fonctionnalités.
+  <a onclick="document.getElementById('configBanner').style.display='none'">  Fermer</a>
 </div>
 
 <!-- SPLASH -->
 <div id="splash">
   <div style="width:100px;height:100px;border-radius:26px;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);display:flex;align-items:center;justify-content:center;box-shadow:0 0 48px rgba(46,184,196,0.4);animation:splashIcon 0.8s cubic-bezier(.4,0,.2,1) both"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-  <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:16px">PHOTO<em style="font-weight:400;font-style:italic">link</em></div>
+  <div style="font-family:serif;font-size:28px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:16px">PHOTO<em style="font-weight:400;font-style:italic">link</em></div>
   <div class="splash-sub">Le réseau des photographes</div>
   <div class="splash-spinner"></div>
-  <div style="position:absolute;bottom:28px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--text3);opacity:.45;mix-blend-mode:overlay">DAVIESLAY · Studio</div>
+  <div style="position:absolute;bottom:28px;font-family:monospace;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--text3);opacity:.45;mix-blend-mode:overlay">DAVIESLAY · Studio</div>
 </div>
 
 <!-- AUTH SCREEN -->
@@ -647,8 +647,8 @@ select.inp{appearance:none;cursor:pointer}
       <div class="auth-inp-group">
         <div class="auth-label">Je suis…</div>
         <div class="auth-role-row">
-          <div class="role-opt sel" data-role="photographer" onclick="selectRole(this)">📸 Photographe</div>
-          <div class="role-opt" data-role="client" onclick="selectRole(this)">👤 Client</div>
+          <div class="role-opt sel" data-role="photographer" onclick="selectRole(this)"> Photographe</div>
+          <div class="role-opt" data-role="client" onclick="selectRole(this)"> Client</div>
         </div>
       </div>
       <div class="auth-inp-group">
@@ -707,14 +707,14 @@ select.inp{appearance:none;cursor:pointer}
       </div>
     </div>
     <div class="explore-cats" id="catBar">
-      <div class="explore-cat active" onclick="filterCat(this,'')">✨ Tout</div>
-      <div class="explore-cat" onclick="filterCat(this,'Portrait')">🧑 Portrait</div>
-      <div class="explore-cat" onclick="filterCat(this,'Mariage')">💍 Mariage</div>
-      <div class="explore-cat" onclick="filterCat(this,'Mode')">👗 Mode</div>
-      <div class="explore-cat" onclick="filterCat(this,'Nature')">🌿 Nature</div>
-      <div class="explore-cat" onclick="filterCat(this,'Architecture')">🏛 Archi</div>
-      <div class="explore-cat" onclick="filterCat(this,'Studio')">🎨 Studio</div>
-      <div class="explore-cat" onclick="filterCat(this,'Événement')">🎉 Événement</div>
+      <div class="explore-cat active" onclick="filterCat(this,'')">Tout</div>
+      <div class="explore-cat" onclick="filterCat(this,'Portrait')">Portrait</div>
+      <div class="explore-cat" onclick="filterCat(this,'Mariage')">Mariage</div>
+      <div class="explore-cat" onclick="filterCat(this,'Mode')">Mode</div>
+      <div class="explore-cat" onclick="filterCat(this,'Nature')">Nature</div>
+      <div class="explore-cat" onclick="filterCat(this,'Architecture')">Archi</div>
+      <div class="explore-cat" onclick="filterCat(this,'Studio')">Studio</div>
+      <div class="explore-cat" onclick="filterCat(this,'Événement')">Événement</div>
     </div>
   </div>
   <!-- TikTok-style vertical scroll feed -->
@@ -764,12 +764,12 @@ select.inp{appearance:none;cursor:pointer}
 <div class="overlay" id="modalNewConv" onclick="closeOverlay(event,'modalNewConv')">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">Nouveau message <button class="sheet-close" onclick="closeModal('modalNewConv')">✕</button></div>
+    <div class="sheet-title">Nouveau message <button class="sheet-close" onclick="closeModal('modalNewConv')"></button></div>
     <div class="field-label">Destinataire</div>
     <input class="inp" id="newConvName" placeholder="Nom du photographe…"/>
     <div class="field-label">Message</div>
     <textarea class="inp" id="newConvMsg" rows="4" placeholder="Écrivez votre message ici…"></textarea>
-    <button class="submit-btn" onclick="sendNewConvMsg()">📩 Envoyer</button>
+    <button class="submit-btn" onclick="sendNewConvMsg()"> Envoyer</button>
   </div>
 </div>
 
@@ -878,11 +878,11 @@ select.inp{appearance:none;cursor:pointer}
     <div style="width:40px;height:4px;border-radius:2px;background:var(--border2);margin:12px auto 0"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)">
       <div style="font-size:16px;font-weight:700;color:var(--text)">Commentaires <span id="commentCount" style="color:var(--text3);font-size:13px"></span></div>
-      <button onclick="closeCommentsPanel()" style="width:30px;height:30px;border-radius:50%;background:var(--surface2);border:none;cursor:pointer;color:var(--text2);font-size:16px;display:flex;align-items:center;justify-content:center">✕</button>
+      <button onclick="closeCommentsPanel()" style="width:30px;height:30px;border-radius:50%;background:var(--surface2);border:none;cursor:pointer;color:var(--text2);font-size:16px;display:flex;align-items:center;justify-content:center"></button>
     </div>
     <div id="commentsList" style="flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:14px"></div>
     <div style="padding:10px 12px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--surface)">
-      <div id="cmtMyAvatar" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📸</div>
+      <div id="cmtMyAvatar" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0"></div>
       <input id="cmtInput" style="flex:1;background:var(--surface2);border:1.5px solid var(--border2);border-radius:22px;padding:9px 14px;color:var(--text);font-size:14px;outline:none" placeholder="Ajouter un commentaire…" onkeydown="if(event.key==='Enter')submitComment()"/>
       <button onclick="submitComment()" style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
@@ -911,13 +911,13 @@ select.inp{appearance:none;cursor:pointer}
     <div style="height:8px"></div>
     <!-- Report / not interested row -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 16px">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer" onclick="showToast('⚑ Signalé')">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer" onclick="showToast('Signalé')">
         <div style="width:52px;height:52px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
         </div>
         <span style="font-size:11px;color:var(--text2);font-weight:600;text-align:center">Signaler</span>
       </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer" onclick="showToast('👎 Pas intéressé')">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer" onclick="showToast('Pas intéressé')">
         <div style="width:52px;height:52px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
         </div>
@@ -1009,14 +1009,14 @@ select.inp{appearance:none;cursor:pointer}
       <div class="settings-section-title">À propos de PHOTOlink</div>
     </div>
     <div class="about-card">
-      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px">PHOTO<em style="font-weight:400;font-style:italic">link</em></div>
+      <div style="font-family:serif;font-size:28px;font-weight:900;background:linear-gradient(135deg,#2eb8c4,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px">PHOTO<em style="font-weight:400;font-style:italic">link</em></div>
       <div class="about-version">Version 1.0.0</div>
       <div class="about-tagline">Le réseau des photographes — capturer, partager, briller.</div>
     </div>
 
     <div class="about-dev-card">
       <div class="about-dev-name">David Laurens Kokoura Meurisse</div>
-      <div class="about-dev-handle">DAVIESLAY 💥</div>
+      <div class="about-dev-handle">DAVIESLAY </div>
       <div class="about-dev-bio">Développeur passionné, créateur de PHOTOlink. Artisan du numérique qui croit que chaque image mérite d'être partagée. Basé en Côte d'Ivoire, je bâtis des outils pour les créateurs africains et le monde entier.</div>
     </div>
 
@@ -1031,7 +1031,7 @@ select.inp{appearance:none;cursor:pointer}
       </div>
       <div class="about-info-row">
         <div class="about-info-key">DÉVELOPPEUR</div>
-        <div class="about-info-val">DAVIESLAY 💥</div>
+        <div class="about-info-val">DAVIESLAY </div>
       </div>
       <div class="about-info-row">
         <div class="about-info-key">PLATEFORME</div>
@@ -1056,7 +1056,7 @@ select.inp{appearance:none;cursor:pointer}
     </div>
     <div class="about-footer">
       © AVRIL 2026 — PHOTOLINK<br>
-      <em>Créé avec passion par David Laurens Kokoura Meurisse · DAVIESLAY 💥</em><br>
+      <em>Créé avec passion par David Laurens Kokoura Meurisse · DAVIESLAY </em><br>
       Tous droits réservés — L'objectif des photographes
     </div>
   </div>
@@ -1090,7 +1090,7 @@ select.inp{appearance:none;cursor:pointer}
 <div class="overlay" id="modalPost" onclick="closeOverlay(event,'modalPost')">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">Nouvelle publication <button class="sheet-close" onclick="closeModal('modalPost')">✕</button></div>
+    <div class="sheet-title">Nouvelle publication <button class="sheet-close" onclick="closeModal('modalPost')"></button></div>
     <div class="field-label">Visuel</div>
     <label class="upload-zone" id="uploadZone" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
       <input type="file" id="postImageFile" accept="image/*" onchange="previewImage(this)"/>
@@ -1114,7 +1114,7 @@ select.inp{appearance:none;cursor:pointer}
       <div style="flex:1"><div class="field-label" style="margin-top:0">Prix</div><input class="inp" id="postPrice" placeholder="ex: 150€/h"/></div>
       <div style="flex:1"><div class="field-label" style="margin-top:0">Lieu</div><input class="inp" id="postLocation" placeholder="ex: Paris"/></div>
     </div>
-    <button class="submit-btn" id="postSubmitBtn" onclick="submitPost()">✦ Publier</button>
+    <button class="submit-btn" id="postSubmitBtn" onclick="submitPost()"> Publier</button>
   </div>
 </div>
 
@@ -1122,7 +1122,7 @@ select.inp{appearance:none;cursor:pointer}
 <div class="overlay" id="modalService" onclick="closeOverlay(event,'modalService')">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">Nouveau service <button class="sheet-close" onclick="closeModal('modalService')">✕</button></div>
+    <div class="sheet-title">Nouveau service <button class="sheet-close" onclick="closeModal('modalService')"></button></div>
     <div class="field-label">Visuel</div>
     <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:90px;border-radius:12px;background:var(--surface2);border:1.5px dashed var(--border2);cursor:pointer;margin-bottom:12px;overflow:hidden;position:relative">
       <img id="svcCoverPreview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none"/>
@@ -1143,7 +1143,7 @@ select.inp{appearance:none;cursor:pointer}
       <div style="flex:1"><div class="field-label" style="margin-top:0">Prix</div><input class="inp" id="svcPrice" placeholder="200€/h"/></div>
       <div style="flex:1"><div class="field-label" style="margin-top:0">Durée</div><input class="inp" id="svcDuration" placeholder="2h"/></div>
     </div>
-    <button class="submit-btn" id="svcSubmitBtn" onclick="submitService()">✦ Publier le service</button>
+    <button class="submit-btn" id="svcSubmitBtn" onclick="submitService()"> Publier le service</button>
   </div>
 </div>
 
@@ -1151,7 +1151,7 @@ select.inp{appearance:none;cursor:pointer}
 <div class="overlay" id="modalCommunity" onclick="closeOverlay(event,'modalCommunity')">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">Nouvelle communauté <button class="sheet-close" onclick="closeModal('modalCommunity')">✕</button></div>
+    <div class="sheet-title">Nouvelle communauté <button class="sheet-close" onclick="closeModal('modalCommunity')"></button></div>
     <div class="field-label">Photo de couverture</div>
     <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:90px;border-radius:12px;background:var(--surface2);border:1.5px dashed var(--border2);cursor:pointer;margin-bottom:12px;overflow:hidden;position:relative" onclick="document.getElementById('commCoverFile').click()">
       <img id="commCoverPreview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none"/>
@@ -1167,7 +1167,7 @@ select.inp{appearance:none;cursor:pointer}
     <input class="inp" id="commName" placeholder="Ex: Photographes Lyon"/>
     <div class="field-label">Description</div>
     <textarea class="inp" id="commDesc" rows="2" placeholder="De quoi parle cette communauté ?"></textarea>
-    <button class="submit-btn" onclick="submitCommunity()">✦ Créer</button>
+    <button class="submit-btn" onclick="submitCommunity()">Créer</button>
   </div>
 </div>
 
@@ -1175,11 +1175,11 @@ select.inp{appearance:none;cursor:pointer}
 <div class="overlay" id="modalProfile" onclick="closeOverlay(event,'modalProfile')">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">Mon profil <button class="sheet-close" onclick="closeModal('modalProfile')">✕</button></div>
+    <div class="sheet-title">Mon profil <button class="sheet-close" onclick="closeModal('modalProfile')"></button></div>
 
     <div class="field-label">Photo de profil</div>
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-      <div id="profAvatarPreview" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--surface2),var(--surface3));border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;flex-shrink:0">📸</div>
+      <div id="profAvatarPreview" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--surface2),var(--surface3));border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;flex-shrink:0"></div>
       <div style="flex:1">
         <label style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--primary-glow);border:1.5px solid rgba(46,184,196,0.3);cursor:pointer;font-size:13px;font-weight:600;color:var(--primary)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -1222,11 +1222,11 @@ select.inp{appearance:none;cursor:pointer}
 <div class="overlay" id="modalDevis" onclick="closeOverlay(event,'modalDevis')">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">Demande de devis <button class="sheet-close" onclick="closeModal('modalDevis')">✕</button></div>
+    <div class="sheet-title">Demande de devis <button class="sheet-close" onclick="closeModal('modalDevis')"></button></div>
     <div id="devisTarget" style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:4px;font-size:13px;color:var(--text2);line-height:1.5"></div>
     <div class="field-label">Votre message</div>
     <textarea class="inp" id="devisMsg" rows="4" placeholder="Décrivez votre projet, date souhaitée, budget…"></textarea>
-    <button class="submit-btn" onclick="sendDevis()">📩 Envoyer</button>
+    <button class="submit-btn" onclick="sendDevis()"> Envoyer</button>
   </div>
 </div>
 
@@ -1283,12 +1283,12 @@ let currentCatFilter = '';
 let selectedRole = 'photographer';
 let notifUnread = 0;
 
-const EMOJIS_POST    = ['🌅','🏙','👗','💍','🌿','🎭','🏔','🌊','🐾','🌸','🎨','🌺','🌃','🏞','🎪','👶','🐕','🍃','🌙','🎬'];
-const EMOJIS_PROFILE = ['📸','🎨','✨','🧑‍🎨','🌟','🦋','🎭','🌿','🏆','🦅','🌊','🔮','💫','🎯','🌸','👁','🎞','🖼'];
-const EMOJIS_COMM    = ['📸','🗼','🌅','💍','🌿','🎭','⚙️','🌊','🏙','🎨','🌟','🤝'];
+const EMOJIS_POST = [''];
+const EMOJIS_PROFILE = [''];
+const EMOJIS_COMM = [''];
 const GRADIENTS      = ['g0','g1','g2','g3','g4','g5','g6','g7'];
 
-let sel = { post:'🌅', svc:'🎨', comm:'📸', profile:'📸', banner:null, commCover:null, svcCover:null };
+let sel = { post:'', svc:'', comm:'', profile:'', banner:null, commCover:null, svcCover:null };
 
 // ────── INIT ──────
 function initFirebase(){
@@ -1328,7 +1328,7 @@ async function loadUserData(uid){
     if(doc.exists){
       currentUserData = {uid, ...doc.data()};
     } else {
-      currentUserData = {uid, name: currentUser.displayName||'Utilisateur', email: currentUser.email, role:'photographer', avatar:'📸', handle:'', bio:'', specialty:'', city:''};
+      currentUserData = {uid, name: currentUser.displayName||'Utilisateur', email: currentUser.email, role:'photographer', avatar:'', handle:'', bio:'', specialty:'', city:''};
       await db.collection('users').doc(uid).set(currentUserData);
     }
     showApp();
@@ -1396,7 +1396,7 @@ async function doLogin(){
   try {
     if(!auth){ // demo
       currentUser={uid:'demo'};
-      currentUserData={uid:'demo',name:'Démo User',email,role:'photographer',avatar:'📸',handle:'demo',bio:'',specialty:'',city:''};
+      currentUserData={uid:'demo',name:'Démo User',email,role:'photographer',avatar:'',handle:'demo',bio:'',specialty:'',city:''};
       demoSave(); showApp(); return;
     }
     await auth.signInWithEmailAndPassword(email, pass);
@@ -1417,7 +1417,7 @@ async function doRegister(){
   try {
     if(!auth){ // demo
       currentUser={uid:'demo'};
-      currentUserData={uid:'demo',name,email,role:selectedRole,avatar:'📸',handle:name.toLowerCase().replace(/\s+/g,'.'),bio:'',specialty:document.getElementById('regSpecialty').value,city:''};
+      currentUserData={uid:'demo',name,email,role:selectedRole,avatar:'',handle:name.toLowerCase().replace(/\s+/g,'.'),bio:'',specialty:document.getElementById('regSpecialty').value,city:''};
       demoSave(); showApp(); return;
     }
     const cred = await auth.createUserWithEmailAndPassword(email, pass);
@@ -1425,7 +1425,7 @@ async function doRegister(){
     const userData = {
       uid, name, email,
       role: selectedRole,
-      avatar: '📸',
+      avatar: '',
       handle: name.toLowerCase().replace(/\s+/g,'.'),
       bio: '', specialty: document.getElementById('regSpecialty').value, city: '',
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -1447,7 +1447,7 @@ async function doGoogleAuth(){
     if(!auth){
       // Demo mode
       currentUser={uid:'demo'};
-      currentUserData={uid:'demo',name:'Utilisateur Google',email:'demo@google.com',role:'photographer',avatar:'📸',handle:'google.user',bio:'',specialty:'',city:''};
+      currentUserData={uid:'demo',name:'Utilisateur Google',email:'demo@google.com',role:'photographer',avatar:'',handle:'google.user',bio:'',specialty:'',city:''};
       demoSave(); showApp(); return;
     }
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -1462,7 +1462,7 @@ async function doGoogleAuth(){
         name: user.displayName || 'Utilisateur',
         email: user.email,
         role: 'photographer',
-        avatar: '📸',
+        avatar: '',
         handle: (user.displayName||'user').toLowerCase().replace(/\s+/g,'.').replace(/[^a-z0-9.]/g,''),
         bio: '',
         specialty: '',
@@ -1596,7 +1596,7 @@ function renderProfile(){
   if(p.avatar && (p.avatar.startsWith('data:') || p.avatar.startsWith('http'))){
     avatarEl.innerHTML = `<img src="${p.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
   } else {
-    avatarEl.textContent = p.avatar||'📸';
+    avatarEl.textContent = p.avatar||'';
   }
   // Banner
   const cover = document.getElementById('profileCover');
@@ -1611,14 +1611,14 @@ function renderProfile(){
     if(p.avatar && (p.avatar.startsWith('data:') || p.avatar.startsWith('http'))){
       topAv.innerHTML = `<img src="${p.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
     } else {
-      topAv.textContent = p.avatar||'📸';
+      topAv.textContent = p.avatar||'';
     }
   }
   document.getElementById('pName').textContent = p.name||'Votre nom';
   document.getElementById('pHandle').textContent = p.handle?'@'+p.handle:'@…';
   const roleBadge = document.getElementById('pRoleBadge');
   roleBadge.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> ${p.role==='client'?'Client':'Photographe'}`;
-  document.getElementById('pBio').textContent = p.bio||(p.city?'📍 '+p.city:'');
+  document.getElementById('pBio').textContent = p.bio||(p.city?' '+p.city:'');
   document.getElementById('statPosts').textContent = p.postCount||0;
   document.getElementById('statSvcs').textContent = p.svcCount||0;
   document.getElementById('statMsgs').textContent = p.msgCount||0;
@@ -1627,7 +1627,7 @@ function renderProfile(){
 
 function openEditProfile(){
   const p = currentUserData||{};
-  sel.profile = p.avatar||'📸';
+  sel.profile = p.avatar||'';
   sel.banner = p.banner||null;
   buildEmojiGrid('profileEmojiGrid', EMOJIS_PROFILE, 'profile');
   document.getElementById('profName').value = p.name||'';
@@ -1641,7 +1641,7 @@ function openEditProfile(){
     if(p.avatar && (p.avatar.startsWith('data:') || p.avatar.startsWith('http'))){
       prevEl.innerHTML = `<img src="${p.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
     } else {
-      prevEl.textContent = p.avatar||'📸';
+      prevEl.textContent = p.avatar||'';
     }
   }
   // Sync banner preview
@@ -1660,7 +1660,7 @@ function openEditProfile(){
 
 async function saveProfile(){
   const name = document.getElementById('profName').value.trim();
-  if(!name){ showToast('⚠️ Entrez votre nom','error'); return; }
+  if(!name){ showToast('Entrez votre nom','error'); return; }
   const data = {
     name,
     handle: document.getElementById('profHandle').value.trim()||name.toLowerCase().replace(/\s+/g,'.'),
@@ -1676,7 +1676,7 @@ async function saveProfile(){
   closeModal('modalProfile');
   renderProfile();
   updateTopAvatar();
-  showToast('✅ Profil mis à jour !','success');
+  showToast('Profil mis à jour !','success');
 }
 
 function switchPTab(el, tab){
@@ -1685,37 +1685,58 @@ function switchPTab(el, tab){
   var grid = document.getElementById('profileGrid');
   if(tab==='posts'){ loadMyPosts(); return; }
   if(tab==='services'){ loadMyServices(); return; }
-  if(tab==='private'){
-    var drafts = JSON.parse(localStorage.getItem('pl_drafts')||'[]');
-    if(!drafts.length){
-      grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px 20px"><div style="font-size:40px;margin-bottom:10px">🔒</div><div style="font-size:14px;font-weight:600;color:var(--text2)">Brouillons privés</div><div style="font-size:12px;color:var(--text3);margin-top:6px">Vos contenus privés apparaîtront ici</div></div>';
-    } else { renderProfileGridItems(drafts,grid); }
+
+  var icons = {
+    private: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+    reposts: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',
+    favorites: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>',
+    liked: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  };
+  var labels = { private:'Brouillons privés', reposts:'Republications', favorites:'Favoris', liked:'Posts aimés' };
+  var subs = { private:'Vos contenus privés apparaîtront ici', reposts:'Vos republications apparaîtront ici', favorites:'Vos posts favoris apparaîtront ici', liked:'Les posts que vous aimez apparaîtront ici' };
+
+  if(tab==='private' || tab==='reposts' || tab==='favorites'){
+    grid.innerHTML = buildEmptyTab(icons[tab], labels[tab], subs[tab]);
     return;
   }
-  if(tab==='reposts'){
-    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px 20px"><div style="font-size:40px;margin-bottom:10px">🔄</div><div style="font-size:14px;font-weight:600;color:var(--text2)">Republications</div><div style="font-size:12px;color:var(--text3);margin-top:6px">Vos republications apparaîtront ici</div></div>';
-    return;
-  }
-  if(tab==='favorites'){
-    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px 20px"><div style="font-size:40px;margin-bottom:10px">⭐</div><div style="font-size:14px;font-weight:600;color:var(--text2)">Favoris</div><div style="font-size:12px;color:var(--text3);margin-top:6px">Vos posts favoris apparaîtront ici</div></div>';
-    return;
-  }
+
   if(tab==='liked'){
     var likedIds = JSON.parse(localStorage.getItem('pl_likes')||'{}');
     var posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
     var liked = posts.filter(function(p){ return likedIds[p.id]; });
     if(!liked.length){
-      grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px 20px"><div style="font-size:40px;margin-bottom:10px">❤️</div><div style="font-size:14px;font-weight:600;color:var(--text2)">Posts aimés</div><div style="font-size:12px;color:var(--text3);margin-top:6px">Les posts que vous aimez apparaîtront ici</div></div>';
-    } else { renderProfileGridItems(liked,grid); }
+      grid.innerHTML = buildEmptyTab(icons.liked, labels.liked, subs.liked);
+    } else {
+      renderProfileGridItems(liked, grid);
+    }
     return;
   }
 }
+
+function buildEmptyTab(iconSvg, label, sub){
+  var div = document.createElement('div');
+  div.style.cssText = 'grid-column:1/-1;text-align:center;padding:40px 20px';
+  var iconWrap = document.createElement('div');
+  iconWrap.style.cssText = 'width:52px;height:52px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px';
+  iconWrap.innerHTML = iconSvg;
+  var t = document.createElement('div');
+  t.style.cssText = 'font-size:14px;font-weight:600;color:var(--text2)';
+  t.textContent = label;
+  var s = document.createElement('div');
+  s.style.cssText = 'font-size:12px;color:var(--text3);margin-top:6px';
+  s.textContent = sub;
+  div.appendChild(iconWrap); div.appendChild(t); div.appendChild(s);
+  var wrapper = document.createElement('div');
+  wrapper.appendChild(div);
+  return wrapper.innerHTML;
+}
+
 
 function renderProfileGridItems(items, grid){
   grid.innerHTML = items.map(function(p){
     var img = p.imageUrl
       ? '<img src="'+p.imageUrl+'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:4px"/>'
-      : '<span style="font-size:30px">'+(p.emoji||'🌅')+'</span>';
+      : '<span style="font-size:30px">'+(p.emoji||'')+'</span>';
     return '<div class="p-grid-item" style="position:relative">'+img
       +'<div class="p-grid-overlay" style="border-radius:4px">'
         +'<svg width="11" height="11" viewBox="0 0 24 24" fill="#fff"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'+(p.likes||0)
@@ -1731,7 +1752,7 @@ function loadFeed(){
     const unsub = db.collection('posts').orderBy('createdAt','desc').limit(30)
       .onSnapshot(snap=>{
         renderFeedPosts(snap.docs.map(d=>({id:d.id,...d.data()})));
-      }, ()=>{ container.innerHTML='<div class="empty-state"><div class="empty-icon">📡</div><div class="empty-title">Erreur de chargement</div></div>'; });
+      }, ()=>{ container.innerHTML='<div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Erreur de chargement</div></div>'; });
     unsubscribers.push(unsub);
   } else {
     const posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
@@ -1742,7 +1763,7 @@ function loadFeed(){
 function renderFeedPosts(posts){
   const container = document.getElementById('feedPosts');
   if(!posts.length){
-    container.innerHTML=`<div class="empty-state"><div class="empty-icon">🌅</div><div class="empty-title">Aucune publication</div><div class="empty-sub">Soyez le premier à publier sur PHOTOLINK</div><button class="empty-cta" onclick="openPostModal()">＋ Créer un post</button></div>`;
+    container.innerHTML=`<div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Aucune publication</div><div class="empty-sub">Soyez le premier à publier sur PHOTOLINK</div><button class="empty-cta" onclick="openPostModal()">＋ Créer un post</button></div>`;
     return;
   }
   container.innerHTML = posts.map((post,i)=>{
@@ -1753,7 +1774,7 @@ function renderFeedPosts(posts){
       <div class="post-header">
         <div class="post-avatar">${post.authorAvatar||post.authorName?.[0]||'?'}</div>
         <div class="post-meta">
-          <div class="post-author">${post.authorName||'Inconnu'} ${post.authorVerified?'<span class="post-verified">✦</span>':''}</div>
+          <div class="post-author">${post.authorName||'Inconnu'} ${post.authorVerified?'<span class="post-verified"></span>':''}</div>
           <div class="post-info">
             ${post.cat?`<span class="badge-cat">${post.cat}</span>`:''}
             ${post.price?`<span class="badge-price">${post.price}</span>`:''}
@@ -1766,9 +1787,9 @@ function renderFeedPosts(posts){
       </div>
       <div class="post-media">
         <div class="post-media-inner ${post.gradient||'g0'}">
-          ${post.imageUrl?`<img src="${post.imageUrl}" alt="post" style="width:100%;height:100%;object-fit:cover"/>`:`${post.emoji||'🌅'}`}
+          ${post.imageUrl?`<img src="${post.imageUrl}" alt="post" style="width:100%;height:100%;object-fit:cover"/>`:`${post.emoji||''}`}
         </div>
-        ${post.location?`<div class="post-location">📍 ${post.location}</div>`:''}
+        ${post.location?`<div class="post-location"> ${post.location}</div>`:''}
       </div>
       <div class="post-caption"><strong>${post.authorName||''}</strong> ${post.caption||''}</div>
       ${tags.length?`<div class="post-hashtags">${tags.map(t=>`<span class="hash">${t}</span>`).join('')}</div>`:''}
@@ -1797,7 +1818,7 @@ function renderFeedPosts(posts){
           </div>`).join('')}
         <div class="comment-input-row">
           <input class="c-input" id="ci-${post.id}" placeholder="Ajouter un commentaire…" onkeydown="if(event.key==='Enter')sendComment('${post.id}','${post.authorId}')"/>
-          <button class="send-btn" onclick="sendComment('${post.id}','${post.authorId}')">➤</button>
+          <button class="send-btn" onclick="sendComment('${post.id}','${post.authorId}')"></button>
         </div>
       </div>
     </div>`;
@@ -1840,7 +1861,7 @@ async function sendComment(postId, postAuthorId){
   const comment = {
     authorId: currentUser.uid,
     authorName: currentUserData?.name||'Anonyme',
-    authorAvatar: currentUserData?.avatar||'👤',
+    authorAvatar: currentUserData?.avatar||'',
     text,
     createdAt: Date.now()
   };
@@ -1852,7 +1873,7 @@ async function sendComment(postId, postAuthorId){
       });
       // Notify post author
       if(postAuthorId !== currentUser.uid){
-        addNotifToUser(postAuthorId, `💬 ${currentUserData?.name||'Quelqu\'un'} a commenté votre post`);
+        addNotifToUser(postAuthorId, `\${currentUserData?.name||'Quelqu\'un'} a commenté votre post`);
       }
     } else {
       const posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
@@ -1883,7 +1904,7 @@ async function deletePost(postId){
       posts = posts.filter(function(p){ return p.id !== postId; });
       localStorage.setItem('pl_posts', JSON.stringify(posts));
     }
-    showToast('✅ Post supprimé');
+    showToast('Post supprimé');
     // Also reload profile grid if visible
     if(document.getElementById('page-profile').classList.contains('active')){
       setTimeout(function(){ renderProfile(); }, 400);
@@ -1912,7 +1933,7 @@ function previewImage(input){
 async function submitPost(){
   if(!currentUser||!currentUserData){ showToast('Connectez-vous','error'); return; }
   const caption = document.getElementById('postCaption').value.trim();
-  if(!caption){ showToast('⚠️ Ajoutez une description','error'); return; }
+  if(!caption){ showToast('Ajoutez une description','error'); return; }
   const btn = document.getElementById('postSubmitBtn');
   btn.disabled=true; btn.textContent='Publication…';
 
@@ -1945,7 +1966,7 @@ async function submitPost(){
       id: Date.now().toString(),
       authorId: currentUser.uid,
       authorName: currentUserData.name||'Anonyme',
-      authorAvatar: currentUserData.avatar||'📸',
+      authorAvatar: currentUserData.avatar||'',
       authorSpecialty: currentUserData.specialty||'',
       emoji: sel.post,
       gradient: GRADIENTS[Math.floor(Math.random()*GRADIENTS.length)],
@@ -1982,11 +2003,11 @@ async function submitPost(){
     document.getElementById('uploadPrompt').style.display='block';
     fileInput.value='';
     showPage('feed', document.querySelectorAll('.nav-item')[0]);
-    showToast('✦ Publication réussie !','success');
+    showToast(' Publication réussie !','success');
   } catch(e){
     showToast('Erreur : '+e.message,'error');
   } finally {
-    btn.disabled=false; btn.textContent='✦ Publier';
+    btn.disabled=false; btn.textContent='Publier';
   }
 }
 
@@ -2008,19 +2029,19 @@ function loadServices(){
 function renderServices(svcs){
   const grid = document.getElementById('servicesGrid');
   if(!svcs.length){
-    grid.innerHTML=`<div style="grid-column:1/-1"><div class="empty-state"><div class="empty-icon">💼</div><div class="empty-title">Aucun service</div><div class="empty-sub">Photographes, publiez vos offres !</div><button class="empty-cta" onclick="openCreateService()">＋ Ajouter un service</button></div></div>`;
+    grid.innerHTML=`<div style="grid-column:1/-1"><div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Aucun service</div><div class="empty-sub">Photographes, publiez vos offres !</div><button class="empty-cta" onclick="openCreateService()">＋ Ajouter un service</button></div></div>`;
     return;
   }
   grid.innerHTML = svcs.map((s,i)=>`
     <div class="service-card" style="animation-delay:${i*0.06}s">
       <div class="svc-img ${s.gradient||'g1'}">
-        <span>${s.emoji||'🎨'}</span>
+        <span>${s.emoji||''}</span>
         <div class="svc-overlay"></div>
         <div class="svc-price">${s.price||'Sur devis'}</div>
       </div>
       <div class="svc-body">
         <div class="svc-name">${s.name}</div>
-        <div class="svc-author"><span>${s.authorAvatar||'📸'}</span>${s.authorName||''}${s.duration?' · '+s.duration:''}<span class="svc-rating">★ ${s.rating||'Nouveau'}</span></div>
+        <div class="svc-author"><span>${s.authorAvatar||''}</span>${s.authorName||''}${s.duration?' · '+s.duration:''}<span class="svc-rating"> ${s.rating||'Nouveau'}</span></div>
         <div class="svc-footer">
           <span style="font-size:11px;color:var(--text3)">${s.reviews||0} avis</span>
           <button class="book-btn" onclick="openDevis('${s.authorId}','${s.authorName}','${s.authorAvatar||""}','${s.name}')">Réserver</button>
@@ -2032,14 +2053,14 @@ function renderServices(svcs){
 async function submitService(){
   if(!currentUserData){ showToast('Connectez-vous','error'); return; }
   const name = document.getElementById('svcName').value.trim();
-  if(!name){ showToast('⚠️ Nommez le service','error'); return; }
+  if(!name){ showToast('Nommez le service','error'); return; }
   const btn = document.getElementById('svcSubmitBtn');
   btn.disabled=true;
   const svc = {
     id: Date.now().toString(),
     authorId: currentUser.uid,
     authorName: currentUserData.name,
-    authorAvatar: currentUserData.avatar||'📸',
+    authorAvatar: currentUserData.avatar||'',
     emoji: sel.svc,
     gradient: GRADIENTS[Math.floor(Math.random()*GRADIENTS.length)],
     name,
@@ -2060,7 +2081,7 @@ async function submitService(){
     }
     closeModal('modalService');
     ['svcName','svcDesc','svcPrice','svcDuration'].forEach(id=>document.getElementById(id).value='');
-    showToast('💼 Service publié !','success');
+    showToast(' Service publié !','success');
     loadServices();
   } catch(e){ showToast('Erreur','error'); }
   finally { btn.disabled=false; }
@@ -2085,27 +2106,27 @@ function loadCommunity(){
 function renderCommunity(comms){
   const list = document.getElementById('communityList');
   if(!comms.length){
-    list.innerHTML=`<div class="empty-state"><div class="empty-icon">💬</div><div class="empty-title">Aucune communauté</div><div class="empty-sub">Créez la première communauté !</div></div>`;
+    list.innerHTML=`<div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Aucune communauté</div><div class="empty-sub">Créez la première communauté !</div></div>`;
     return;
   }
   list.innerHTML = comms.map((c,i)=>{
     const joined = (c.members||[]).includes(currentUser?.uid);
     return `
     <div class="community-card" style="animation-delay:${i*0.06}s">
-      <div class="comm-banner ${c.gradient||'g0'}"><span>${c.emoji||'💬'}</span></div>
+      <div class="comm-banner ${c.gradient||'g0'}"><span>${c.emoji||''}</span></div>
       <div class="comm-info">
         <div class="comm-name">${c.name}</div>
         ${c.desc?`<div class="comm-desc">${c.desc}</div>`:''}
         <div class="comm-footer">
-          <div class="comm-members">👥 ${(c.members||[]).length} membre${(c.members||[]).length>1?'s':''}</div>
-          <button class="join-btn ${joined?'joined':'join'}" onclick="toggleJoin('${c.id}',${joined})">${joined?'✓ Membre':'Rejoindre'}</button>
+          <div class="comm-members"> ${(c.members||[]).length} membre${(c.members||[]).length>1?'s':''}</div>
+          <button class="join-btn ${joined?'joined':'join'}" onclick="toggleJoin('${c.id}',${joined})">${joined?' Membre':'Rejoindre'}</button>
         </div>
       </div>
       ${joined?`
       <div class="chat-area open" id="chat-${c.id}"></div>
       <div class="chat-input-row open">
         <input class="chat-inp" id="chatinp-${c.id}" placeholder="Écrire dans ${c.name}…" onkeydown="if(event.key==='Enter')sendCommChat('${c.id}')"/>
-        <button class="send-btn" onclick="sendCommChat('${c.id}')">➤</button>
+        <button class="send-btn" onclick="sendCommChat('${c.id}')"></button>
       </div>`:''}
     </div>`;
   }).join('');
@@ -2173,7 +2194,7 @@ async function toggleJoin(commId, alreadyJoined){
         loadCommunity();
       }
     }
-    showToast(alreadyJoined?'👋 Communauté quittée':'🎉 Communauté rejointe !','success');
+    showToast(alreadyJoined?' Communauté quittée':'Communauté rejointe !','success');
   } catch(e){ showToast('Erreur','error'); }
 }
 
@@ -2184,7 +2205,7 @@ async function sendCommChat(commId){
   const msg = {
     authorId: currentUser.uid,
     authorName: currentUserData?.name||'Anonyme',
-    authorAvatar: currentUserData?.avatar||'👤',
+    authorAvatar: currentUserData?.avatar||'',
     text,
     createdAt: db ? firebase.firestore.FieldValue.serverTimestamp() : Date.now()
   };
@@ -2203,7 +2224,7 @@ async function sendCommChat(commId){
 
 async function submitCommunity(){
   const name = document.getElementById('commName').value.trim();
-  if(!name){ showToast('⚠️ Nommez la communauté','error'); return; }
+  if(!name){ showToast('Nommez la communauté','error'); return; }
   const comm = {
     id: Date.now().toString(),
     emoji: sel.comm,
@@ -2224,7 +2245,7 @@ async function submitCommunity(){
     closeModal('modalCommunity');
     document.getElementById('commName').value='';
     document.getElementById('commDesc').value='';
-    showToast('🎉 Communauté créée !','success');
+    showToast(' Communauté créée !','success');
     loadCommunity();
   } catch(e){ showToast('Erreur','error'); }
 }
@@ -2236,32 +2257,32 @@ var DEMO_VIDEOS = [
     id:'demo-v1', type:'video',
     videoUrl:'https://www.w3schools.com/html/mov_bbb.mp4',
     posterUrl:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-    authorName:'davieslay', authorAvatar:'📸',
-    caption:'Séance portrait en pleine nature 🌿 — Lumière naturelle, golden hour, magie pure ✨',
+    authorName:'davieslay', authorAvatar:'',
+    caption:'Séance portrait en pleine nature — — Lumière naturelle, golden hour, magie pure',
     tags:'portrait,nature,goldenhour', cat:'Nature', likes:142
   },
   {
     id:'demo-v2', type:'video',
     videoUrl:'https://www.w3schools.com/html/movie.mp4',
     posterUrl:'https://images.unsplash.com/photo-1519741497674-611481863552?w=400',
-    authorName:'photographe_ci', authorAvatar:'🎨',
-    caption:'Mariage à Abidjan 💍 — Couleurs, joie et émotion au rendez-vous 🎊',
+    authorName:'photographe_ci', authorAvatar:'',
+    caption:'Mariage à Abidjan — — Couleurs, joie et émotion au rendez-vous',
     tags:'mariage,abidjan,love', cat:'Mariage', likes:89
   },
   {
     id:'demo-v3', type:'video',
     videoUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     posterUrl:'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-    authorName:'studio_mode', authorAvatar:'👗',
-    caption:'Shooting mode urbain 🏙️ — Entre béton et lumières, la beauté est partout 📷',
+    authorName:'studio_mode', authorAvatar:'',
+    caption:'Shooting mode urbain — ️ — Entre béton et lumières, la beauté est partout',
     tags:'mode,urbain,shooting', cat:'Mode', likes:231
   },
   {
     id:'demo-v4', type:'video',
     videoUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     posterUrl:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400',
-    authorName:'archi_lens', authorAvatar:'🏛',
-    caption:'Architecture moderne — Lignes, angles et perspectives 🏗️',
+    authorName:'archi_lens', authorAvatar:'',
+    caption:'Architecture moderne — Lignes, angles et perspectives — ️',
     tags:'architecture,urbain,moderne', cat:'Architecture', likes:67
   }
 ];
@@ -2299,7 +2320,7 @@ function loadExplore(){
 function renderExplore(posts){
   var feed = document.getElementById('exploreGrid');
   if(!posts || !posts.length){
-    feed.innerHTML = '<div class="tiktok-empty"><div class="tiktok-empty-icon">📷</div><div class="tiktok-empty-text">Aucun post</div><div class="tiktok-empty-sub">Soyez le premier à publier dans cette catégorie</div></div>';
+    feed.innerHTML = '<div class="tiktok-empty"><div class="tiktok-empty-icon"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="tiktok-empty-text">Aucun post</div><div class="tiktok-empty-sub">Soyez le premier à publier dans cette catégorie</div></div>';
     return;
   }
 
@@ -2309,7 +2330,7 @@ function renderExplore(posts){
     var poster = p.posterUrl || p.imageUrl || '';
     var avatarHtml = (p.authorAvatar && (p.authorAvatar.startsWith('data:') || p.authorAvatar.startsWith('http')))
       ? '<img src="'+p.authorAvatar+'" />'
-      : '<span style="font-size:18px">'+(p.authorAvatar||'📸')+'</span>';
+      : '<span style="font-size:18px">'+(p.authorAvatar||'')+'</span>';
     var tags = (p.tags||'').split(',').filter(function(t){ return t.trim(); }).slice(0,3)
       .map(function(t){ return '<span class="tiktok-tag">#'+t.trim()+'</span>'; }).join('');
     var liked = (JSON.parse(localStorage.getItem('pl_likes')||'{}')||{})[p.id];
@@ -2325,8 +2346,8 @@ function renderExplore(posts){
       mediaBg = '<img class="tiktok-blur-bg" src="'+p.imageUrl+'" alt=""/>'
                +'<img class="tiktok-bg" src="'+p.imageUrl+'" alt="post" style="object-fit:contain;max-height:100%;"/>';
     } else {
-      mediaBg = '<div class="tiktok-emoji-bg">'+(p.emoji||'🌅')+'</div>'
-               +'<div class="tiktok-emoji-main">'+(p.emoji||'🌅')+'</div>';
+      mediaBg = '<div class="tiktok-emoji-bg">'+(p.emoji||'')+'</div>'
+               +'<div class="tiktok-emoji-main">'+(p.emoji||'')+'</div>';
     }
 
     return '<div class="tiktok-card'+(isVideo?' tiktok-video-card':'')+'" id="tcard-'+pid+'" data-postid="'+p.id+'" data-isvideo="'+(isVideo?'1':'0')+'" data-videoid="tvid-'+pid+'">'
@@ -2337,7 +2358,7 @@ function renderExplore(posts){
       +(isVideo?'<div class="tiktok-mute-btn" id="tmute-'+pid+'" onclick="tkToggleMute(\x27tvid-'+pid+'\x27,\x27tmute-'+pid+'\x27)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>':'')
       // Right actions
       +'<div class="tiktok-actions">'
-        +'<div class="tiktok-act"><div class="tiktok-avatar">'+avatarHtml+'</div></div>'
+        +'<div class="tiktok-act" onclick="openAuthorProfile(\x27'+(p.authorId||p.authorName||'')+'\x27,\x27'+(p.authorName||'')+'\x27,\x27'+(p.authorAvatar||'')+'\x27)" style="cursor:pointer"><div class="tiktok-avatar">'+avatarHtml+'</div></div>'
         +'<div class="tiktok-act" onclick="tkLike(\x27'+p.id+'\x27)">'
           +'<div class="tiktok-act-icon '+(liked?'liked':'')+'" id="tlike-icon-'+pid+'">'
             +'<svg width="22" height="22" viewBox="0 0 24 24" fill="'+(liked?'#ff3250':'none')+'" stroke="'+(liked?'#ff3250':'#fff')+'" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
@@ -2355,8 +2376,8 @@ function renderExplore(posts){
       +'</div>'
       // Bottom info
       +'<div class="tiktok-info">'
-        +'<div class="tiktok-author">'
-          +'<span class="tiktok-author-name">@'+(p.authorName||'photographe')+'</span>'
+        +'<div class="tiktok-author" onclick="openAuthorProfile(\x27'+(p.authorId||p.authorName||'')+'\x27,\x27'+(p.authorName||'')+'\x27,\x27'+(p.authorAvatar||'')+'\x27)" style="cursor:pointer">'
+          +'<span class="tiktok-author-name" style="text-decoration:underline;text-underline-offset:3px">@'+(p.authorName||'photographe')+'</span>'
           +(p.cat?'<span class="tiktok-author-badge">'+p.cat+'</span>':'')
         +'</div>'
         +(p.caption?'<div class="tiktok-caption">'+p.caption+'</div>':'')
@@ -2365,7 +2386,7 @@ function renderExplore(posts){
       // Music bar
       +'<div class="tiktok-music">'
         +'<div class="tiktok-music-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>'
-        +'<span class="tiktok-music-text">PHOTOlink · '+(p.authorName||'photographe')+(isVideo?' · 🎬 Vidéo':' · musique originale')+'</span>'
+        +'<span class="tiktok-music-text">PHOTOlink · '+(p.authorName||'photographe')+(isVideo?' · Vidéo':' ')+'</span>'
       +'</div>'
     +'</div>';
   }).join('');
@@ -2380,9 +2401,11 @@ function tkLike(postId){
   var already = likes[postId];
   if(already){ delete likes[postId]; } else { likes[postId] = true; }
   localStorage.setItem('pl_likes', JSON.stringify(likes));
-  
-  var icon = document.getElementById('tlike-icon-'+postId);
-  var count = document.getElementById('tlike-count-'+postId);
+
+  // IDs use sanitized version (alphanumeric only)
+  var pid = postId.replace(/[^a-zA-Z0-9]/g,'_');
+  var icon = document.getElementById('tlike-icon-'+pid) || document.getElementById('tlike-icon-'+postId);
+  var count = document.getElementById('tlike-count-'+pid) || document.getElementById('tlike-count-'+postId);
   var current = parseInt(count ? count.textContent : '0') || 0;
   if(already){
     if(icon){ icon.classList.remove('liked'); icon.innerHTML = icon.innerHTML.replace('fill="#ff3250"','fill="none"').replace(/stroke="#ff3250"/g,'stroke="#fff"'); }
@@ -2393,7 +2416,7 @@ function tkLike(postId){
     // Heart animation
     var heart = document.createElement('div');
     heart.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:80px;pointer-events:none;z-index:999;animation:heartPop .6s ease forwards';
-    heart.textContent = '❤️';
+    heart.innerHTML = '<svg width="80" height="80" viewBox="0 0 24 24" fill="#ff3250"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
     document.body.appendChild(heart);
     setTimeout(function(){ heart.remove(); }, 600);
   }
@@ -2416,11 +2439,30 @@ function tkComment(postId){
   var comments = (post && post.comments) || [];
   document.getElementById('commentCount').textContent = comments.length ? '('+comments.length+')' : '';
   if(!comments.length){
-    list.innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">💬</div><div style="font-weight:600">Aucun commentaire</div><div style="font-size:13px;margin-top:6px">Soyez le premier à commenter !</div></div>';
+    // Build empty comments state using DOM
+  var emptyDiv = document.createElement('div');
+  emptyDiv.style.cssText = 'text-align:center;padding:40px 20px;color:var(--text3)';
+  var iconDiv = document.createElement('div');
+  iconDiv.style.cssText = 'margin-bottom:12px';
+  iconDiv.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
+  var titleDiv = document.createElement('div');
+  titleDiv.style.fontWeight = '600';
+  titleDiv.textContent = 'Aucun commentaire';
+  var subDiv = document.createElement('div');
+  subDiv.style.cssText = 'font-size:13px;margin-top:6px';
+  subDiv.textContent = 'Soyez le premier \u00e0 commenter !';
+  var btnDiv = document.createElement('button');
+  btnDiv.style.cssText = 'margin-top:12px;padding:8px 20px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:700;font-size:12px;cursor:pointer';
+  btnDiv.textContent = 'Commenter';
+  btnDiv.onclick = function(){ document.getElementById('cmtInput').focus(); };
+  emptyDiv.appendChild(iconDiv); emptyDiv.appendChild(titleDiv); emptyDiv.appendChild(subDiv); emptyDiv.appendChild(btnDiv);
+  list.innerHTML = '';
+  list.appendChild(emptyDiv);
+  // dummy to avoid syntax
   } else {
     list.innerHTML = comments.map(function(c){
       return '<div style="display:flex;gap:10px">'
-        +'<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">'+(c.avatar||'📸')+'</div>'
+        +'<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">'+(c.avatar||'')+'</div>'
         +'<div style="flex:1">'
           +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">'
             +'<span style="font-size:13px;font-weight:700;color:var(--text)">@'+(c.author||'user')+'</span>'
@@ -2438,21 +2480,59 @@ function submitComment(){
   var text = inp.value.trim();
   if(!text) return;
   var postId = _currentCommentPostId;
+  var authorName = (currentUserData&&currentUserData.name) ? currentUserData.name : 'Moi';
+  var authorAvatar = (currentUserData&&currentUserData.avatar) ? currentUserData.avatar : null;
+  var newComment = { author: authorName, avatar: authorAvatar, text: text, time: 'maintenant' };
+
+  // Save to localStorage
   var posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
-  var idx = posts.findIndex(function(p){ return p.id===postId; });
-  if(idx>=0){
-    if(!posts[idx].comments) posts[idx].comments = [];
-    posts[idx].comments.push({
-      author: currentUserData&&currentUserData.name ? currentUserData.name : 'moi',
-      avatar: currentUserData&&currentUserData.avatar ? currentUserData.avatar : '📸',
-      text: text,
-      time: 'maintenant'
-    });
-    localStorage.setItem('pl_posts', JSON.stringify(posts));
+  var pidx = posts.findIndex(function(p){ return p.id===postId; });
+
+  // Also handle demo posts
+  if(pidx < 0){
+    posts.push({ id: postId, comments: [newComment] });
+  } else {
+    if(!posts[pidx].comments) posts[pidx].comments = [];
+    posts[pidx].comments.push(newComment);
   }
+  localStorage.setItem('pl_posts', JSON.stringify(posts));
+
   inp.value = '';
-  showToast('💬 Commentaire ajouté !');
-  tkComment(postId); // refresh
+
+  // Add comment to panel immediately WITHOUT re-loading
+  var list = document.getElementById('commentsList');
+  if(list){
+    // Remove empty state if present
+    var emptyDiv = list.querySelector('div[style*="padding:40px"]');
+    if(emptyDiv) emptyDiv.remove();
+
+    // Build avatar html
+    var avHtml;
+    if(authorAvatar && (authorAvatar.startsWith('data:') || authorAvatar.startsWith('http'))){
+      avHtml = '<img src="'+authorAvatar+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>';
+    } else {
+      avHtml = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+    }
+
+    var el = document.createElement('div');
+    el.style.cssText = 'display:flex;gap:10px;animation:fadeUp .2s ease';
+    el.innerHTML = '<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden">'+avHtml+'</div>'
+      +'<div style="flex:1"><div style="display:flex;align-items:center;gap:8px;margin-bottom:3px"><span style="font-size:13px;font-weight:700;color:var(--text)">@'+authorName+'</span><span style="font-size:11px;color:var(--text3)">maintenant</span></div>'
+      +'<div style="font-size:14px;color:var(--text2);line-height:1.4">'+text+'</div></div>';
+    list.appendChild(el);
+    list.scrollTop = list.scrollHeight;
+
+    // Update count
+    var countEl = document.getElementById('commentCount');
+    if(countEl){
+      var cur = parseInt((countEl.textContent||'0').replace(/[()]/g,''))||0;
+      countEl.textContent = '('+(cur+1)+')';
+    }
+    // Update like count on tiktok card
+    var tCount = document.getElementById('tlike-count-'+postId.replace(/[^a-zA-Z0-9]/g,'_'));
+    // (no-op for comments)
+  }
+  showToast('Commentaire ajouté !');
 }
 
 function closeCommentsPanel(){
@@ -2547,7 +2627,7 @@ function filterCat(el, cat){
 
 // ────── MESSAGING ──────
 function openDevis(recipientId, recipientName, recipientAvatar, context){
-  if(recipientId === currentUser?.uid){ showToast('Vous ne pouvez pas vous envoyer un message 😄'); return; }
+  if(recipientId === currentUser?.uid){ showToast('Vous ne pouvez pas vous envoyer un message '); return; }
   document.getElementById('devisTarget').innerHTML = `Pour : <strong style="color:var(--primary)">${recipientName}</strong> · ${context||''}`;
   document.getElementById('devisMsg').value='';
   document.getElementById('devisMsg').dataset.recipientId = recipientId;
@@ -2561,15 +2641,15 @@ async function sendDevis(){
   const text = inp.value.trim();
   const recipientId = inp.dataset.recipientId;
   const recipientName = inp.dataset.recipientName;
-  const recipientAvatar = inp.dataset.recipientAvatar||'📸';
-  if(!text){ showToast('⚠️ Écrivez un message','error'); return; }
+  const recipientAvatar = inp.dataset.recipientAvatar||'';
+  if(!text){ showToast('Écrivez un message','error'); return; }
   if(!currentUser||!currentUserData) return;
 
   const convId = [currentUser.uid, recipientId].sort().join('_');
   const msg = {
     senderId: currentUser.uid,
     senderName: currentUserData.name,
-    senderAvatar: currentUserData.avatar||'📸',
+    senderAvatar: currentUserData.avatar||'',
     text,
     createdAt: db ? firebase.firestore.FieldValue.serverTimestamp() : Date.now(),
     read: false
@@ -2577,7 +2657,7 @@ async function sendDevis(){
   const convData = {
     participants: [currentUser.uid, recipientId],
     participantNames: {[currentUser.uid]: currentUserData.name, [recipientId]: recipientName},
-    participantAvatars: {[currentUser.uid]: currentUserData.avatar||'📸', [recipientId]: recipientAvatar},
+    participantAvatars: {[currentUser.uid]: currentUserData.avatar||'', [recipientId]: recipientAvatar},
     lastMessage: text,
     lastMessageAt: db ? firebase.firestore.FieldValue.serverTimestamp() : Date.now(),
     unreadFor: [recipientId]
@@ -2588,7 +2668,7 @@ async function sendDevis(){
       await db.collection('conversations').doc(convId).set(convData, {merge:true});
       await db.collection('conversations').doc(convId).collection('messages').add(msg);
       db.collection('users').doc(currentUser.uid).update({msgCount:firebase.firestore.FieldValue.increment(1)}).catch(()=>{});
-      addNotifToUser(recipientId, `📩 Nouveau message de ${currentUserData.name}`);
+      addNotifToUser(recipientId, ` Nouveau message de ${currentUserData.name}`);
     } else {
       msg.createdAt=Date.now();
       const convs = JSON.parse(localStorage.getItem('pl_conversations')||'{}');
@@ -2600,7 +2680,7 @@ async function sendDevis(){
       localStorage.setItem('pl_conversations', JSON.stringify(convs));
     }
     closeModal('modalDevis');
-    showToast('📩 Message envoyé !','success');
+    showToast(' Message envoyé !','success');
   } catch(e){ showToast('Erreur : '+e.message,'error'); }
 }
 
@@ -2618,7 +2698,7 @@ async function loadInbox(){
       const myConvs = Object.values(convs).filter(c=>(c.participants||[]).includes(currentUser.uid));
       renderInbox(myConvs.map((c,i)=>({id:Object.keys(convs)[i],...c})));
     }
-  } catch(e){ list.innerHTML='<div class="empty-state"><div class="empty-icon">📩</div><div class="empty-title">Aucun message</div></div>'; }
+  } catch(e){ list.innerHTML='<div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Aucun message</div></div>'; }
 }
 
 function renderInbox(convs){
@@ -2826,17 +2906,17 @@ function closeNotifPanel(){
 
 // ────── MODALS / EMOJI ──────
 function openPostModal(){
-  sel.post='🌅';
+  sel.post='';
   buildEmojiGrid('postEmojiGrid', EMOJIS_POST, 'post');
   openModal('modalPost');
 }
 function openCreateService(){
-  sel.svc='🎨';
+  sel.svc='';
   buildEmojiGrid('svcEmojiGrid', EMOJIS_POST, 'svc');
   openModal('modalService');
 }
 function openCreateCommunity(){
-  sel.comm='📸';
+  sel.comm='';
   buildEmojiGrid('commEmojiGrid', EMOJIS_COMM, 'comm');
   openModal('modalCommunity');
 }
@@ -2937,24 +3017,33 @@ function sharePost(postId){
   panel.style.display = 'block';
   setTimeout(function(){ sheet.style.transform = 'translateY(0)'; }, 10);
   // Fill share options
+  var waIcon = '<svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>';
+  var discordIcon = '<svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#5865F2" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>';
+  var fbIcon = '<svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>';
+  var snapIcon = '<svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#FFFC00" d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.317 4.814l-.01.143c-.023.34.137.827.501 1.124.41.328 1.306.95 2.748.95.147 0 .355-.037.513-.073.2.68-.453 1.32-.949 1.63-.107.068-.223.127-.336.18a.634.634 0 0 0-.308.837c.057.13.163.32.309.543.376.581.94 1.462.94 2.6 0 1.073-.59 1.908-1.62 2.358-1.005.44-2.366.634-4.18.634-.318 0-.649-.01-.982-.025-.354-.013-.706-.025-1.054-.025-.457 0-.896.025-1.311.074-.546.064-1.066.213-1.596.367-.503.147-1.022.3-1.585.368-.104.012-.204.018-.302.018-.682 0-1.131-.29-1.38-.546-.308-.317-.41-.633-.41-.839 0-.052.007-.099.015-.144.007-.045.015-.09.015-.136 0-.46-.376-.866-.835-1.142-.23-.14-.463-.248-.695-.353-.23-.104-.457-.208-.682-.344-.647-.387-1.004-.895-1.059-1.513-.04-.447.1-.887.39-1.24.16-.2.348-.363.532-.522.183-.157.362-.31.498-.48.144-.18.197-.355.165-.52-.083-.44-.44-.772-.72-1.032a3.22 3.22 0 0 1-.214-.216c-.38-.432-.616-.918-.695-1.41a3.91 3.91 0 0 1 .046-1.37 4.82 4.82 0 0 1 .47-1.338c.784-1.52 2.3-2.524 3.994-2.524h.012c.11 0 .218.005.326.015.02-.023.04-.045.062-.067.265-.28.654-.488 1.132-.614.524-.138 1.193-.203 1.942-.198l.145.001z"/></svg>';
+  var copyIcon = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+  var shareIcon = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
+  var republierIcon = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>';
+  var smsIcon = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34B7F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
+
   var opts1 = [
-    {icon:'🔄',label:'Republier',action:"showToast('🔄 Republié !')"},
-    {icon:'<svg width="22" height="22" viewBox="0 0 24 24"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path fill="#25D366" d="M11.892 0C5.337 0 0 5.337 0 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.88 11.88 0 0 0 5.53 1.367h.006C18.449 23.713 23.785 18.376 23.785 11.82 23.785 5.337 18.449 0 11.892 0z"/></svg>',label:'WhatsApp',action:"openWhatsAppShare()"},
-    {icon:'📋',label:'Copier le lien',action:"copyPostLink('"+postId+"')"},
-    {icon:'✉️',label:'Email',action:"showToast('📧 Partage par email')"},
+    {icon:republierIcon, label:'Republier', action:"showToast('Republié !')"},
+    {icon:waIcon, label:'WhatsApp', action:"openWhatsAppShare()"},
+    {icon:copyIcon, label:'Copier le lien', action:"copyPostLink('"+postId+"')"},
+    {icon:smsIcon, label:'SMS', action:"showToast('Partage SMS')"},
   ];
   var opts2 = [
-    {icon:'💬',label:'SMS',action:"showToast('💬 Partage par SMS')"},
-    {icon:'<svg width="22" height="22" viewBox="0 0 24 24"><path fill="#5865F2" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>',label:'Discord',action:"showToast('🎮 Partage Discord')"},
-    {icon:'📘',label:'Facebook',action:"showToast('📘 Partage Facebook')"},
-    {icon:'➕',label:'Plus',action:"openNativeShare('"+postId+"')"},
+    {icon:discordIcon, label:'Discord', action:"showToast('Partage Discord')"},
+    {icon:fbIcon, label:'Facebook', action:"showToast('Partage Facebook')"},
+    {icon:snapIcon, label:'Snapchat', action:"showToast('Partage Snapchat')"},
+    {icon:shareIcon, label:'Plus', action:"openNativeShare('"+postId+"')"},
   ];
 
   // Load friends from conversations
   var convs = JSON.parse(localStorage.getItem('pl_conversations')||'{}');
   var friendsHtml = Object.values(convs).slice(0,6).map(function(c){
     var name = c.otherName||'Ami';
-    var av = c.otherAvatar||'👤';
+    var av = c.otherAvatar||'';
     var avContent = (av.startsWith('data:')||av.startsWith('http'))
       ? '<img src="'+av+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>'
       : '<span style="font-size:22px">'+av+'</span>';
@@ -2987,6 +3076,79 @@ function closeSharePanel(){
   setTimeout(function(){ panel.style.display='none'; }, 300);
 }
 
+// ── AUTHOR PROFILE from TikTok feed ──────────────────
+function openAuthorProfile(authorId, authorName, authorAvatar){
+  // Navigate to profile page and show author's data
+  // If it's the current user, show own profile
+  if(currentUser && (authorId === currentUser.uid || authorId === (currentUserData&&currentUserData.handle))){
+    showPage('profile', document.querySelectorAll('.nav-item')[5]);
+    return;
+  }
+  // Otherwise show a visitor profile modal
+  openVisitorProfile(authorId, authorName, authorAvatar);
+}
+
+function openVisitorProfile(authorId, authorName, authorAvatar){
+  // Remove existing modal if any
+  var existing = document.getElementById('visitorProfileModal');
+  if(existing) existing.remove();
+
+  var avHtml = (authorAvatar && (authorAvatar.startsWith('data:') || authorAvatar.startsWith('http')))
+    ? '<img src="'+authorAvatar+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>'
+    : '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+
+  var modal = document.createElement('div');
+  modal.id = 'visitorProfileModal';
+  modal.style.cssText = 'position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);display:flex;align-items:flex-end';
+  modal.innerHTML = '<div style="background:var(--surface);border-radius:20px 20px 0 0;width:100%;padding:24px;max-height:80vh;overflow-y:auto" onclick="event.stopPropagation()">'
+    +'<div style="width:40px;height:4px;border-radius:2px;background:var(--border2);margin:0 auto 16px"></div>'
+    // Profile header
+    +'<div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">'
+      +'<div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border:2px solid var(--primary)">'+avHtml+'</div>'
+      +'<div style="flex:1">'
+        +'<div style="font-size:18px;font-weight:800;color:var(--text);font-family:serif">'+( authorName||'Photographe')+'</div>'
+        +'<div style="font-size:13px;color:var(--text3);margin-top:2px;font-family:monospace">@'+(authorName||'photographe').toLowerCase().replace(/\s+/g,'.')+'</div>'
+        +'<div style="margin-top:6px;display:inline-flex;align-items:center;gap:5px;background:var(--primary-glow);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;border:1px solid rgba(46,184,196,.3)">'
+          +'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
+          +'Photographe'
+        +'</div>'
+      +'</div>'
+    +'</div>'
+    // Stats
+    +'<div style="display:flex;background:var(--surface2);border-radius:12px;margin-bottom:16px;overflow:hidden;border:1px solid var(--border)">'
+      +'<div style="flex:1;text-align:center;padding:12px"><div style="font-size:18px;font-weight:800;color:var(--text)">—</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Posts</div></div>'
+      +'<div style="width:1px;background:var(--border)"></div>'
+      +'<div style="flex:1;text-align:center;padding:12px"><div style="font-size:18px;font-weight:800;color:var(--text)">—</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Followers</div></div>'
+      +'<div style="width:1px;background:var(--border)"></div>'
+      +'<div style="flex:1;text-align:center;padding:12px"><div style="font-size:18px;font-weight:800;color:var(--text)">—</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px">J\x27aime</div></div>'
+    +'</div>'
+    // Action buttons
+    +'<div style="display:flex;gap:10px;margin-bottom:16px">'
+      +'<button onclick="followAuthor(\x27'+authorId+'\x27,this)" style="flex:1;padding:12px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:800;font-size:13px;cursor:pointer;font-family:sans-serif">Suivre</button>'
+      +'<button onclick="messageAuthor(\x27'+authorId+'\x27,\x27'+authorName+'\x27)" style="flex:1;padding:12px;border-radius:10px;background:var(--surface2);color:var(--text2);border:1.5px solid var(--border2);font-weight:700;font-size:13px;cursor:pointer">Message</button>'
+    +'</div>'
+    +'<button onclick="document.getElementById(\x27visitorProfileModal\x27).remove()" style="width:100%;padding:11px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--text3);font-weight:600;font-size:13px;cursor:pointer">Fermer</button>'
+  +'</div>';
+  modal.onclick = function(e){ if(e.target===modal) modal.remove(); };
+  document.body.appendChild(modal);
+}
+
+function followAuthor(authorId, btn){
+  btn.textContent = btn.textContent === "Suivre" ? 'Suivi' : 'Suivre';
+  btn.style.background = btn.textContent === "Suivi" ? 'var(--surface2)' : 'linear-gradient(135deg,var(--primary),var(--coral))';
+  btn.style.color = btn.textContent === "Suivi" ? 'var(--text2)' : '#000';
+  btn.style.border = btn.textContent === "Suivi" ? '1.5px solid var(--border2)' : 'none';
+  showToast(btn.textContent === "Suivi" ? 'Abonnement actif' : 'Abonnement annulé');
+}
+
+function messageAuthor(authorId, authorName){
+  document.getElementById('visitorProfileModal').remove();
+  // Open message modal pre-filled
+  var inp = document.getElementById('newConvName');
+  if(inp){ inp.value = authorName; }
+  openModal('modalNewConv');
+}
+
 function openWhatsAppShare(){
   var url = encodeURIComponent(window.location.href);
   window.open('https://wa.me/?text=Regarde%20ce%20post%20sur%20PHOTOlink%20'+url,'_blank');
@@ -2996,17 +3158,17 @@ function openNativeShare(postId){
   if(navigator.share){
     navigator.share({title:'PHOTOlink',text:'Regardez ce post!',url:window.location.href+'#post-'+postId}).catch(function(){});
   } else {
-    showToast('🔗 Lien copié !');
+    showToast('Lien copié !');
     navigator.clipboard && navigator.clipboard.writeText(window.location.href);
   }
 }
 
-function shareToFriend(friendId){ showToast('✉️ Envoyé à l\'ami !'); closeSharePanel(); }
-function addToFavorites(){ showToast('⭐ Ajouté aux favoris !'); closeSharePanel(); }
-function createGroup(){ showToast('👥 Créer un groupe'); closeSharePanel(); openModal('modalNewConv'); }
+function shareToFriend(friendId){ showToast('Envoyé !'); closeSharePanel(); }
+function addToFavorites(){ showToast('Ajouté aux favoris !'); closeSharePanel(); }
+function createGroup(){ showToast('Créer un groupe'); closeSharePanel(); openModal('modalNewConv'); }
 
 function copyPostLink(postId){
-  navigator.clipboard.writeText(window.location.href+'#post-'+postId).then(()=>showToast('🔗 Lien copié!')).catch(()=>showToast('Impossible de copier','error'));
+  navigator.clipboard.writeText(window.location.href+'#post-'+postId).then(()=>showToast('Lien copié !')).catch(()=>showToast('Impossible de copier','error'));
 }
 
 // ────── PROFILE PHOTO FROM GALLERY ──────
@@ -3042,19 +3204,91 @@ function previewBannerPhoto(input){
 // ────── OPEN NEW CONV ──────
 function openNewConvModal(){
   openModal('modalNewConv');
+  // Load PHOTOlink users for suggestions
+  loadConvSuggestions();
+}
+
+function switchConvTab(tab, el){
+  document.querySelectorAll('[id^="convTab-"]').forEach(function(t){
+    t.style.color='var(--text3)';t.style.borderBottomColor='transparent';
+  });
+  el.style.color='var(--primary)';el.style.borderBottomColor='var(--primary)';
+  if(tab==='photolink') loadConvSuggestions();
+}
+
+function loadConvSuggestions(){
+  var list = document.getElementById('contactsList');
+  if(!list) return;
+  // Load from pl_users or show current user's connections
+  var users = JSON.parse(localStorage.getItem('pl_known_users')||'[]');
+  if(!users.length){
+    // Keep empty state
+    return;
+  }
+  list.innerHTML = users.map(function(u){
+    var avHtml = (u.avatar&&(u.avatar.startsWith('data:')||u.avatar.startsWith('http')))
+      ? '<img src="'+u.avatar+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+    return '<div onclick="selectConvContact(\x27'+u.uid+'\x27,\x27'+(u.name||u.handle||'')+'\x27)" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;cursor:pointer;transition:.15s;hover:background:var(--surface2)">'
+      +'<div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">'+avHtml+'</div>'
+      +'<div><div style="font-size:13px;font-weight:700;color:var(--text)">'+(u.name||u.handle||'Utilisateur')+'</div>'
+      +'<div style="font-size:11px;color:var(--text3)">@'+(u.handle||'')+'</div></div>'
+    +'</div>';
+  }).join('');
+}
+
+function selectConvContact(elOrUid, name){
+  var inp = document.getElementById('newConvName');
+  if(!inp) return;
+  // Called from DOM element (data-name) or directly with name
+  if(typeof elOrUid === 'object' && elOrUid.dataset){
+    inp.value = elOrUid.dataset.name || '';
+  } else if(name){
+    inp.value = name;
+  }
+  inp.focus();
+}
+
+function syncContacts(){
+  // Request contacts permission via Web Contacts API if available
+  if('contacts' in navigator && 'ContactsManager' in window){
+    navigator.contacts.select(['name','tel'],{multiple:true}).then(function(contacts){
+      if(!contacts.length){ showToast('Aucun contact trouvé'); return; }
+      var list = document.getElementById('contactsList');
+      if(list){
+        list.innerHTML = contacts.map(function(c){
+          var name = (c.name&&c.name[0])||'Contact';
+          var tel = (c.tel&&c.tel[0])||'';
+          return '<div onclick="selectConvContact(this)" data-name="'+name+'" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;cursor:pointer">'
+            +'<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;font-weight:700;color:#000">'+name[0].toUpperCase()+'</div>'
+            +'<div><div style="font-size:13px;font-weight:700;color:var(--text)">'+name+'</div><div style="font-size:11px;color:var(--text3)">'+tel+'</div></div>'
+          +'</div>';
+        }).join('');
+      }
+      showToast(contacts.length+' contacts synchronisés');
+    }).catch(function(){ showToast('Accès contacts refusé'); });
+  } else {
+    showToast('Contacts non disponibles sur ce navigateur');
+  }
+}
+
+function searchContacts(q){
+  if(!q) return;
+  var inp = document.getElementById('newConvName');
+  if(inp) inp.value = q;
 }
 
 function sendNewConvMsg(){
   const msg = document.getElementById('newConvMsg').value.trim();
-  if(!msg){ showToast('⚠️ Écrivez un message','error'); return; }
-  showToast('📩 Fonctionnalité à connecter à un utilisateur',''); 
+  if(!msg){ showToast('Écrivez un message','error'); return; }
+  showToast('Fonctionnalité à connecter'); 
   closeModal('modalNewConv');
 }
 
 function attachChatImage(input){
   const file = input.files[0];
   if(!file) return;
-  showToast('📎 Image jointe','success');
+  showToast('Image jointe');
 }
 
 function previewCommCover(input){
