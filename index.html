@@ -559,6 +559,29 @@ select.inp{appearance:none;cursor:pointer}
 :root.light select.inp{background:var(--surface2)}
 :root.light .settings-row{border-color:var(--border)}
 :root.light .fs-btn{background:var(--surface2);border-color:var(--border2);color:var(--text2)}
+
+/* ─── FEED TOPBAR (TikTok style) ─── */
+.feed-topbar{position:absolute;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:10px 16px 14px;background:linear-gradient(to bottom,rgba(0,0,0,0.8) 0%,transparent 100%);pointer-events:auto}
+.feed-tabs{display:flex;gap:20px;align-items:center}
+.feed-tab{font-size:15px;font-weight:600;color:rgba(255,255,255,0.6);cursor:pointer;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
+.feed-tab.active{color:#fff;font-weight:800;border-bottom-color:#fff}
+.feed-topbar-right{display:flex;align-items:center;gap:14px}
+
+/* ─── SOCIAL EXPLORE cat pills ─── */
+.cat{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:.2s;white-space:nowrap;border:1.5px solid var(--border);background:var(--surface2)}
+.cat.active{background:var(--primary);color:#000;border-color:var(--primary);font-weight:700}
+
+/* ─── POST TYPE SWITCHER ─── */
+.post-type-tab{flex:1;padding:9px;border-radius:10px;text-align:center;font-weight:700;font-size:13px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:5px}
+
+/* ─── VIDEO in post card ─── */
+.post-video{width:100%;max-height:400px;object-fit:contain;background:#000;border-radius:0;display:block}
+.post-video-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#fff;display:flex;align-items:center;gap:4px;backdrop-filter:blur(4px)}
+
+/* ─── FOLLOW BUTTON in post card ─── */
+.post-follow-btn{font-size:11px;font-weight:700;padding:4px 12px;border-radius:14px;background:transparent;border:1.5px solid var(--primary);color:var(--primary);cursor:pointer;transition:.15s;white-space:nowrap}
+.post-follow-btn.following{background:var(--surface2);border-color:var(--border2);color:var(--text3)}
+
 </style>
   <!-- PWA MANIFEST -->
   <link rel="manifest" href="manifest.json"/>
@@ -685,42 +708,54 @@ select.inp{appearance:none;cursor:pointer}
   <div id="notifList"><div style="padding:20px;text-align:center;color:var(--text3);font-size:12px">Aucune notification</div></div>
 </div>
 
-<!-- FEED -->
-<div class="page active" id="page-feed">
-  <div class="stories-bar" id="storiesBar">
-    <div class="story-item" onclick="openPostModal()">
-      <div class="story-ring mine"><div class="story-avatar" style="font-size:26px">＋</div></div>
-      <div class="story-name">Publier</div>
+<!-- FEED = TikTok Video Feed -->
+<div class="page active" id="page-feed" style="padding:0;overflow:hidden;background:#000">
+  <!-- Top bar with Pour Toi / Suivis tabs (like TikTok) -->
+  <div class="feed-topbar">
+    <div class="feed-tabs">
+      <div class="feed-tab" onclick="switchFeedTab('suivis',this)" id="feedTab-suivis">Suivis</div>
+      <div class="feed-tab active" onclick="switchFeedTab('pourToi',this)" id="feedTab-pourToi">Pour Toi</div>
+    </div>
+    <div class="feed-topbar-right">
+      <button onclick="openStudio()" style="background:none;border:none;cursor:pointer;color:#fff;display:flex;align-items:center;gap:4px;font-size:12px;font-weight:700">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        Studio
+      </button>
+      <button onclick="showPage('explore',document.querySelectorAll('.nav-item')[1])" style="background:none;border:none;cursor:pointer;color:#fff">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
     </div>
   </div>
-  <div class="page-inner" id="feedPosts"><div class="loading"></div></div>
-</div>
-
-<!-- EXPLORE — TikTok style -->
-<div class="page" id="page-explore" style="padding:0;overflow:hidden">
-  <!-- Top search + category bar -->
-  <div class="explore-topbar">
-    <div class="explore-search-row">
-      <div class="explore-search-wrap">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="explore-search-inp" id="exploreSearchInp" placeholder="Rechercher photographes, styles…" oninput="filterExplore(this.value)"/>
-      </div>
-    </div>
-    <div class="explore-cats" id="catBar">
-      <div class="explore-cat active" onclick="filterCat(this,'')">Tout</div>
-      <div class="explore-cat" onclick="filterCat(this,'Portrait')">Portrait</div>
-      <div class="explore-cat" onclick="filterCat(this,'Mariage')">Mariage</div>
-      <div class="explore-cat" onclick="filterCat(this,'Mode')">Mode</div>
-      <div class="explore-cat" onclick="filterCat(this,'Nature')">Nature</div>
-      <div class="explore-cat" onclick="filterCat(this,'Architecture')">Archi</div>
-      <div class="explore-cat" onclick="filterCat(this,'Studio')">Studio</div>
-      <div class="explore-cat" onclick="filterCat(this,'Événement')">Événement</div>
-    </div>
-  </div>
-  <!-- TikTok-style vertical scroll feed -->
-  <div class="tiktok-feed" id="exploreGrid">
+  <!-- TikTok vertical feed -->
+  <div class="tiktok-feed" id="feedPosts">
     <div class="loading" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
   </div>
+  <!-- Publish FAB -->
+  <button onclick="openPostModal()" style="position:absolute;bottom:90px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;border-radius:24px;padding:12px 28px;font-weight:800;font-size:14px;cursor:pointer;z-index:20;box-shadow:0 4px 20px rgba(46,184,196,0.4);display:flex;align-items:center;gap:8px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Publier
+  </button>
+</div>
+
+<!-- EXPLORER — Social Grid -->
+<div class="page" id="page-explore">
+  <div style="padding:14px 16px 10px;position:sticky;top:60px;background:var(--bg);z-index:10;border-bottom:1px solid var(--border)">
+    <div style="position:relative">
+      <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%)" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input style="width:100%;padding:10px 14px 10px 36px;border-radius:22px;background:var(--surface2);border:1.5px solid var(--border);color:var(--text);font-size:13px;outline:none;box-sizing:border-box" id="exploreSearchInp" placeholder="Photographes, styles, villes…" oninput="filterExplore(this.value)"/>
+    </div>
+    <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:10px;padding-bottom:2px" id="catBar">
+      <div class="cat active" onclick="filterCat(this,'')">Tout</div>
+      <div class="cat" onclick="filterCat(this,'Portrait')">Portrait</div>
+      <div class="cat" onclick="filterCat(this,'Mariage')">Mariage</div>
+      <div class="cat" onclick="filterCat(this,'Mode')">Mode</div>
+      <div class="cat" onclick="filterCat(this,'Nature')">Nature</div>
+      <div class="cat" onclick="filterCat(this,'Architecture')">Archi</div>
+      <div class="cat" onclick="filterCat(this,'Studio')">Studio</div>
+      <div class="cat" onclick="filterCat(this,'Événement')">Événement</div>
+    </div>
+  </div>
+  <div class="masonry" id="exploreGrid" style="padding:14px 16px"><div class="loading"></div></div>
 </div>
 
 <!-- SERVICES -->
@@ -1093,30 +1128,57 @@ select.inp{appearance:none;cursor:pointer}
   <div class="sheet">
     <div class="sheet-handle"></div>
     <div class="sheet-title">Nouvelle publication <button class="sheet-close" onclick="closeModal('modalPost')"></button></div>
+
+    <!-- Media type tabs -->
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <div onclick="switchPostType('photo',this)" id="postTypePhoto" style="flex:1;padding:9px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;text-align:center;font-weight:700;font-size:13px;cursor:pointer;border:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Photo
+      </div>
+      <div onclick="switchPostType('video',this)" id="postTypeVideo" style="flex:1;padding:9px;border-radius:10px;background:var(--surface2);color:var(--text2);text-align:center;font-weight:700;font-size:13px;cursor:pointer;border:1.5px solid var(--border)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:4px"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Vidéo
+      </div>
+    </div>
+
     <div class="field-label">Visuel</div>
-    <label class="upload-zone" id="uploadZone" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-      <input type="file" id="postImageFile" accept="image/*" onchange="previewImage(this)"/>
-      <img id="postImagePreview" class="upload-preview"/>
-      <div id="uploadPrompt" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+    <label class="upload-zone" id="uploadZone" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:120px;position:relative;overflow:hidden">
+      <input type="file" id="postImageFile" accept="image/*" style="display:none" onchange="previewImage(this)"/>
+      <input type="file" id="postVideoFile" accept="video/*" style="display:none" onchange="previewVideo(this)"/>
+      <img id="postImagePreview" class="upload-preview" style="display:none;width:100%;max-height:220px;object-fit:contain;border-radius:8px"/>
+      <video id="postVideoPreview" style="display:none;width:100%;max-height:220px;object-fit:contain;border-radius:8px" playsinline muted></video>
+      <div id="uploadPrompt" style="display:flex;flex-direction:column;align-items:center;gap:8px" onclick="triggerMediaPicker()">
         <div style="width:52px;height:52px;border-radius:14px;background:var(--primary-glow);border:1.5px solid rgba(46,184,196,0.3);display:flex;align-items:center;justify-content:center">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </div>
-        <div style="font-size:13px;font-weight:600;color:var(--text2)">Choisir depuis la galerie</div>
-        <div style="font-size:11px;color:var(--text3)">ou sélectionner un emoji ci-dessous</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text2)" id="uploadPromptText">Choisir depuis la galerie</div>
+        <div style="font-size:11px;color:var(--text3)">Photo ou vidéo</div>
       </div>
     </label>
-    <div class="emoji-grid" id="postEmojiGrid"></div>
-    <div class="field-label">Catégorie</div>
-    <select class="inp" id="postCat"><option value="">-- Choisir --</option><option>Portrait</option><option>Mariage</option><option>Mode</option><option>Nature</option><option>Architecture</option><option>Studio</option><option>Événement</option></select>
+
+    <!-- Video progress indicator -->
+    <div id="videoUploadProgress" style="display:none;margin-top:8px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:4px">
+        <span>Traitement de la vidéo…</span><span id="videoProgressPct">0%</span>
+      </div>
+      <div style="height:4px;background:var(--border2);border-radius:2px;overflow:hidden">
+        <div id="videoProgressBar" style="height:100%;background:linear-gradient(90deg,var(--primary),var(--coral));width:0%;transition:width .3s;border-radius:2px"></div>
+      </div>
+    </div>
+
     <div class="field-label">Description</div>
-    <textarea class="inp" id="postCaption" rows="3" placeholder="Décrivez votre travail…"></textarea>
-    <div class="field-label">Hashtags</div>
-    <input class="inp" id="postTags" placeholder="#portrait #lumière #paris"/>
-    <div class="inp-row" style="margin-top:12px">
+    <textarea class="inp" id="postCaption" rows="3" placeholder="Décrivez votre photo ou vidéo…"></textarea>
+    <div class="field-label">Tags</div>
+    <input class="inp" id="postTags" placeholder="#portrait #nature #photo"/>
+    <div class="field-label">Catégorie</div>
+    <select class="inp" id="postCat">
+      <option value="">-- Choisir --</option>
+      <option>Portrait</option><option>Mariage</option><option>Mode</option>
+      <option>Nature</option><option>Architecture</option><option>Studio</option><option>Événement</option>
+    </select>
+    <div style="display:flex;gap:10px">
       <div style="flex:1"><div class="field-label" style="margin-top:0">Prix</div><input class="inp" id="postPrice" placeholder="ex: 150€/h"/></div>
       <div style="flex:1"><div class="field-label" style="margin-top:0">Lieu</div><input class="inp" id="postLocation" placeholder="ex: Paris"/></div>
     </div>
-    <button class="submit-btn" id="postSubmitBtn" onclick="submitPost()"> Publier</button>
+    <button class="submit-btn" id="postSubmitBtn" onclick="submitPost()">Publier</button>
   </div>
 </div>
 
@@ -1768,22 +1830,52 @@ function openEditProfile(){
 async function saveProfile(){
   const name = document.getElementById('profName').value.trim();
   if(!name){ showToast('Entrez votre nom','error'); return; }
+
+  var avatarVal = sel.profile;
+  var bannerVal = sel.banner||null;
+
+  // Upload avatar to Firebase Storage if it's base64
+  if(storage && currentUser && avatarVal && avatarVal.startsWith('data:')){
+    try{
+      var avatarFile = await fetch(avatarVal).then(r=>r.blob());
+      var avatarRef = storage.ref('avatars/'+currentUser.uid+'/avatar_'+Date.now()+'.jpg');
+      await avatarRef.put(avatarFile);
+      avatarVal = await avatarRef.getDownloadURL();
+      showToast('Photo de profil sauvegardée sur Firebase !');
+    }catch(e){ console.log('Avatar upload failed:', e); }
+  }
+
+  // Upload banner to Firebase Storage if it's base64
+  if(storage && currentUser && bannerVal && bannerVal.startsWith('data:')){
+    try{
+      var bannerFile = await fetch(bannerVal).then(r=>r.blob());
+      var bannerRef = storage.ref('banners/'+currentUser.uid+'/banner_'+Date.now()+'.jpg');
+      await bannerRef.put(bannerFile);
+      bannerVal = await bannerRef.getDownloadURL();
+    }catch(e){ console.log('Banner upload failed:', e); }
+  }
+
   const data = {
     name,
     handle: document.getElementById('profHandle').value.trim()||name.toLowerCase().replace(/\s+/g,'.'),
     bio: document.getElementById('profBio').value.trim(),
     city: document.getElementById('profCity').value.trim(),
     specialty: document.getElementById('profSpecialty').value,
-    avatar: sel.profile,
-    banner: sel.banner||null,
+    avatar: avatarVal,
+    banner: bannerVal,
+    updatedAt: Date.now(),
   };
   currentUserData = {...currentUserData, ...data};
-  if(db) await db.collection('users').doc(currentUser.uid).update(data).catch(()=>{});
-  else demoSave();
+  sel.profile = avatarVal;
+  sel.banner = bannerVal;
+  if(db && currentUser){
+    await db.collection('users').doc(currentUser.uid).set(data, {merge:true}).catch(function(e){ console.log(e); });
+  }
+  demoSave();
   closeModal('modalProfile');
   renderProfile();
   updateTopAvatar();
-  showToast('Profil mis à jour !','success');
+  showToast('Profil mis à jour !');
 }
 
 function switchPTab(el, tab){
@@ -1947,84 +2039,51 @@ function renderProfileGridItems(items, grid){
 }
 
 
+// Feed = TikTok video feed
+var _currentFeedTab = 'pourToi';
+
 function loadFeed(){
-  const container = document.getElementById('feedPosts');
-  container.innerHTML='<div class="loading"></div>';
-  if(db){
-    const unsub = db.collection('posts').orderBy('createdAt','desc').limit(30)
-      .onSnapshot(snap=>{
-        renderFeedPosts(snap.docs.map(d=>({id:d.id,...d.data()})));
-      }, ()=>{ container.innerHTML='<div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Erreur de chargement</div></div>'; });
-    unsubscribers.push(unsub);
-  } else {
-    const posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
-    renderFeedPosts(posts);
-  }
+  var container = document.getElementById('feedPosts');
+  container.innerHTML = '<div class="loading" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></div>';
+  setTimeout(function(){
+    var userPosts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
+    // Mix demo videos with user posts
+    var demoPosts = _currentFeedTab === 'pourToi' ? DEMO_VIDEOS.slice() : [];
+    // User video posts first, then photos
+    var combined = userPosts.concat(demoPosts);
+    // Sort: videos first for TikTok feel
+    combined.sort(function(a,b){
+      if(a.type==='video' && b.type!=='video') return -1;
+      if(b.type==='video' && a.type!=='video') return 1;
+      return (b.createdAt||0)-(a.createdAt||0);
+    });
+    renderFeedPosts(combined);
+    if(db && currentUser){
+      db.collection('posts').orderBy('createdAt','desc').limit(40)
+        .get().then(function(snap){
+          var fbPosts = snap.docs.map(function(d){ return {id:d.id,type:'photo',...d.data()}; });
+          var all = fbPosts.concat(demoPosts);
+          all.sort(function(a,b){ return (b.createdAt||0)-(a.createdAt||0); });
+          renderFeedPosts(all);
+        }).catch(function(){});
+    }
+  }, 300);
+}
+
+function switchFeedTab(tab, el){
+  _currentFeedTab = tab;
+  document.querySelectorAll('.feed-tab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+  loadFeed();
+}
+
+function openStudio(){
+  window.open('studio.html','_blank');
 }
 
 function renderFeedPosts(posts){
-  const container = document.getElementById('feedPosts');
-  if(!posts.length){
-    container.innerHTML=`<div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Aucune publication</div><div class="empty-sub">Soyez le premier à publier sur PHOTOLINK</div><button class="empty-cta" onclick="openPostModal()">＋ Créer un post</button></div>`;
-    return;
-  }
-  container.innerHTML = posts.map((post,i)=>{
-    const isOwn = post.authorId === currentUser?.uid;
-    const liked = (post.likedBy||[]).includes(currentUser?.uid);
-    const tags = (post.tags||[]).filter(t=>t.startsWith('#'));
-    return `<div class="post-card" style="animation-delay:${i*0.05}s" id="post-${post.id}" data-id="${post.id}" data-own="${isOwn}" oncontextmenu="showPostMenu(event,'${post.id}',${isOwn})" ontouchstart="startLongPress(event,'${post.id}',${isOwn})" ontouchend="cancelLongPress()" ontouchmove="cancelLongPress()">
-      <div class="post-header">
-        <div class="post-avatar">${post.authorAvatar||post.authorName?.[0]||'?'}</div>
-        <div class="post-meta">
-          <div class="post-author">${post.authorName||'Inconnu'} ${post.authorVerified?'<span class="post-verified"></span>':''}</div>
-          <div class="post-info">
-            ${post.cat?`<span class="badge-cat">${post.cat}</span>`:''}
-            ${post.price?`<span class="badge-price">${post.price}</span>`:''}
-            <span>${formatTime(post.createdAt)}</span>
-          </div>
-        </div>
-        <button class="more-btn" onclick="showPostMenu(event,'${post.id}',${isOwn})">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
-        </button>
-      </div>
-      <div class="post-media">
-        <div class="post-media-inner ${post.gradient||'g0'}">
-          ${post.imageUrl?`<img src="${post.imageUrl}" alt="post" style="width:100%;height:100%;object-fit:cover"/>`:`${post.emoji||''}`}
-        </div>
-        ${post.location?`<div class="post-location"> ${post.location}</div>`:''}
-      </div>
-      <div class="post-caption"><strong>${post.authorName||''}</strong> ${post.caption||''}</div>
-      ${tags.length?`<div class="post-hashtags">${tags.map(t=>`<span class="hash">${t}</span>`).join('')}</div>`:''}
-      <div class="post-actions">
-        <button class="act-btn ${liked?'liked':''}" onclick="toggleLike('${post.id}',${liked})">
-          <span class="act-icon">${liked?`<svg width="16" height="16" viewBox="0 0 24 24" fill="#ff6b6b" stroke="#ff6b6b" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`}</span> ${post.likes||0}
-        </button>
-        <button class="act-btn" onclick="toggleComments('cmts-${post.id}')">
-          <span class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> ${(post.comments||[]).length}
-        </button>
-        <button class="act-btn" onclick="sharePost('${post.id}','${(post.caption||'').replace(/'/g,'')}')"><span class="act-icon">↗</span></button>
-        <div class="act-spacer"></div>
-        ${!isOwn?`<button class="devis-btn" onclick="openDevis('${post.authorId}','${post.authorName}','${post.authorAvatar||""}','${post.cat||""}')">Demander devis</button>`:''}
-      </div>
-      <div class="comments-wrap" id="cmts-${post.id}">
-        ${(post.comments||[]).map(c=>`
-          <div class="comment-item">
-            <div class="c-avatar">${c.authorAvatar||c.authorName?.[0]||'?'}</div>
-            <div style="flex:1">
-              <div class="c-bubble">
-                <div class="c-author">${c.authorName}</div>
-                <div class="c-text">${c.text}</div>
-              </div>
-              <div class="c-time">${formatTime(c.createdAt)}</div>
-            </div>
-          </div>`).join('')}
-        <div class="comment-input-row">
-          <input class="c-input" id="ci-${post.id}" placeholder="Ajouter un commentaire…" onkeydown="if(event.key==='Enter')sendComment('${post.id}','${post.authorId}')"/>
-          <button class="send-btn" onclick="sendComment('${post.id}','${post.authorId}')"></button>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+  // Feed renders as TikTok vertical feed
+  renderExplore(posts);
 }
 
 function toggleComments(id){
@@ -2119,6 +2178,59 @@ async function deletePost(postId){
 }
 
 // ────── POST CREATION ──────
+var _postType = 'photo';
+
+function switchPostType(type, el){
+  _postType = type;
+  var photoBtn = document.getElementById('postTypePhoto');
+  var videoBtn = document.getElementById('postTypeVideo');
+  if(photoBtn && videoBtn){
+    if(type==='photo'){
+      photoBtn.style.background = 'linear-gradient(135deg,var(--primary),var(--coral))';
+      photoBtn.style.color = '#000';
+      photoBtn.style.border = 'none';
+      videoBtn.style.background = 'var(--surface2)';
+      videoBtn.style.color = 'var(--text2)';
+      videoBtn.style.border = '1.5px solid var(--border)';
+    } else {
+      videoBtn.style.background = 'linear-gradient(135deg,var(--primary),var(--coral))';
+      videoBtn.style.color = '#000';
+      videoBtn.style.border = 'none';
+      photoBtn.style.background = 'var(--surface2)';
+      photoBtn.style.color = 'var(--text2)';
+      photoBtn.style.border = '1.5px solid var(--border)';
+    }
+  }
+  document.getElementById('uploadPromptText').textContent = type==='video' ? 'Choisir une vidéo' : 'Choisir une photo';
+  // Reset previews
+  document.getElementById('postImagePreview').style.display='none';
+  document.getElementById('postVideoPreview').style.display='none';
+  document.getElementById('uploadPrompt').style.display='flex';
+}
+
+function triggerMediaPicker(){
+  if(_postType==='video'){
+    document.getElementById('postVideoFile').click();
+  } else {
+    document.getElementById('postImageFile').click();
+  }
+}
+
+function previewVideo(input){
+  var file = input.files[0];
+  if(!file) return;
+  var url = URL.createObjectURL(file);
+  var vid = document.getElementById('postVideoPreview');
+  var prompt = document.getElementById('uploadPrompt');
+  vid.src = url;
+  vid.style.display='block';
+  vid.play().catch(function(){});
+  if(prompt) prompt.style.display='none';
+  // Show file size info
+  var mb = (file.size/1024/1024).toFixed(1);
+  showToast('Vidéo sélectionnée: '+mb+' MB');
+}
+
 function previewImage(input){
   const file = input.files[0];
   if(!file) return;
@@ -2140,16 +2252,46 @@ async function submitPost(){
   btn.disabled=true; btn.textContent='Publication…';
 
   let imageUrl = null;
-  const fileInput = document.getElementById('postImageFile');
-  const file = fileInput.files[0];
+  let videoUrl = null;
+  const postType = window._postType || 'photo';
+  const fileInput = document.getElementById(postType==='video' ? 'postVideoFile' : 'postImageFile');
+  const file = fileInput ? fileInput.files[0] : null;
 
-  // Convert to base64 for local preview (no Firebase Storage needed)
   if(file){
-    imageUrl = await new Promise((resolve)=>{
+    // Show upload progress for video
+    if(postType==='video'){
+      document.getElementById('videoUploadProgress').style.display='block';
+      var pct = 0;
+      var progInterval = setInterval(function(){
+        pct = Math.min(pct+8, 90);
+        document.getElementById('videoProgressBar').style.width = pct+'%';
+        document.getElementById('videoProgressPct').textContent = pct+'%';
+      }, 200);
+    }
+    // Convert to base64 for local storage
+    const b64 = await new Promise((resolve)=>{
       const reader = new FileReader();
       reader.onload = e => resolve(e.target.result);
       reader.readAsDataURL(file);
     });
+    if(postType==='video'){
+      videoUrl = b64;
+      clearInterval(progInterval);
+      document.getElementById('videoProgressBar').style.width='100%';
+      document.getElementById('videoProgressPct').textContent='100%';
+      setTimeout(function(){ document.getElementById('videoUploadProgress').style.display='none'; },500);
+    } else {
+      imageUrl = b64;
+    }
+    // Try Firebase Storage upload
+    if(storage){
+      try{
+        const storageRef = storage.ref((postType==='video'?'videos/':'posts/')+currentUser.uid+'/'+Date.now()+'_'+file.name);
+        await storageRef.put(file);
+        const dlUrl = await storageRef.getDownloadURL();
+        if(postType==='video'){ videoUrl = dlUrl; } else { imageUrl = dlUrl; }
+      }catch(e){ console.log('Storage upload failed, using base64'); }
+    }
   }
 
   try {
@@ -2166,10 +2308,13 @@ async function submitPost(){
 
     const post = {
       id: Date.now().toString(),
+      type: (window._postType||'photo'),
       authorId: currentUser.uid,
       authorName: currentUserData.name||'Anonyme',
       authorAvatar: currentUserData.avatar||'',
+      authorAvatar: currentUserData.avatar||'',
       authorSpecialty: currentUserData.specialty||'',
+      videoUrl: videoUrl||null,
       emoji: sel.post,
       gradient: GRADIENTS[Math.floor(Math.random()*GRADIENTS.length)],
       cat: document.getElementById('postCat').value||'Général',
@@ -2202,6 +2347,17 @@ async function submitPost(){
     document.getElementById('postPrice').value='';
     document.getElementById('postLocation').value='';
     document.getElementById('postCat').value='';
+    // Reset post type
+    window._postType = 'photo';
+    if(document.getElementById('postVideoPreview')) document.getElementById('postVideoPreview').style.display='none';
+    if(document.getElementById('postImagePreview')) document.getElementById('postImagePreview').style.display='none';
+    if(document.getElementById('uploadPrompt')) document.getElementById('uploadPrompt').style.display='flex';
+    if(document.getElementById('videoUploadProgress')) document.getElementById('videoUploadProgress').style.display='none';
+    // Reset type buttons
+    var photoBtn = document.getElementById('postTypePhoto');
+    var videoBtn = document.getElementById('postTypeVideo');
+    if(photoBtn){ photoBtn.style.background='linear-gradient(135deg,var(--primary),var(--coral))'; photoBtn.style.color='#000'; photoBtn.style.border='none'; }
+    if(videoBtn){ videoBtn.style.background='var(--surface2)'; videoBtn.style.color='var(--text2)'; videoBtn.style.border='1.5px solid var(--border)'; }
     // Refresh profile grid if visible
     if(document.getElementById('page-profile').classList.contains('active')){
       setTimeout(loadMyPosts, 300);
@@ -2497,34 +2653,75 @@ var DEMO_VIDEOS = [
 ];
 
 function loadExplore(){
+  // Explorer = social post grid (photos + videos)
   var grid = document.getElementById('exploreGrid');
-  grid.innerHTML='<div class="loading" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></div>';
-  
+  if(!grid) return;
+  grid.innerHTML = '<div class="loading"></div>';
   setTimeout(function(){
-    var userPosts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
-    if(currentCatFilter) userPosts = userPosts.filter(function(p){ return p.cat===currentCatFilter; });
-    
-    // Merge demo videos + user posts
-    var demosFiltered = currentCatFilter 
-      ? DEMO_VIDEOS.filter(function(v){ return v.cat===currentCatFilter; })
-      : DEMO_VIDEOS;
-    
-    var allPosts = demosFiltered.concat(userPosts);
-    
+    var posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
+    if(currentCatFilter) posts = posts.filter(function(p){ return p.cat===currentCatFilter; });
     if(db){
-      var query = db.collection('posts').orderBy('createdAt','desc').limit(30);
-      if(currentCatFilter) query = db.collection('posts').where('cat','==',currentCatFilter).orderBy('createdAt','desc').limit(30);
+      var query = db.collection('posts').orderBy('createdAt','desc').limit(40);
+      if(currentCatFilter) query = db.collection('posts').where('cat','==',currentCatFilter).orderBy('createdAt','desc').limit(40);
       query.get().then(function(snap){
-        var fbPosts = snap.docs.map(function(d){ return {id:d.id, type:'photo', ...d.data()}; });
-        renderExplore(demosFiltered.concat(fbPosts));
-      }).catch(function(){
-        renderExplore(allPosts);
-      });
+        var fbPosts = snap.docs.map(function(d){ return {id:d.id,...d.data()}; });
+        renderSocialGrid(currentCatFilter ? fbPosts : fbPosts.concat(posts));
+      }).catch(function(){ renderSocialGrid(posts); });
     } else {
-      renderExplore(allPosts);
+      renderSocialGrid(posts);
     }
-  }, 400);
+  }, 200);
 }
+
+function renderSocialGrid(posts){
+  var grid = document.getElementById('exploreGrid');
+  if(!grid) return;
+  if(!posts.length){
+    grid.innerHTML = '<div style="text-align:center;padding:60px 20px">'
+      +'<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.2" style="margin-bottom:12px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
+      +'<div style="font-size:16px;font-weight:700;color:var(--text2)">Aucun post</div>'
+      +'<div style="font-size:13px;color:var(--text3);margin-top:6px">Soyez le premier à publier dans cette catégorie</div>'
+    +'</div>';
+    return;
+  }
+  // Masonry-style grid
+  grid.innerHTML = posts.map(function(p,i){
+    var isVideo = p.type==='video' || (p.videoUrl&&p.videoUrl.length>0);
+    var hasImg = p.imageUrl && p.imageUrl.length > 0;
+    var thumbSrc = isVideo ? (p.posterUrl||p.imageUrl||'') : p.imageUrl;
+    var mediaHtml = thumbSrc
+      ? '<div style="position:relative;aspect-ratio:1;overflow:hidden;border-radius:0">'
+          + '<img src="'+thumbSrc+'" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>'
+          + (isVideo ? '<div style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.6);border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;color:#fff;display:flex;align-items:center;gap:3px"><svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>Vidéo</div>' : '')
+        +'</div>'
+      : '<div style="aspect-ratio:1;background:linear-gradient(135deg,var(--surface2),var(--surface3));display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>';
+    var safeId = (p.id||'').replace(/'/g,'');
+    var safeAId = (p.authorId||'').replace(/'/g,'');
+    var safeAName = (p.authorName||'').replace(/'/g,'');
+    return '<div class="masonry-item" style="animation-delay:'+(i*0.04)+'s;cursor:pointer;border-radius:8px;overflow:hidden;background:var(--surface)" data-pid="'+safeId+'" data-aid="'+safeAId+'" data-aname="'+safeAName+'" onclick="openExplorePostEl(this)">'
+      +mediaHtml
+      +'<div style="padding:8px 10px">'
+        +'<div style="font-size:12px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+(p.caption||p.authorName||'')+'</div>'
+        +'<div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">'
+          +'<span style="font-size:10px;color:var(--text3)">@'+(p.authorName||'')+'</span>'
+          +'<div style="display:flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 24 24" fill="var(--coral)" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span style="font-size:10px;color:var(--text3)">'+(p.likes||0)+'</span></div>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function openExplorePost(postId, authorId, authorName, authorAvatar){
+  openAuthorProfile(authorId, authorName, authorAvatar);
+}
+
+function openExplorePostEl(el){
+  var pid = el.dataset.pid||'';
+  var aid = el.dataset.aid||'';
+  var aname = el.dataset.aname||'';
+  openAuthorProfile(aid, aname, '');
+}
+
 
 function renderExplore(posts){
   var feed = document.getElementById('exploreGrid');
@@ -2567,7 +2764,12 @@ function renderExplore(posts){
       +(isVideo?'<div class="tiktok-mute-btn" id="tmute-'+pid+'" onclick="tkToggleMute(\x27tvid-'+pid+'\x27,\x27tmute-'+pid+'\x27)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>':'')
       // Right actions
       +'<div class="tiktok-actions">'
-        +'<div class="tiktok-act" onclick="openAuthorProfile(\x27'+(p.authorId||p.authorName||'')+'\x27,\x27'+(p.authorName||'')+'\x27,\x27'+(p.authorAvatar||'')+'\x27)" style="cursor:pointer"><div class="tiktok-avatar">'+avatarHtml+'</div></div>'
+        +'<div class="tiktok-act" onclick="openAuthorProfile(\x27'+(p.authorId||p.authorName||'')+'\x27,\x27'+(p.authorName||'')+'\x27,\x27'+(p.authorAvatar||'')+'\x27)" style="cursor:pointer">'
+        +'<div class="tiktok-avatar">'+avatarHtml+'</div>'
+        +'<div style="margin-top:-8px;text-align:center">'
+          +'<button onclick="event.stopPropagation();toggleFollow(\x27'+(p.authorId||p.authorName||'')+'\x27,this)" class="post-follow-btn'+(isFollowing(p.authorId||'')?'following':'')+'">'+(isFollowing(p.authorId||'')?'Suivi':'Suivre')+'</button>'
+        +'</div>'
+      +'</div>'
         +'<div class="tiktok-act" onclick="tkLike(\x27'+p.id+'\x27)">'
           +'<div class="tiktok-act-icon '+(liked?'liked':'')+'" id="tlike-icon-'+pid+'">'
             +'<svg width="22" height="22" viewBox="0 0 24 24" fill="'+(liked?'#ff3250':'none')+'" stroke="'+(liked?'#ff3250':'#fff')+'" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
@@ -3221,8 +3423,23 @@ function removePostMenu(){
 var _currentSharePostId = null;
 function sharePost(postId){
   _currentSharePostId = postId;
+  // Use native system share sheet (WhatsApp, SMS, Instagram, etc.)
+  var shareUrl = window.location.origin + window.location.pathname + '#post-' + postId;
+  var shareData = {
+    title: 'PHOTOlink',
+    text: 'Regardez ce post sur PHOTOlink !',
+    url: shareUrl
+  };
+  if(navigator.share){
+    navigator.share(shareData).catch(function(err){
+      if(err.name !== 'AbortError') copyPostLink(postId);
+    });
+    return; // Exit early - native share handles everything
+  }
+  // Fallback: show custom panel if no native share
   var panel = document.getElementById('sharePanel');
   var sheet = document.getElementById('sharePanelSheet');
+  if(!panel) { copyPostLink(postId); return; }
   panel.style.display = 'block';
   setTimeout(function(){ sheet.style.transform = 'translateY(0)'; }, 10);
   // Fill share options
@@ -3560,6 +3777,38 @@ window.addEventListener('click', function(e){
   if(panel && !panel.contains(e.target) && !e.target.closest('.icon-btn'))
     closeNotifPanel();
 });
+
+
+// ────── FOLLOW SYSTEM ──────
+function getFollowing(){
+  return JSON.parse(localStorage.getItem('pl_following_'+(currentUser&&currentUser.uid||'demo'))||'[]');
+}
+
+function isFollowing(authorId){
+  return getFollowing().indexOf(authorId) >= 0;
+}
+
+function toggleFollow(authorId, btn){
+  var uid = currentUser&&currentUser.uid||'demo';
+  var following = getFollowing();
+  var idx = following.indexOf(authorId);
+  if(idx>=0){
+    following.splice(idx,1);
+    if(btn){ btn.textContent='Suivre'; btn.classList.remove('following'); }
+    showToast('Abonnement annulé');
+  } else {
+    following.push(authorId);
+    if(btn){ btn.textContent='Suivi'; btn.classList.add('following'); }
+    showToast('Vous suivez maintenant ce photographe');
+    // Store the followed user info
+    var knownUsers = JSON.parse(localStorage.getItem('pl_known_users')||'[]');
+    if(!knownUsers.find(function(u){ return u.uid===authorId; })){
+      knownUsers.push({ uid:authorId, name:authorId, handle:authorId });
+      localStorage.setItem('pl_known_users', JSON.stringify(knownUsers));
+    }
+  }
+  localStorage.setItem('pl_following_'+uid, JSON.stringify(following));
+}
 
 loadSavedTheme();
 initFirebase();
