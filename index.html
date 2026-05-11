@@ -101,7 +101,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 .avatar-top{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--primary);cursor:pointer;overflow:hidden;flex-shrink:0}
 
 /* ─── BOTTOM NAV ─── */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:none;justify-content:space-around;align-items:center;height:62px;padding-bottom:env(safe-area-inset-bottom)}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:none;justify-content:space-around;align-items:center;height:62px;padding-bottom:env(safe-area-inset-bottom);overflow:visible}
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:6px 12px;border-radius:10px;transition:.15s;color:var(--text3);font-size:9px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;user-select:none;position:relative}
 .nav-item.active{color:var(--primary)}
 .nav-icon{font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center}
@@ -114,7 +114,7 @@ input,textarea,select,button{font-family:'DM Sans',sans-serif}
 .page-inner{max-width:680px;margin:0 auto;padding:0 16px}
 
 /* ─── FAB ─── */
-.fab{position:fixed;bottom:74px;right:16px;z-index:99;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 20px rgba(46,184,196,0.4);transition:.2s;color:#fff;font-weight:700}
+.fab{display:none!important}
 .fab:hover{transform:scale(1.08) rotate(8deg)}
 .fab:active{transform:scale(0.93)}
 .fab.visible{display:flex}
@@ -561,7 +561,7 @@ select.inp{appearance:none;cursor:pointer}
 :root.light .fs-btn{background:var(--surface2);border-color:var(--border2);color:var(--text2)}
 
 /* ─── FEED TOPBAR (TikTok style) ─── */
-.feed-topbar{position:absolute;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:10px 16px 14px;background:linear-gradient(to bottom,rgba(0,0,0,0.8) 0%,transparent 100%);pointer-events:auto}
+.feed-topbar{position:absolute;top:60px;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:8px 16px 14px;background:linear-gradient(to bottom,rgba(0,0,0,0.7) 0%,transparent 100%);pointer-events:none}.feed-topbar *{pointer-events:auto}
 .feed-tabs{display:flex;gap:20px;align-items:center}
 .feed-tab{font-size:15px;font-weight:600;color:rgba(255,255,255,0.6);cursor:pointer;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
 .feed-tab.active{color:#fff;font-weight:800;border-bottom-color:#fff}
@@ -581,6 +581,63 @@ select.inp{appearance:none;cursor:pointer}
 /* ─── FOLLOW BUTTON in post card ─── */
 .post-follow-btn{font-size:11px;font-weight:700;padding:4px 12px;border-radius:14px;background:transparent;border:1.5px solid var(--primary);color:var(--primary);cursor:pointer;transition:.15s;white-space:nowrap}
 .post-follow-btn.following{background:var(--surface2);border-color:var(--border2);color:var(--text3)}
+
+
+/* ─── FEED TIKTOK BUTTONS ─── */
+.tiktok-act-icon{width:50px;height:50px;border-radius:50%;background:rgba(0,0,0,0.35);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;transition:.15s;border:1px solid rgba(255,255,255,0.1)}
+.tiktok-act-icon:active{transform:scale(0.88)}
+.tiktok-act-icon.liked{background:rgba(255,50,80,0.25);border-color:rgba(255,50,80,0.4)}
+.tiktok-act-label{font-size:12px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8);text-align:center;margin-top:2px}
+.tiktok-actions{position:absolute;right:12px;bottom:110px;z-index:10;display:flex;flex-direction:column;align-items:center;gap:16px}
+.tiktok-act{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.tiktok-avatar{width:50px;height:50px;border-radius:50%;border:2.5px solid #fff;overflow:hidden;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center}
+.tiktok-avatar img{width:100%;height:100%;object-fit:cover}
+/* Bottom info bar */
+.tiktok-info{position:absolute;left:14px;right:80px;bottom:90px;z-index:10}
+.tiktok-author{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tiktok-author-name{font-size:16px;font-weight:800;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.tiktok-author-badge{font-size:11px;font-weight:700;color:var(--primary);background:rgba(46,184,196,0.2);padding:2px 8px;border-radius:10px;border:1px solid rgba(46,184,196,0.4)}
+.tiktok-caption{font-size:14px;color:rgba(255,255,255,.92);line-height:1.5;margin-bottom:8px;text-shadow:0 1px 4px rgba(0,0,0,.8);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tiktok-tags{display:flex;flex-wrap:wrap;gap:5px}
+.tiktok-tag{font-size:13px;font-weight:600;color:var(--primary);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+/* Music bar */
+.tiktok-music{position:absolute;bottom:72px;left:14px;right:80px;z-index:10;display:flex;align-items:center;gap:8px}
+.tiktok-music-icon{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;animation:spin 4s linear infinite;flex-shrink:0}
+.tiktok-music-text{font-size:11px;color:rgba(255,255,255,.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Overlays */
+.tiktok-overlay-top{position:absolute;top:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent);z-index:5;pointer-events:none}
+.tiktok-overlay-bot{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);z-index:5;pointer-events:none}
+/* Card */
+.tiktok-card{position:relative;width:100%;height:100vh;height:100svh;scroll-snap-align:start;scroll-snap-stop:always;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+/* Feed container */
+#feedPosts.tiktok-feed,.tiktok-feed{position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#feedPosts.tiktok-feed::-webkit-scrollbar,.tiktok-feed::-webkit-scrollbar{display:none}
+/* Video */
+.tiktok-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.tiktok-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;z-index:8;transition:.2s;pointer-events:none;opacity:0}
+.tiktok-card.paused .tiktok-play-btn{opacity:1}
+.tiktok-progress{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.2);z-index:15}
+.tiktok-progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),var(--coral));width:0%;transition:width .1s linear}
+
+
+/* ─── CENTER + BUTTON IN NAV ─── */
+.nav-item-center{flex:0 0 70px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;margin-top:-20px;z-index:10}
+.nav-center-btn{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(46,184,196,0.5),0 3px 10px rgba(255,107,107,0.4);transition:.15s;border:3px solid var(--bg)}
+.nav-center-btn:active{transform:scale(0.92)}
+/* Remove active highlight for center button */
+.nav-item-center.active .nav-center-btn{box-shadow:0 4px 20px rgba(46,184,196,0.7)}
+
+
+.explore-grid-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:var(--surface2)}
+.explore-grid-item:active .explore-hover{opacity:1!important}
+@media(hover:hover){.explore-grid-item:hover .explore-hover{opacity:1!important}}
+
+
+/* ─── EXPLORER CATEGORY PILLS ─── */
+.cat{flex-shrink:0;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:.18s;white-space:nowrap;border:1.5px solid var(--border);background:var(--surface2)}
+.cat.active,.cat:active{background:var(--primary);color:#000;border-color:var(--primary);font-weight:700}
+#catBar::-webkit-scrollbar{display:none}
+#catBar{scrollbar-width:none}
 
 </style>
   <!-- PWA MANIFEST -->
@@ -730,21 +787,18 @@ select.inp{appearance:none;cursor:pointer}
   <div class="tiktok-feed" id="feedPosts">
     <div class="loading" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
   </div>
-  <!-- Publish FAB -->
-  <button onclick="openPostModal()" style="position:absolute;bottom:90px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;border-radius:24px;padding:12px 28px;font-weight:800;font-size:14px;cursor:pointer;z-index:20;box-shadow:0 4px 20px rgba(46,184,196,0.4);display:flex;align-items:center;gap:8px">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    Publier
-  </button>
+
 </div>
 
-<!-- EXPLORER — Social Grid -->
-<div class="page" id="page-explore">
-  <div style="padding:14px 16px 10px;position:sticky;top:60px;background:var(--bg);z-index:10;border-bottom:1px solid var(--border)">
-    <div style="position:relative">
-      <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%)" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input style="width:100%;padding:10px 14px 10px 36px;border-radius:22px;background:var(--surface2);border:1.5px solid var(--border);color:var(--text);font-size:13px;outline:none;box-sizing:border-box" id="exploreSearchInp" placeholder="Photographes, styles, villes…" oninput="filterExplore(this.value)"/>
+<!-- EXPLORER — Découvrir les publications -->
+<div class="page" id="page-explore" style="overflow-y:auto;background:var(--bg)">
+  <!-- Sticky search + filters -->
+  <div style="position:sticky;top:0;z-index:10;background:var(--bg);padding:12px 16px 10px;border-bottom:1px solid var(--border)">
+    <div style="position:relative;margin-bottom:10px">
+      <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="exploreSearchInp" style="width:100%;box-sizing:border-box;padding:11px 14px 11px 38px;border-radius:24px;background:var(--surface2);border:1.5px solid var(--border);color:var(--text);font-size:14px;outline:none" placeholder="Rechercher photographes, villes, styles…" oninput="filterExplore(this.value)"/>
     </div>
-    <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:10px;padding-bottom:2px" id="catBar">
+    <div id="catBar" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch">
       <div class="cat active" onclick="filterCat(this,'')">Tout</div>
       <div class="cat" onclick="filterCat(this,'Portrait')">Portrait</div>
       <div class="cat" onclick="filterCat(this,'Mariage')">Mariage</div>
@@ -752,10 +806,11 @@ select.inp{appearance:none;cursor:pointer}
       <div class="cat" onclick="filterCat(this,'Nature')">Nature</div>
       <div class="cat" onclick="filterCat(this,'Architecture')">Archi</div>
       <div class="cat" onclick="filterCat(this,'Studio')">Studio</div>
-      <div class="cat" onclick="filterCat(this,'Événement')">Événement</div>
+      <div class="cat" onclick="filterCat(this,'Evenement')">Evenement</div>
     </div>
   </div>
-  <div class="masonry" id="exploreGrid" style="padding:14px 16px"><div class="loading"></div></div>
+  <!-- Grid -->
+  <div id="exploreGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px"><div class="loading" style="grid-column:1/-1;padding:40px;text-align:center"></div></div>
 </div>
 
 <!-- SERVICES -->
@@ -915,7 +970,7 @@ select.inp{appearance:none;cursor:pointer}
     <div style="width:40px;height:4px;border-radius:2px;background:var(--border2);margin:12px auto 0"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)">
       <div style="font-size:16px;font-weight:700;color:var(--text)">Commentaires <span id="commentCount" style="color:var(--text3);font-size:13px"></span></div>
-      <button onclick="closeCommentsPanel()" style="width:30px;height:30px;border-radius:50%;background:var(--surface2);border:none;cursor:pointer;color:var(--text2);font-size:16px;display:flex;align-items:center;justify-content:center"></button>
+      <button onclick="closeCommentsPanel()" style="width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1.5px solid var(--border2);cursor:pointer;color:var(--text);font-size:20px;font-weight:300;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1">&times;</button>
     </div>
     <div id="commentsList" style="flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:14px"></div>
     <div style="padding:10px 12px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--surface)">
@@ -932,7 +987,7 @@ select.inp{appearance:none;cursor:pointer}
 <div id="sharePanel" style="position:fixed;inset:0;z-index:600;display:none" onclick="closeSharePanel()">
   <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6)"></div>
   <div id="sharePanelSheet" style="position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-radius:20px 20px 0 0;padding-bottom:24px;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)" onclick="event.stopPropagation()">
-    <div style="width:40px;height:4px;border-radius:2px;background:var(--border2);margin:12px auto 16px"></div>
+    <div style="padding:14px 0 8px;display:flex;justify-content:center;cursor:grab" ontouchstart="startSwipeClose(event,'sharePanel','sharePanelSheet')" ontouchmove="moveSwipeClose(event,'sharePanelSheet')" ontouchend="endSwipeClose(event,'sharePanel','sharePanelSheet')"><div style="width:44px;height:5px;border-radius:3px;background:var(--border2)"></div></div>
     <div style="font-size:16px;font-weight:700;color:var(--text);text-align:center;margin-bottom:16px">Envoyer à</div>
     <!-- Friends row (dynamic) -->
     <div id="shareFriendsRow" style="display:flex;gap:14px;padding:0 16px;overflow-x:auto;scrollbar-width:none;margin-bottom:20px;-webkit-overflow-scrolling:touch">
@@ -1106,21 +1161,20 @@ select.inp{appearance:none;cursor:pointer}
   <div class="nav-item" onclick="showPage('explore',this)">
     <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>EXPLORER
   </div>
-  <div class="nav-item" onclick="showPage('services',this)">
-    <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg></div>SERVICES
-  </div>
-  <div class="nav-item" onclick="showPage('community',this)">
-    <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>COMMUN.
+  <div class="nav-item-center" onclick="openPostModal()">
+    <div class="nav-center-btn">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
   </div>
   <div class="nav-item" onclick="showPage('messages',this)">
     <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>CHATS
     <div class="nav-badge" id="msgBadge">0</div>
   </div>
-  <div class="nav-item" onclick="showPage('profile',this)">
+  <div class="nav-item" onclick="showPage('profile',document.querySelectorAll('.nav-item')[4])">
     <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>PROFIL
   </div>
 </nav>
-<button class="fab" id="fab" onclick="openPostModal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+
 
 <!-- MODALS -->
 <!-- Post -->
@@ -1738,11 +1792,10 @@ function showPage(name, el){
     var thCard = document.getElementById('theme-'+t);
     if(thCard) thCard.classList.add('active');
   }
-  // Pause all videos when leaving explore
-  if(name !== 'explore'){
-    document.querySelectorAll('.tiktok-video').forEach(function(v){ v.pause(); });
-    if(window._tkObserver){ window._tkObserver.disconnect(); window._tkObserver = null; }
-  }
+  // Pause all videos when leaving pages
+  document.querySelectorAll('.tiktok-video,video').forEach(function(v){ try{v.pause();}catch(e){} });
+  if(window._tkObserver){ window._tkObserver.disconnect(); window._tkObserver = null; }
+  if(window._feedObserver){ window._feedObserver.disconnect(); window._feedObserver = null; }
 }
 
 // ────── PROFILE ──────
@@ -2082,9 +2135,193 @@ function openStudio(){
 }
 
 function renderFeedPosts(posts){
-  // Feed renders as TikTok vertical feed
-  renderExplore(posts);
+  var feed = document.getElementById('feedPosts');
+  if(!feed) return;
+
+  if(!posts || !posts.length){
+    feed.innerHTML = '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:rgba(255,255,255,0.6)">'
+      +'<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" style="margin-bottom:14px"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
+      +'<div style="font-size:16px;font-weight:700;margin-bottom:8px">Aucune publication</div>'
+      +'<div style="font-size:13px;opacity:.7;margin-bottom:16px">Soyez le premier a publier</div>'
+      +'<button onclick="openPostModal()" style="padding:12px 28px;border-radius:24px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:800;font-size:14px;cursor:pointer">+ Publier</button>'
+    +'</div>';
+    return;
+  }
+
+  feed.innerHTML = posts.map(function(p, i){
+    var isVideo = p.type==='video' || (p.videoUrl && p.videoUrl.length > 0);
+    var hasImg = p.imageUrl && p.imageUrl.length > 0;
+    var posterSrc = p.posterUrl || p.imageUrl || '';
+    var pid = (p.id||'').replace(/[^a-zA-Z0-9]/g,'_');
+    var liked = (JSON.parse(localStorage.getItem('pl_likes')||'{}')||{})[p.id];
+    var saved = (JSON.parse(localStorage.getItem('pl_saved')||'{}')||{})[p.id];
+    var following = isFollowing(p.authorId||'');
+
+    // Avatar HTML
+    var avHtml = (p.authorAvatar && (p.authorAvatar.startsWith('data:') || p.authorAvatar.startsWith('http')))
+      ? '<img src="'+p.authorAvatar+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>'
+      : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+
+    // Media background
+    var mediaBg = '';
+    if(isVideo){
+      mediaBg = '<video class="tiktok-video" id="fvid-'+pid+'" src="'+(p.videoUrl||'')+'" poster="'+(posterSrc||'')+'" loop playsinline webkit-playsinline preload="metadata" onclick="ftTogglePlay(this)"></video>'
+               +'<div class="tiktok-play-btn" id="fplaybtn-'+pid+'">'
+                 +'<svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>'
+               +'</div>'
+               +'<div class="tiktok-progress" id="fprog-'+pid+'"><div class="tiktok-progress-bar" id="fprogbar-'+pid+'"></div></div>';
+    } else if(hasImg){
+      mediaBg = '<img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" src="'+p.imageUrl+'" alt="post"/>'
+               +'<div style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(30px) brightness(.35) saturate(1.2);transform:scale(1.15);background-image:url('+p.imageUrl+');background-size:cover;z-index:-1"></div>';
+    } else {
+      var gradients = [
+        'linear-gradient(135deg,#1a3a4a,#0d2030)',
+        'linear-gradient(135deg,#2a1a3a,#0d0d20)',
+        'linear-gradient(135deg,#1a3a2a,#0d2015)',
+        'linear-gradient(135deg,#3a2a1a,#20150d)',
+        'linear-gradient(135deg,#1a2a4a,#0d1530)',
+      ];
+      var grad = gradients[i % gradients.length];
+      mediaBg = '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;'+grad+'">'
+               +'<div style="width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center">'
+               +'<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
+               +'</div>'
+               +'<div style="font-size:13px;color:rgba(255,255,255,0.5);font-weight:600">'+(p.caption||p.authorName||'PHOTOlink')+'</div>'
+               +'</div>';
+    }
+
+    return '<div class="tiktok-card" id="fcard-'+pid+'" data-postid="'+p.id+'" data-isvideo="'+(isVideo?'1':'0')+'" data-videoid="fvid-'+pid+'">'
+      +mediaBg
+      // Dark gradients top & bottom
+      +'<div class="tiktok-overlay-top"></div>'
+      +'<div class="tiktok-overlay-bot"></div>'
+
+      // ── RIGHT ACTIONS (exactly like image 3) ──
+      +'<div class="tiktok-actions">'
+
+        // Avatar + Follow button
+        +'<div class="tiktok-act" style="position:relative">'
+          +'<div class="tiktok-avatar" onclick="openAuthorProfile(\x27'+(p.authorId||'')+'\x27,\x27'+(p.authorName||'')+'\x27,\x27'+(p.authorAvatar||'')+'\x27)" style="cursor:pointer">'+avHtml+'</div>'
+          +'<div style="position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--coral));display:flex;align-items:center;justify-content:center;cursor:pointer;border:1.5px solid #fff" onclick="toggleFollowFeed(\x27'+(p.authorId||p.authorName||'')+'\x27,this)">'
+            +(following ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polyline points="20 6 9 17 4 12"/></svg>' : '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>')
+          +'</div>'
+        +'</div>'
+
+        // Like button (heart)
+        +'<div class="tiktok-act" onclick="ftLike(\x27'+p.id+'\x27)" style="margin-top:12px">'
+          +'<div class="tiktok-act-icon '+(liked?'liked':'')+'" id="ftlike-icon-'+pid+'" style="background:rgba(0,0,0,0.35);width:50px;height:50px">'
+            +'<svg width="26" height="26" viewBox="0 0 24 24" fill="'+(liked?'#ff3250':'none')+'" stroke="'+(liked?'#ff3250':'#fff')+'" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+          +'</div>'
+          +'<span class="tiktok-act-label" id="ftlike-count-'+pid+'">'+(p.likes||0)+'</span>'
+        +'</div>'
+
+        // Comment button
+        +'<div class="tiktok-act" onclick="ftComment(\x27'+p.id+'\x27)">'
+          +'<div class="tiktok-act-icon" style="background:rgba(0,0,0,0.35);width:50px;height:50px">'
+            +'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
+          +'</div>'
+          +'<span class="tiktok-act-label" id="ftcmt-count-'+pid+'">'+(p.comments&&p.comments.length||0)+'</span>'
+        +'</div>'
+
+        // Save/Bookmark button
+        +'<div class="tiktok-act" onclick="ftSave(\x27'+p.id+'\x27)">'
+          +'<div class="tiktok-act-icon" id="ftsave-icon-'+pid+'" style="background:rgba(0,0,0,0.35);width:50px;height:50px">'
+            +'<svg width="24" height="24" viewBox="0 0 24 24" fill="'+(saved?'#fff':'none')+'" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
+          +'</div>'
+          +'<span class="tiktok-act-label">Sauv.</span>'
+        +'</div>'
+
+        // Share button
+        +'<div class="tiktok-act" onclick="sharePost(\x27'+p.id+'\x27)">'
+          +'<div class="tiktok-act-icon" style="background:rgba(0,0,0,0.35);width:50px;height:50px">'
+            +'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+          +'</div>'
+          +'<span class="tiktok-act-label">Partager</span>'
+        +'</div>'
+
+      +'</div>'
+
+      // ── BOTTOM INFO ──
+      +'<div class="tiktok-info">'
+        +'<div class="tiktok-author" onclick="openAuthorProfile(\x27'+(p.authorId||'')+'\x27,\x27'+(p.authorName||'')+'\x27,\x27'+(p.authorAvatar||'')+'\x27)" style="cursor:pointer;display:flex;align-items:center;gap:8px">'
+          +'<span style="font-size:15px;font-weight:800;color:#fff">@'+(p.authorName||'photographe')+'</span>'
+          +(p.cat?'<span class="tiktok-author-badge">'+p.cat+'</span>':'')
+        +'</div>'
+        +(p.caption?'<div class="tiktok-caption">'+(p.caption.substring(0,120))+(p.caption.length>120?'…':'')+'</div>':'')
+        +((p.tags&&p.tags.trim())?'<div class="tiktok-tags">'+(p.tags||'').split(',').filter(function(t){return t.trim();}).slice(0,3).map(function(t){return '<span class="tiktok-tag">#'+t.trim()+'</span>';}).join('')+'</div>':'')
+      +'</div>'
+
+      // ── MUSIC BAR ──
+      +'<div class="tiktok-music">'
+        +'<div class="tiktok-music-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>'
+        +'<span class="tiktok-music-text">PHOTOlink · '+(p.authorName||'photographe')+(isVideo?' · Video':'')+'</span>'
+      +'</div>'
+
+    +'</div>';
+  }).join('');
+
+  // Start auto-play observer for feed
+  observeFeedCards();
 }
+
+// Feed-specific functions (mirror of TikTok functions but targeting feed)
+function ftLike(postId){
+  tkLike(postId); // reuse tkLike logic - it works on any post ID
+}
+
+function ftComment(postId){
+  _currentCommentPostId = postId;
+  tkComment(postId);
+}
+
+function ftSave(postId){
+  var saved = JSON.parse(localStorage.getItem('pl_saved')||'{}');
+  var isSaved = saved[postId];
+  if(isSaved){ delete saved[postId]; } else { saved[postId] = true; }
+  localStorage.setItem('pl_saved', JSON.stringify(saved));
+  var pid = postId.replace(/[^a-zA-Z0-9]/g,'_');
+  var icon = document.getElementById('ftsave-icon-'+pid);
+  if(icon){
+    icon.querySelector('svg').setAttribute('fill', isSaved ? 'none' : '#fff');
+  }
+  showToast(isSaved ? 'Retiré des favoris' : 'Sauvegarde !');
+}
+
+function toggleFollowFeed(authorId, btn){
+  toggleFollow(authorId, null);
+  var following = isFollowing(authorId);
+  if(btn){
+    btn.innerHTML = following
+      ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polyline points="20 6 9 17 4 12"/></svg>'
+      : '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+  }
+}
+
+function ftTogglePlay(vid){
+  if(vid.paused){ vid.play(); vid.closest('.tiktok-card').classList.remove('paused'); }
+  else { vid.pause(); vid.closest('.tiktok-card').classList.add('paused'); }
+}
+
+function observeFeedCards(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window._feedObserver) window._feedObserver.disconnect();
+  window._feedObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var card = entry.target;
+      var vidId = card.getAttribute('data-videoid');
+      var vid = vidId ? document.getElementById(vidId) : null;
+      if(entry.isIntersecting){
+        if(vid){ vid.muted=true; vid.play().catch(function(){}); }
+      } else {
+        if(vid){ vid.pause(); vid.currentTime=0; }
+      }
+    });
+  }, {threshold: 0.75});
+  document.querySelectorAll('#feedPosts .tiktok-card').forEach(function(c){
+    window._feedObserver.observe(c);
+  });
+}
+
 
 function toggleComments(id){
   document.getElementById(id)?.classList.toggle('open');
@@ -2618,108 +2855,83 @@ async function submitCommunity(){
 // ────── EXPLORE ──────
 // Demo videos + posts for Explorer
 var DEMO_VIDEOS = [
-  {
-    id:'demo-v1', type:'video',
-    videoUrl:'https://www.w3schools.com/html/mov_bbb.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-    authorName:'davieslay', authorAvatar:'',
-    caption:'Séance portrait en pleine nature — — Lumière naturelle, golden hour, magie pure',
-    tags:'portrait,nature,goldenhour', cat:'Nature', likes:142
-  },
-  {
-    id:'demo-v2', type:'video',
-    videoUrl:'https://www.w3schools.com/html/movie.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1519741497674-611481863552?w=400',
-    authorName:'photographe_ci', authorAvatar:'',
-    caption:'Mariage à Abidjan — — Couleurs, joie et émotion au rendez-vous',
-    tags:'mariage,abidjan,love', cat:'Mariage', likes:89
-  },
-  {
-    id:'demo-v3', type:'video',
-    videoUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-    authorName:'studio_mode', authorAvatar:'',
-    caption:'Shooting mode urbain — ️ — Entre béton et lumières, la beauté est partout',
-    tags:'mode,urbain,shooting', cat:'Mode', likes:231
-  },
-  {
-    id:'demo-v4', type:'video',
-    videoUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400',
-    authorName:'archi_lens', authorAvatar:'',
-    caption:'Architecture moderne — Lignes, angles et perspectives — ️',
-    tags:'architecture,urbain,moderne', cat:'Architecture', likes:67
-  }
+  {id:'demo-v1',type:'photo',imageUrl:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',authorId:'demo-davieslay',authorName:'davieslay',authorAvatar:'',caption:'Seance portrait en pleine nature — Lumiere naturelle, golden hour, magie pure',tags:'portrait,nature,goldenhour',cat:'Nature',likes:142,comments:[]},
+  {id:'demo-v2',type:'photo',imageUrl:'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',authorId:'demo-photoci',authorName:'photographe_ci',authorAvatar:'',caption:'Mariage a Abidjan — Couleurs, joie et emotion au rendez-vous',tags:'mariage,abidjan,love',cat:'Mariage',likes:89,comments:[]},
+  {id:'demo-v3',type:'photo',imageUrl:'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80',authorId:'demo-studio',authorName:'studio_mode',authorAvatar:'',caption:'Shooting mode urbain — Entre beton et lumieres, la beaute est partout',tags:'mode,urbain,shooting',cat:'Mode',likes:231,comments:[]},
+  {id:'demo-v4',type:'photo',imageUrl:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80',authorId:'demo-archi',authorName:'archi_lens',authorAvatar:'',caption:'Architecture moderne — Lignes, angles et perspectives',tags:'architecture,urbain,moderne',cat:'Architecture',likes:67,comments:[]},
+  {id:'demo-v5',type:'photo',imageUrl:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80',authorId:'demo-portrait',authorName:'portrait_pro',authorAvatar:'',caption:'Portrait en studio — La lumiere revele tout',tags:'portrait,studio,professionnel',cat:'Portrait',likes:198,comments:[]},
+  {id:'demo-v6',type:'photo',imageUrl:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',authorId:'demo-city',authorName:'city_shots',authorAvatar:'',caption:'Cityscape au crepuscule — La ville ne dort jamais',tags:'city,urban,nuit',cat:'Architecture',likes:115,comments:[]}
 ];
 
 function loadExplore(){
-  // Explorer = social post grid (photos + videos)
   var grid = document.getElementById('exploreGrid');
   if(!grid) return;
-  grid.innerHTML = '<div class="loading"></div>';
+  grid.innerHTML = '<div style="grid-column:1/-1;padding:40px;text-align:center"><div class="loading"></div></div>';
   setTimeout(function(){
+    // Load user posts + demo posts
     var posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
-    if(currentCatFilter) posts = posts.filter(function(p){ return p.cat===currentCatFilter; });
-    if(db){
-      var query = db.collection('posts').orderBy('createdAt','desc').limit(40);
-      if(currentCatFilter) query = db.collection('posts').where('cat','==',currentCatFilter).orderBy('createdAt','desc').limit(40);
-      query.get().then(function(snap){
-        var fbPosts = snap.docs.map(function(d){ return {id:d.id,...d.data()}; });
-        renderSocialGrid(currentCatFilter ? fbPosts : fbPosts.concat(posts));
-      }).catch(function(){ renderSocialGrid(posts); });
-    } else {
-      renderSocialGrid(posts);
+    var cat = window.currentCatFilter||'';
+    if(cat) posts = posts.filter(function(p){ return p.cat===cat; });
+    // Add some demo photo posts if empty
+    if(!posts.length && !cat){
+      posts = [
+        {id:'demo-ex1',type:'photo',imageUrl:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',authorName:'davieslay',cat:'Nature',likes:142,caption:'Golden hour'},
+        {id:'demo-ex2',type:'photo',imageUrl:'https://images.unsplash.com/photo-1519741497674-611481863552?w=400',authorName:'studio_ci',cat:'Mariage',likes:89,caption:'Mariage'},
+        {id:'demo-ex3',type:'photo',imageUrl:'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',authorName:'mode_lens',cat:'Mode',likes:231,caption:'Mode urbaine'},
+        {id:'demo-ex4',type:'photo',imageUrl:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400',authorName:'archi_lens',cat:'Architecture',likes:67,caption:'Lignes urbaines'},
+        {id:'demo-ex5',type:'photo',imageUrl:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400',authorName:'portrait_pro',cat:'Portrait',likes:198,caption:'Portrait naturel'},
+        {id:'demo-ex6',type:'photo',imageUrl:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400',authorName:'city_shots',cat:'Architecture',likes:115,caption:'Cityscape'},
+      ];
     }
-  }, 200);
+    if(db){
+      var query = db.collection('posts').orderBy('createdAt','desc').limit(60);
+      if(cat) query = db.collection('posts').where('cat','==',cat).orderBy('createdAt','desc').limit(60);
+      query.get().then(function(snap){
+        var fbPosts = snap.docs.map(function(d){ return Object.assign({id:d.id},d.data()); });
+        renderExploreGrid(fbPosts.length ? fbPosts : posts);
+      }).catch(function(){ renderExploreGrid(posts); });
+    } else {
+      renderExploreGrid(posts);
+    }
+  },200);
 }
 
-function renderSocialGrid(posts){
+
+function renderSocialGrid(posts){ renderExploreGrid(posts); }
+
+function renderExploreGrid(posts){
   var grid = document.getElementById('exploreGrid');
   if(!grid) return;
-  if(!posts.length){
-    grid.innerHTML = '<div style="text-align:center;padding:60px 20px">'
-      +'<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.2" style="margin-bottom:12px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
-      +'<div style="font-size:16px;font-weight:700;color:var(--text2)">Aucun post</div>'
-      +'<div style="font-size:13px;color:var(--text3);margin-top:6px">Soyez le premier à publier dans cette catégorie</div>'
-    +'</div>';
+  if(!posts||!posts.length){
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.2" style="margin-bottom:12px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div style="font-size:15px;font-weight:700;color:var(--text2)">Aucun contenu</div><div style="font-size:12px;color:var(--text3);margin-top:6px">Publiez votre premiere photo !</div></div>';
     return;
   }
-  // Masonry-style grid
   grid.innerHTML = posts.map(function(p,i){
-    var isVideo = p.type==='video' || (p.videoUrl&&p.videoUrl.length>0);
-    var hasImg = p.imageUrl && p.imageUrl.length > 0;
-    var thumbSrc = isVideo ? (p.posterUrl||p.imageUrl||'') : p.imageUrl;
-    var mediaHtml = thumbSrc
-      ? '<div style="position:relative;aspect-ratio:1;overflow:hidden;border-radius:0">'
-          + '<img src="'+thumbSrc+'" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>'
-          + (isVideo ? '<div style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.6);border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;color:#fff;display:flex;align-items:center;gap:3px"><svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>Vidéo</div>' : '')
-        +'</div>'
-      : '<div style="aspect-ratio:1;background:linear-gradient(135deg,var(--surface2),var(--surface3));display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>';
-    var safeId = (p.id||'').replace(/'/g,'');
-    var safeAId = (p.authorId||'').replace(/'/g,'');
-    var safeAName = (p.authorName||'').replace(/'/g,'');
-    return '<div class="masonry-item" style="animation-delay:'+(i*0.04)+'s;cursor:pointer;border-radius:8px;overflow:hidden;background:var(--surface)" data-pid="'+safeId+'" data-aid="'+safeAId+'" data-aname="'+safeAName+'" onclick="openExplorePostEl(this)">'
-      +mediaHtml
-      +'<div style="padding:8px 10px">'
-        +'<div style="font-size:12px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+(p.caption||p.authorName||'')+'</div>'
-        +'<div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">'
-          +'<span style="font-size:10px;color:var(--text3)">@'+(p.authorName||'')+'</span>'
-          +'<div style="display:flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 24 24" fill="var(--coral)" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span style="font-size:10px;color:var(--text3)">'+(p.likes||0)+'</span></div>'
-        +'</div>'
-      +'</div>'
+    var isVideo = p.type==='video'||(p.videoUrl&&p.videoUrl.length>0);
+    var src = p.imageUrl||(isVideo ? p.posterUrl : '');
+    var thumb = src
+      ? '<img src="'+src+'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0" loading="lazy"/>'
+      : '<div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--surface2),var(--surface3));display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>';
+    var videoIcon = isVideo ? '<div style="position:absolute;top:5px;right:5px;z-index:2"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" filter="drop-shadow(0 1px 3px rgba(0,0,0,.8))"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
+    var likeOverlay = '<div style="position:absolute;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;z-index:3" class="explore-hover"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span style="color:#fff;font-weight:700;font-size:13px;margin-left:5px">'+(p.likes||0)+'</span></div>';
+    return '<div data-pid="'+(p.id||'')+'" data-aid="'+(p.authorId||'')+'" data-aname="'+(p.authorName||'')+'" class="explore-grid-item" onclick="openExplorePostEl(this)">'
+      +thumb+videoIcon+likeOverlay
     +'</div>';
   }).join('');
 }
+
 
 function openExplorePost(postId, authorId, authorName, authorAvatar){
   openAuthorProfile(authorId, authorName, authorAvatar);
 }
 
 function openExplorePostEl(el){
-  var pid = el.dataset.pid||'';
-  var aid = el.dataset.aid||'';
   var aname = el.dataset.aname||'';
-  openAuthorProfile(aid, aname, '');
+  var aid = el.dataset.aid||'';
+  // Switch to feed to show this content in TikTok view
+  if(aname || aid){
+    openAuthorProfile(aid, aname, '');
+  }
 }
 
 
@@ -2813,29 +3025,55 @@ function tkLike(postId){
   if(already){ delete likes[postId]; } else { likes[postId] = true; }
   localStorage.setItem('pl_likes', JSON.stringify(likes));
 
-  // IDs use sanitized version (alphanumeric only)
   var pid = postId.replace(/[^a-zA-Z0-9]/g,'_');
-  var icon = document.getElementById('tlike-icon-'+pid) || document.getElementById('tlike-icon-'+postId);
-  var count = document.getElementById('tlike-count-'+pid) || document.getElementById('tlike-count-'+postId);
-  var current = parseInt(count ? count.textContent : '0') || 0;
-  if(already){
-    if(icon){ icon.classList.remove('liked'); icon.innerHTML = icon.innerHTML.replace('fill="#ff3250"','fill="none"').replace(/stroke="#ff3250"/g,'stroke="#fff"'); }
-    if(count) count.textContent = Math.max(0, current-1);
+  // Update both feed (ft) and explore (tlike) icons
+  var prefixes = ['ftlike-icon-', 'tlike-icon-'];
+  prefixes.forEach(function(pref){
+    var icon = document.getElementById(pref+pid);
+    if(icon){
+      icon.classList.toggle('liked', !already);
+      var svg = icon.querySelector('svg');
+      if(svg){
+        svg.setAttribute('fill', already ? 'none' : '#ff3250');
+        svg.setAttribute('stroke', already ? '#fff' : '#ff3250');
+      }
+    }
+  });
+  var counts = [document.getElementById('ftlike-count-'+pid), document.getElementById('tlike-count-'+pid)];
+  counts.forEach(function(el){
+    if(el){
+      var cur = parseInt(el.textContent)||0;
+      el.textContent = already ? Math.max(0,cur-1) : cur+1;
+    }
+  });
+
+  // Save to Firebase if available
+  if(db && currentUser){
+    var ref = db.collection('posts').doc(postId);
+    if(!already){
+      ref.update({likes: firebase.firestore.FieldValue.increment(1)}).catch(function(){});
+    } else {
+      ref.update({likes: firebase.firestore.FieldValue.increment(-1)}).catch(function(){});
+    }
   } else {
-    if(icon){ icon.classList.add('liked'); icon.innerHTML = icon.innerHTML.replace('fill="none"','fill="#ff3250"').replace(/stroke="#fff"/g,'stroke="#ff3250"'); }
-    if(count) count.textContent = current+1;
+    // Update local posts
+    var posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
+    var idx = posts.findIndex(function(p){ return p.id===postId; });
+    if(idx>=0){ posts[idx].likes = (posts[idx].likes||0) + (already ? -1 : 1); }
+    localStorage.setItem('pl_posts', JSON.stringify(posts));
+  }
+
+  if(!already){
     // Heart animation
     var heart = document.createElement('div');
-    heart.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:80px;pointer-events:none;z-index:999;animation:heartPop .6s ease forwards';
+    heart.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0;pointer-events:none;z-index:999;animation:heartPop .6s ease forwards;display:flex;align-items:center;justify-content:center';
     heart.innerHTML = '<svg width="80" height="80" viewBox="0 0 24 24" fill="#ff3250"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
     document.body.appendChild(heart);
-    setTimeout(function(){ heart.remove(); }, 600);
+    setTimeout(function(){ heart.remove(); }, 700);
   }
-  // Sync to feed post
-  toggleLike(postId, already);
 }
 
-var _currentCommentPostId = null;
+
 function tkComment(postId){
   _currentCommentPostId = postId;
   // Load comments
@@ -3024,15 +3262,27 @@ function tkToggleMute(vidId, btnId){
 }
 
 function filterExplore(q){
-  document.querySelectorAll('.masonry-item').forEach(el=>{
-    el.style.display = el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';
+  if(!q){
+    loadExplore();
+    return;
+  }
+  var posts = JSON.parse(localStorage.getItem('pl_posts')||'[]');
+  var ql = q.toLowerCase();
+  var filtered = posts.filter(function(p){
+    return (p.caption||'').toLowerCase().includes(ql) ||
+           (p.authorName||'').toLowerCase().includes(ql) ||
+           (p.tags||'').toLowerCase().includes(ql) ||
+           (p.cat||'').toLowerCase().includes(ql);
   });
+  renderExploreGrid(filtered);
 }
+
 
 function filterCat(el, cat){
   document.querySelectorAll('.explore-cat,.cat').forEach(function(c){ c.classList.remove('active'); });
   el.classList.add('active');
   currentCatFilter = cat;
+  window.currentCatFilter = cat;
   loadExplore();
 }
 
@@ -3808,6 +4058,46 @@ function toggleFollow(authorId, btn){
     }
   }
   localStorage.setItem('pl_following_'+uid, JSON.stringify(following));
+}
+
+
+// ────── SWIPE DOWN TO CLOSE PANELS ──────
+var _swipeStartY = 0;
+var _swipeCurrentY = 0;
+var _swipeSheet = null;
+
+function startSwipeClose(e, panelId, sheetId){
+  _swipeStartY = e.touches[0].clientY;
+  _swipeCurrentY = _swipeStartY;
+  _swipeSheet = document.getElementById(sheetId);
+  if(_swipeSheet) _swipeSheet.style.transition = 'none';
+}
+
+function moveSwipeClose(e, sheetId){
+  if(!_swipeSheet) return;
+  _swipeCurrentY = e.touches[0].clientY;
+  var dy = _swipeCurrentY - _swipeStartY;
+  if(dy > 0){ // Only allow downward swipe
+    _swipeSheet.style.transform = 'translateY('+dy+'px)';
+  }
+}
+
+function endSwipeClose(e, panelId, sheetId){
+  if(!_swipeSheet) return;
+  var dy = _swipeCurrentY - _swipeStartY;
+  _swipeSheet.style.transition = 'transform .3s cubic-bezier(.4,0,.2,1)';
+  if(dy > 120){ // Threshold: 120px down = close
+    _swipeSheet.style.transform = 'translateY(100%)';
+    setTimeout(function(){
+      var panel = document.getElementById(panelId);
+      if(panel) panel.style.display = 'none';
+      if(_swipeSheet) _swipeSheet.style.transform = 'translateY(100%)';
+      _swipeSheet = null;
+    }, 300);
+  } else { // Snap back
+    _swipeSheet.style.transform = 'translateY(0)';
+    _swipeSheet = null;
+  }
 }
 
 loadSavedTheme();
