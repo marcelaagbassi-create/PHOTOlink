@@ -1401,95 +1401,109 @@ function selectRole(el){
 }
 
 async function doLogin(){
-  const email = document.getElementById('loginEmail').value.trim();
-  const pass = document.getElementById('loginPass').value;
-  if(!email||!pass){ showAuthErr('Remplissez tous les champs'); return; }
-  const btn = document.getElementById('loginBtn');
-  btn.disabled=true; btn.textContent='Connexion…';
-  try {
-    if(!auth){ // demo
-      currentUser={uid:'demo'};
-      currentUserData={uid:'demo',name:'Démo User',email,role:'photographer',avatar:'',handle:'demo',bio:'',specialty:'',city:''};
-      demoSave(); showApp(); return;
+  var emailEl=document.getElementById('loginEmail');
+  var passEl=document.getElementById('loginPass');
+  var btn=document.getElementById('loginBtn');
+  var email=emailEl?emailEl.value.trim():'';
+  var pass=passEl?passEl.value:'';
+  if(!email||!pass){showToast('Remplissez tous les champs');return;}
+  if(btn){btn.disabled=true;btn.textContent='Connexion...';}
+  try{
+    if(auth){
+      await auth.signInWithEmailAndPassword(email,pass);
+      // onAuthChange will call showApp
+    } else {
+      // Demo mode: accept any credentials
+      var saved=localStorage.getItem('pl_user');
+      var userData=saved?JSON.parse(saved):null;
+      if(userData&&userData.email===email){
+        currentUser={uid:'demo',email:email};
+        currentUserData=userData;
+      } else {
+        currentUser={uid:'demo_'+Date.now(),email:email};
+        currentUserData={name:email.split('@')[0],handle:email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g,'.'),email:email,avatar:'',role:'Photographe',bio:'',city:'',specialty:'',postCount:0};
+        localStorage.setItem('pl_user',JSON.stringify(currentUserData));
+      }
+      showApp();
     }
-    await auth.signInWithEmailAndPassword(email, pass);
   } catch(e){
-    showAuthErr(translateAuthErr(e.code));
-    btn.disabled=false; btn.textContent='Se connecter';
+    var msg=e.code==='auth/user-not-found'?'Compte introuvable'
+      :e.code==='auth/wrong-password'?'Mot de passe incorrect'
+      :e.code==='auth/invalid-email'?'Email invalide'
+      :e.code==='auth/too-many-requests'?'Trop de tentatives, réessayez plus tard'
+      :e.code==='auth/operation-not-allowed'?'Connexion email désactivée dans Firebase Console'
+      :e.code==='auth/network-request-failed'?'Erreur réseau'
+      :'Erreur: '+(e.message||e.code||'inconnue');
+    showToast(msg);
+    console.error('Login error:',e.code,e.message);
+  } finally {
+    if(btn){btn.disabled=false;btn.textContent='Se connecter';}
   }
 }
 
 async function doRegister(){
-  const name = document.getElementById('regName').value.trim();
-  const email = document.getElementById('regEmail').value.trim();
-  const pass = document.getElementById('regPass').value;
-  if(!name||!email||!pass){ showAuthErr('Remplissez tous les champs'); return; }
-  if(pass.length<6){ showAuthErr('Mot de passe trop court (min. 6 caractères)'); return; }
-  const btn = document.getElementById('registerBtn');
-  btn.disabled=true; btn.textContent='Création…';
-  try {
-    if(!auth){ // demo
-      currentUser={uid:'demo'};
-      currentUserData={uid:'demo',name,email,role:selectedRole,avatar:'',handle:name.toLowerCase().replace(/\s+/g,'.'),bio:'',specialty:document.getElementById('regSpecialty').value,city:''};
-      demoSave(); showApp(); return;
+  var nameEl=document.getElementById('regName');
+  var emailEl=document.getElementById('regEmail');
+  var passEl=document.getElementById('regPass');
+  var btn=document.getElementById('regBtn');
+  var name=nameEl?nameEl.value.trim():'';
+  var email=emailEl?emailEl.value.trim():'';
+  var pass=passEl?passEl.value:'';
+  if(!name){showToast('Entrez votre nom');return;}
+  if(!email){showToast('Entrez votre email');return;}
+  if(!pass||pass.length<6){showToast('Mot de passe: 6 caractères minimum');return;}
+  if(btn){btn.disabled=true;btn.textContent='Inscription...';}
+  try{
+    if(auth){
+      var cred=await auth.createUserWithEmailAndPassword(email,pass);
+      var uid=cred.user.uid;
+      var data={uid:uid,name:name,handle:name.toLowerCase().replace(/\s+/g,'.'),email:email,avatar:'',banner:null,role:'Photographe',bio:'',city:'',specialty:'',postCount:0,followerCount:0,followingCount:0,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+      if(db)await db.collection('users').doc(uid).set(data);
+      currentUser=cred.user;
+      currentUserData=data;
+      localStorage.setItem('pl_user',JSON.stringify(data));
+      showApp();
+      showToast('Bienvenue '+name+' !');
+    } else {
+      // Demo mode
+      currentUser={uid:'demo_'+Date.now(),email:email};
+      currentUserData={name:name,handle:name.toLowerCase().replace(/\s+/g,'.'),email:email,avatar:'',role:'Photographe',bio:'',city:'',specialty:'',postCount:0};
+      localStorage.setItem('pl_user',JSON.stringify(currentUserData));
+      showApp();
+      showToast('Bienvenue '+name+' !');
     }
-    const cred = await auth.createUserWithEmailAndPassword(email, pass);
-    const uid = cred.user.uid;
-    const userData = {
-      uid, name, email,
-      role: selectedRole,
-      avatar: '',
-      handle: name.toLowerCase().replace(/\s+/g,'.'),
-      bio: '', specialty: document.getElementById('regSpecialty').value, city: '',
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    };
-    await db.collection('users').doc(uid).set(userData);
-    currentUserData = userData;
   } catch(e){
-    showAuthErr(translateAuthErr(e.code));
-    btn.disabled=false; btn.textContent='Créer mon compte';
+    var msg=e.code==='auth/email-already-in-use'?'Cet email est déjà utilisé'
+      :e.code==='auth/weak-password'?'Mot de passe trop faible (6 caractères min)'
+      :e.code==='auth/invalid-email'?'Email invalide'
+      :e.code==='auth/operation-not-allowed'?'Inscription désactivée dans Firebase Console'
+      :'Erreur: '+(e.message||e.code||'inconnue');
+    showToast(msg);
+    console.error('Register error:',e.code,e.message);
+  } finally {
+    if(btn){btn.disabled=false;btn.textContent='Inscription';}
   }
 }
 
 
 // ────── GOOGLE AUTH ──────
 async function doGoogleAuth(){
-  const btns = document.querySelectorAll('.google-btn');
-  btns.forEach(b=>{b.disabled=true; b.style.opacity='.6';});
-  try {
-    if(!auth){
-      // Demo mode
-      currentUser={uid:'demo'};
-      currentUserData={uid:'demo',name:'Utilisateur Google',email:'demo@google.com',role:'photographer',avatar:'',handle:'google.user',bio:'',specialty:'',city:''};
-      demoSave(); showApp(); return;
-    }
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: 'select_account' });
-    const result = await auth.signInWithPopup(provider);
-    const user = result.user;
-    // Check if user doc exists, if not create it
-    const doc = await db.collection('users').doc(user.uid).get();
-    if(!doc.exists){
-      const userData = {
-        uid: user.uid,
-        name: user.displayName || 'Utilisateur',
-        email: user.email,
-        role: 'photographer',
-        avatar: '',
-        handle: (user.displayName||'user').toLowerCase().replace(/\s+/g,'.').replace(/[^a-z0-9.]/g,''),
-        bio: '',
-        specialty: '',
-        city: '',
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
-      await db.collection('users').doc(user.uid).set(userData);
-    }
+  if(!auth){
+    // Demo mode Google login
+    currentUser={uid:'demo_google_'+Date.now(),email:'google.user@gmail.com'};
+    currentUserData={name:'Utilisateur Google',handle:'google.user',email:'google.user@gmail.com',avatar:'https://lh3.googleusercontent.com/a/default-user',role:'Photographe',bio:'',city:'',specialty:'',postCount:0};
+    localStorage.setItem('pl_user',JSON.stringify(currentUserData));
+    showApp();
+    return;
+  }
+  try{
+    var provider=new firebase.auth.GoogleAuthProvider();
+    await auth.signInWithPopup(provider);
   } catch(e){
-    if(e.code !== 'auth/popup-closed-by-user'){
-      showAuthErr(translateAuthErr(e.code)||'Erreur Google Sign-In');
+    if(e.code!=='auth/popup-closed-by-user'&&e.code!=='auth/cancelled-popup-request'){
+      showToast('Erreur Google: '+(e.message||e.code||'inconnue'));
+      console.error('Google auth:',e);
     }
-  } finally {
-    btns.forEach(b=>{b.disabled=false; b.style.opacity='1';});
   }
 }
 
@@ -3107,6 +3121,14 @@ window.addEventListener('click', function(e){
   if(panel && !panel.contains(e.target) && !e.target.closest('.icon-btn'))
     closeNotifPanel();
 });
+
+
+function continueDemoMode(){
+  currentUser={uid:'demo_guest'};
+  currentUserData={name:'Invité',handle:'invite',email:'',avatar:'',role:'Photographe',bio:'',city:'',specialty:'',postCount:0};
+  showApp();
+  showToast('Mode démo activé');
+}
 
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',function(){loadSavedTheme();initFirebase();});
