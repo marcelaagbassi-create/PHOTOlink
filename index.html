@@ -615,7 +615,7 @@ select.inp{appearance:none;cursor:pointer}
 
 
 /* ═══ PINTEREST FEED ═══ */
-#page-feed{background:#0a0a0a!important;padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;height:100vh!important;height:100svh!important;padding-top:60px!important;padding-bottom:70px!important}
+#page-feed{background:#0a0a0a!important;padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;height:100vh!important;height:100svh!important}
 .pin-topbar{position:fixed;top:60px;left:0;right:0;z-index:50;background:#0a0a0a;padding:10px 16px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)}
 .pin-tabs{display:flex;gap:4px;align-items:center}
 .pin-tab{font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);cursor:pointer;padding:8px 14px;border-radius:24px;transition:.2s;white-space:nowrap}
@@ -625,7 +625,7 @@ select.inp{appearance:none;cursor:pointer}
 .pin-create-btn:active{transform:scale(0.9);background:var(--primary)}
 
 /* Grid */
-#pinGrid{padding:100px 8px 16px;column-count:2;column-gap:8px;-moz-column-count:2;-webkit-column-count:2}
+#pinGrid{padding:120px 8px 80px;column-count:2;column-gap:8px;-moz-column-count:2;-webkit-column-count:2}
 .pin-loading{column-span:all;text-align:center;padding:60px}
 
 /* Card */
@@ -1217,7 +1217,6 @@ select.inp{appearance:none;cursor:pointer}
         <div style="font-size:11px;color:var(--text3)">ou sélectionner un emoji ci-dessous</div>
       </div>
     </label>
-    <div class="emoji-grid" id="postEmojiGrid"></div>
     <div class="field-label">Catégorie</div>
     <select class="inp" id="postCat"><option value="">-- Choisir --</option><option>Portrait</option><option>Mariage</option><option>Mode</option><option>Nature</option><option>Architecture</option><option>Studio</option><option>Événement</option></select>
     <div class="field-label">Description</div>
@@ -1906,22 +1905,25 @@ function renderProfileGridItems(items, grid){
 
 
 function loadFeed(){
-  var feed=document.getElementById('feedPosts');
-  if(!feed)return;
-  feed.innerHTML='<div class="loading" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></div>';
-  var demoPosts=(_currentFeedTab==='pourToi')?DEMO_VIDEOS.slice():[];
-  var localPosts=[];
-  try{localPosts=JSON.parse(localStorage.getItem('pl_posts')||'[]');}catch(e){}
+  var grid = document.getElementById('pinGrid');
+  if(!grid) return;
+  grid.innerHTML = '<div class="pin-loading"><div class="loading"></div></div>';
+
+  var demoPosts = (_currentFeedTab === 'pourToi') ? DEMO_VIDEOS.slice() : [];
+  var localPosts = [];
+  try{ localPosts = JSON.parse(localStorage.getItem('pl_posts')||'[]'); }catch(e){}
   renderFeedPosts(demoPosts.concat(localPosts));
-  if(typeof firebase!=='undefined'&&db&&currentUser){
-    if(window._feedUnsub){try{window._feedUnsub();}catch(e){}window._feedUnsub=null;}
-    var q=db.collection('posts').orderBy('createdAt','desc').limit(40);
-    if(_currentFeedTab==='suivis'){var f=getFollowing();if(f.length)q=db.collection('posts').where('authorId','in',f.slice(0,10)).orderBy('createdAt','desc').limit(30);else return;}
-    window._feedUnsub=q.onSnapshot(function(snap){
-      var fb=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());});
-      try{localStorage.setItem('pl_posts',JSON.stringify(fb.slice(0,50)));}catch(e){}
+
+  if(typeof firebase !== 'undefined' && db && currentUser){
+    if(window._feedUnsub){ try{window._feedUnsub();}catch(e){} window._feedUnsub=null; }
+    var q = (_currentFeedTab === 'suivis')
+      ? (function(){ var f=getFollowing(); return f.length ? db.collection('posts').where('authorId','in',f.slice(0,10)).orderBy('createdAt','desc').limit(30) : null; })()
+      : db.collection('posts').orderBy('createdAt','desc').limit(40);
+    if(q) window._feedUnsub = q.onSnapshot(function(snap){
+      var fb = snap.docs.map(function(d){ return Object.assign({id:d.id}, d.data()); });
+      try{ localStorage.setItem('pl_posts', JSON.stringify(fb.slice(0,50))); }catch(e){}
       renderFeedPosts(demoPosts.concat(fb));
-    },function(e){console.log('Feed:',e.message);});
+    }, function(e){ console.log('Feed:', e.message); });
   }
 }
 
@@ -3085,8 +3087,19 @@ function closeNotifPanel(){
 
 // ────── MODALS / EMOJI ──────
 function openPostModal(){
-  sel.post='';
-  buildEmojiGrid('postEmojiGrid', EMOJIS_POST, 'post');
+  window._postType = 'photo';
+  var imgPrev = document.getElementById('postImagePreview');
+  var vidPrev = document.getElementById('postVideoPreview');
+  var prompt = document.getElementById('uploadPrompt');
+  var prog = document.getElementById('videoUploadProgress');
+  if(imgPrev){ imgPrev.style.display='none'; imgPrev.src=''; }
+  if(vidPrev){ vidPrev.style.display='none'; vidPrev.src=''; }
+  if(prompt) prompt.style.display='flex';
+  if(prog) prog.style.display='none';
+  var pb = document.getElementById('postTypePhoto');
+  var vb = document.getElementById('postTypeVideo');
+  if(pb){ pb.style.background='linear-gradient(135deg,var(--primary),var(--coral))'; pb.style.color='#000'; pb.style.border='none'; }
+  if(vb){ vb.style.background='var(--surface2)'; vb.style.color='var(--text2)'; vb.style.border='1.5px solid var(--border)'; }
   openModal('modalPost');
 }
 function openCreateService(){
@@ -3392,7 +3405,7 @@ detectDevice();
 
 function switchFeedTab(tab,el){
   _currentFeedTab=tab;
-  document.querySelectorAll('.feed-tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.pin-tab,.feed-tab').forEach(function(t){t.classList.remove('active');});
   if(el) el.classList.add('active');
   loadFeed();
 }
