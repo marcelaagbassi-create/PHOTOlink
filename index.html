@@ -606,6 +606,64 @@ select.inp{appearance:none;cursor:pointer}
   .inp{padding:16px!important;font-size:16px!important}
 }
 
+
+.feed-topbar{position:absolute;top:60px;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:8px 16px 14px;background:linear-gradient(to bottom,rgba(0,0,0,0.7) 0%,transparent 100%);pointer-events:none}
+.feed-topbar *{pointer-events:auto}
+.feed-tabs{display:flex;gap:20px;align-items:center}
+.feed-tab{font-size:15px;font-weight:600;color:rgba(255,255,255,0.6);cursor:pointer;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
+.feed-tab.active{color:#fff;font-weight:800;border-bottom-color:#fff}
+
+
+/* ═══ PINTEREST FEED ═══ */
+#page-feed{background:#0a0a0a!important;padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;height:100vh!important;height:100svh!important;padding-top:60px!important;padding-bottom:70px!important}
+.pin-topbar{position:fixed;top:60px;left:0;right:0;z-index:50;background:#0a0a0a;padding:10px 16px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)}
+.pin-tabs{display:flex;gap:4px;align-items:center}
+.pin-tab{font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);cursor:pointer;padding:8px 14px;border-radius:24px;transition:.2s;white-space:nowrap}
+.pin-tab.active{color:#fff;font-weight:800;background:rgba(255,255,255,0.1)}
+.pin-topbar-actions{display:flex;align-items:center;gap:10px}
+.pin-create-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center;transition:.15s}
+.pin-create-btn:active{transform:scale(0.9);background:var(--primary)}
+
+/* Grid */
+#pinGrid{padding:100px 8px 16px;column-count:2;column-gap:8px;-moz-column-count:2;-webkit-column-count:2}
+.pin-loading{column-span:all;text-align:center;padding:60px}
+
+/* Card */
+.pin-card{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:8px;cursor:pointer;position:relative}
+.pin-card-img{width:100%;border-radius:14px;display:block;background:#1a1a1a;min-height:100px}
+.pin-card-vid{width:100%;border-radius:14px;display:block;object-fit:cover;background:#000}
+.pin-card-inner{position:relative;border-radius:14px;overflow:hidden}
+.pin-card-inner:active{transform:scale(0.98)}
+
+/* Duration badge */
+.pin-duration{position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.7);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;backdrop-filter:blur(4px)}
+
+/* Volume icon */
+.pin-mute{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.5);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+
+/* Save button (shows on hover/long press) */
+.pin-save-btn{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.55);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;color:#fff;opacity:0}
+.pin-card:hover .pin-save-btn,.pin-card.active-pin .pin-save-btn{opacity:1}
+
+/* Caption */
+.pin-caption{padding:7px 4px 2px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* Meta row */
+.pin-meta{display:flex;align-items:center;justify-content:space-between;padding:3px 4px 0}
+.pin-meta-left{display:flex;align-items:center;gap:5px}
+.pin-avatar-sm{width:20px;height:20px;border-radius:50%;object-fit:cover;background:linear-gradient(135deg,var(--primary),var(--coral))}
+.pin-author{font-size:11px;color:rgba(255,255,255,0.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80px}
+.pin-likes{display:flex;align-items:center;gap:3px;font-size:11px;color:rgba(255,255,255,0.5)}
+
+/* 3-col on larger screens */
+@media(min-width:480px){#pinGrid{column-count:3}}
+@media(min-width:768px){#pinGrid{column-count:3;padding-left:230px}}
+@media(min-width:1024px){#pinGrid{column-count:4;padding-left:270px}}
+@media(min-width:1600px){#pinGrid{column-count:5;padding-left:310px}}
+
+/* Heart pop animation (already defined but ensure it's here) */
+@keyframes heartPop{0%{transform:translate(-50%,-50%) scale(0);opacity:1}60%{transform:translate(-50%,-50%) scale(1.3);opacity:1}100%{transform:translate(-50%,-50%) scale(0.8);opacity:0}}
+
 </style>
   <!-- PWA MANIFEST -->
   <link rel="manifest" href="manifest.json"/>
@@ -733,14 +791,24 @@ select.inp{appearance:none;cursor:pointer}
 </div>
 
 <!-- FEED -->
-<div class="page active" id="page-feed">
-  <div class="stories-bar" id="storiesBar">
-    <div class="story-item" onclick="openPostModal()">
-      <div class="story-ring mine"><div class="story-avatar" style="font-size:26px">＋</div></div>
-      <div class="story-name">Publier</div>
+<!-- FEED = Pinterest Style -->
+<div class="page active" id="page-feed" style="background:#0a0a0a;padding:0">
+  <!-- Pinterest top bar -->
+  <div class="pin-topbar">
+    <div class="pin-tabs">
+      <div class="pin-tab active" id="pinTab-pourToi" onclick="switchFeedTab('pourToi',this)">Pour vous</div>
+      <div class="pin-tab" id="pinTab-suivis" onclick="switchFeedTab('suivis',this)">Suivis</div>
+    </div>
+    <div class="pin-topbar-actions">
+      <button onclick="openPostModal()" class="pin-create-btn" title="Créer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
     </div>
   </div>
-  <div class="page-inner" id="feedPosts"><div class="loading"></div></div>
+  <!-- Pinterest masonry grid -->
+  <div id="pinGrid" class="pin-grid">
+    <div class="pin-loading"><div class="loading"></div></div>
+  </div>
 </div>
 
 <!-- EXPLORE — TikTok style -->
@@ -1116,15 +1184,14 @@ select.inp{appearance:none;cursor:pointer}
   <div class="nav-item" onclick="showPage('explore',this)">
     <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>EXPLORER
   </div>
-  <div class="nav-item" onclick="showPage('services',this)">
-    <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg></div>SERVICES
-  </div>
-  <div class="nav-item" onclick="showPage('community',this)">
-    <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>COMMUN.
+  <div class="nav-item-center" onclick="openPostModal()">
+    <div class="nav-center-btn">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
   </div>
   <div class="nav-item" onclick="showPage('messages',this)">
     <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>CHATS
-    <div class="nav-badge" id="msgBadge">0</div>
+    <div class="nav-badge" id="msgBadge" style="display:none">0</div>
   </div>
   <div class="nav-item" onclick="showPage('profile',this)">
     <div class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>PROFIL
@@ -1362,7 +1429,54 @@ function initFirebase(){
 function onAuthChange(user){
   if(user){
     currentUser = user;
-    loadUserData(user.uid);
+    console.log('Auth: user logged in', user.uid);
+    // Try to load Firestore profile, but ALWAYS show app
+    if(db){
+      db.collection('users').doc(user.uid).get()
+        .then(function(doc){
+          if(doc.exists){
+            currentUserData = Object.assign({uid:user.uid}, doc.data());
+          } else {
+            // New user - create profile
+            currentUserData = {
+              uid:user.uid,
+              name:user.displayName||(user.email||'User').split('@')[0],
+              handle:(user.email||'user').split('@')[0].toLowerCase().replace(/[^a-z0-9]/g,'.'),
+              email:user.email||'',
+              avatar:user.photoURL||'',
+              role:'Photographe',bio:'',city:'',specialty:'',
+              postCount:0,followerCount:0,followingCount:0
+            };
+            db.collection('users').doc(user.uid).set(currentUserData).catch(function(){});
+          }
+          localStorage.setItem('pl_user',JSON.stringify(currentUserData));
+          showApp();
+        })
+        .catch(function(e){
+          console.log('Firestore profile error:', e.message);
+          // Fallback - use localStorage or minimal profile
+          var saved = localStorage.getItem('pl_user');
+          currentUserData = saved ? JSON.parse(saved) : {
+            uid:user.uid,
+            name:user.displayName||(user.email||'User').split('@')[0],
+            handle:(user.email||'user').split('@')[0].toLowerCase(),
+            email:user.email||'',avatar:user.photoURL||'',
+            role:'Photographe',bio:'',city:'',specialty:'',postCount:0
+          };
+          showApp();
+        });
+    } else {
+      // No Firestore - use saved data or create minimal profile
+      var saved = localStorage.getItem('pl_user');
+      currentUserData = saved ? JSON.parse(saved) : {
+        uid:user.uid,
+        name:user.displayName||(user.email||'User').split('@')[0],
+        handle:(user.email||'user').split('@')[0].toLowerCase(),
+        email:user.email||'',avatar:user.photoURL||'',
+        role:'Photographe',postCount:0
+      };
+      showApp();
+    }
   } else {
     currentUser = null;
     currentUserData = null;
@@ -1454,33 +1568,34 @@ async function doLogin(){
   if(btn){btn.disabled=true;btn.textContent='Connexion...';}
   try{
     if(auth){
-      await auth.signInWithEmailAndPassword(email,pass);
-      // onAuthChange will call showApp
+      var cred = await auth.signInWithEmailAndPassword(email,pass);
+      // Success - onAuthChange will handle showApp
+      console.log('Login success:', cred.user.uid);
     } else {
-      // Demo mode: accept any credentials
-      var saved=localStorage.getItem('pl_user');
-      var userData=saved?JSON.parse(saved):null;
-      if(userData&&userData.email===email){
-        currentUser={uid:'demo',email:email};
-        currentUserData=userData;
-      } else {
-        currentUser={uid:'demo_'+Date.now(),email:email};
-        currentUserData={name:email.split('@')[0],handle:email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g,'.'),email:email,avatar:'',role:'Photographe',bio:'',city:'',specialty:'',postCount:0};
-        localStorage.setItem('pl_user',JSON.stringify(currentUserData));
-      }
+      // No Firebase - demo mode
+      currentUser={uid:'demo_'+Date.now(),email:email};
+      currentUserData={name:email.split('@')[0],handle:email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g,'.'),email:email,avatar:'',role:'Photographe',bio:'',city:'',specialty:'',postCount:0};
+      localStorage.setItem('pl_user',JSON.stringify(currentUserData));
       showApp();
     }
-  } catch(e){
-    var msg=e.code==='auth/user-not-found'?'Compte introuvable'
-      :e.code==='auth/wrong-password'?'Mot de passe incorrect'
-      :e.code==='auth/invalid-email'?'Email invalide'
-      :e.code==='auth/too-many-requests'?'Trop de tentatives, réessayez plus tard'
-      :e.code==='auth/operation-not-allowed'?'Connexion email désactivée dans Firebase Console'
-      :e.code==='auth/network-request-failed'?'Erreur réseau'
-      :'Erreur: '+(e.message||e.code||'inconnue');
+  }catch(e){
+    // Map ALL known Firebase error codes
+    var codes={
+      'auth/user-not-found':'Aucun compte avec cet email',
+      'auth/wrong-password':'Mot de passe incorrect',
+      'auth/invalid-credential':'Email ou mot de passe incorrect',
+      'auth/invalid-email':'Format email invalide',
+      'auth/user-disabled':'Ce compte a été désactivé',
+      'auth/too-many-requests':'Trop de tentatives - réessayez dans quelques minutes',
+      'auth/operation-not-allowed':'Connexion par email non activée',
+      'auth/network-request-failed':'Pas de connexion internet',
+      'auth/popup-closed-by-user':'Popup fermé',
+      'auth/email-already-in-use':'Email déjà utilisé'
+    };
+    var msg = codes[e.code] || ('Erreur ('+( e.code||'?')+'): '+(e.message||''));
     showToast(msg);
-    console.error('Login error:',e.code,e.message);
-  } finally {
+    console.error('Login error - code:',e.code,'message:',e.message);
+  }finally{
     if(btn){btn.disabled=false;btn.textContent='Se connecter';}
   }
 }
@@ -1811,68 +1926,167 @@ function loadFeed(){
 }
 
 function renderFeedPosts(posts){
-  const container = document.getElementById('feedPosts');
-  if(!posts.length){
-    container.innerHTML=`<div class="empty-state"><div class="empty-icon"></div><div class="empty-title">Aucune publication</div><div class="empty-sub">Soyez le premier à publier sur PHOTOLINK</div><button class="empty-cta" onclick="openPostModal()">＋ Créer un post</button></div>`;
+  var grid = document.getElementById('pinGrid');
+  if(!grid) return;
+
+  if(!posts || !posts.length){
+    grid.innerHTML = '<div class="pin-loading" style="text-align:center;padding:80px 20px">'
+      +'<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" style="margin-bottom:14px"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
+      +'<div style="color:rgba(255,255,255,0.4);font-size:15px;font-weight:700;margin-bottom:8px">Aucune publication</div>'
+      +'<div style="color:rgba(255,255,255,0.25);font-size:13px;margin-bottom:20px">Soyez le premier a publier une photo ou video</div>'
+      +'<button onclick="openPostModal()" style="padding:12px 28px;border-radius:24px;background:linear-gradient(135deg,var(--primary),var(--coral));color:#000;border:none;font-weight:800;font-size:14px;cursor:pointer">+ Publier</button>'
+    +'</div>';
     return;
   }
-  container.innerHTML = posts.map((post,i)=>{
-    const isOwn = post.authorId === currentUser?.uid;
-    const liked = (post.likedBy||[]).includes(currentUser?.uid);
-    const tags = (post.tags||[]).filter(t=>t.startsWith('#'));
-    return `<div class="post-card" style="animation-delay:${i*0.05}s" id="post-${post.id}" data-id="${post.id}" data-own="${isOwn}" oncontextmenu="showPostMenu(event,'${post.id}',${isOwn})" ontouchstart="startLongPress(event,'${post.id}',${isOwn})" ontouchend="cancelLongPress()" ontouchmove="cancelLongPress()">
-      <div class="post-header">
-        <div class="post-avatar">${post.authorAvatar||post.authorName?.[0]||'?'}</div>
-        <div class="post-meta">
-          <div class="post-author">${post.authorName||'Inconnu'} ${post.authorVerified?'<span class="post-verified"></span>':''}</div>
-          <div class="post-info">
-            ${post.cat?`<span class="badge-cat">${post.cat}</span>`:''}
-            ${post.price?`<span class="badge-price">${post.price}</span>`:''}
-            <span>${formatTime(post.createdAt)}</span>
-          </div>
-        </div>
-        <button class="more-btn" onclick="showPostMenu(event,'${post.id}',${isOwn})">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
-        </button>
-      </div>
-      <div class="post-media">
-        <div class="post-media-inner ${post.gradient||'g0'}">
-          ${post.imageUrl?`<img src="${post.imageUrl}" alt="post" style="width:100%;height:100%;object-fit:cover"/>`:`${post.emoji||''}`}
-        </div>
-        ${post.location?`<div class="post-location"> ${post.location}</div>`:''}
-      </div>
-      <div class="post-caption"><strong>${post.authorName||''}</strong> ${post.caption||''}</div>
-      ${tags.length?`<div class="post-hashtags">${tags.map(t=>`<span class="hash">${t}</span>`).join('')}</div>`:''}
-      <div class="post-actions">
-        <button class="act-btn ${liked?'liked':''}" onclick="toggleLike('${post.id}',${liked})">
-          <span class="act-icon">${liked?`<svg width="16" height="16" viewBox="0 0 24 24" fill="#ff6b6b" stroke="#ff6b6b" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`}</span> ${post.likes||0}
-        </button>
-        <button class="act-btn" onclick="toggleComments('cmts-${post.id}')">
-          <span class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> ${(post.comments||[]).length}
-        </button>
-        <button class="act-btn" onclick="sharePost('${post.id}','${(post.caption||'').replace(/'/g,'')}')"><span class="act-icon">↗</span></button>
-        <div class="act-spacer"></div>
-        ${!isOwn?`<button class="devis-btn" onclick="openDevis('${post.authorId}','${post.authorName}','${post.authorAvatar||""}','${post.cat||""}')">Demander devis</button>`:''}
-      </div>
-      <div class="comments-wrap" id="cmts-${post.id}">
-        ${(post.comments||[]).map(c=>`
-          <div class="comment-item">
-            <div class="c-avatar">${c.authorAvatar||c.authorName?.[0]||'?'}</div>
-            <div style="flex:1">
-              <div class="c-bubble">
-                <div class="c-author">${c.authorName}</div>
-                <div class="c-text">${c.text}</div>
-              </div>
-              <div class="c-time">${formatTime(c.createdAt)}</div>
-            </div>
-          </div>`).join('')}
-        <div class="comment-input-row">
-          <input class="c-input" id="ci-${post.id}" placeholder="Ajouter un commentaire…" onkeydown="if(event.key==='Enter')sendComment('${post.id}','${post.authorId}')"/>
-          <button class="send-btn" onclick="sendComment('${post.id}','${post.authorId}')"></button>
-        </div>
-      </div>
-    </div>`;
+
+  grid.innerHTML = posts.map(function(p, i){
+    var isVideo = p.type==='video' || (p.videoUrl && p.videoUrl.length > 0);
+    var hasImg = p.imageUrl && p.imageUrl.length > 0;
+    var pid = (p.id||'').replace(/[^a-zA-Z0-9]/g,'_');
+    var liked = (JSON.parse(localStorage.getItem('pl_likes')||'{}')||{})[p.id];
+    var saved = (JSON.parse(localStorage.getItem('pl_saved')||'{}')||{})[p.id];
+
+    // Avatar
+    var avHtml = (p.authorAvatar && p.authorAvatar.startsWith('http'))
+      ? '<img src="'+p.authorAvatar+'" class="pin-avatar-sm"/>'
+      : '<div class="pin-avatar-sm" style="display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#000">'+((p.authorName||'?')[0]).toUpperCase()+'</div>';
+
+    // Media content
+    var mediaHtml = '';
+    if(isVideo && p.videoUrl){
+      mediaHtml = '<video class="pin-card-vid" src="'+p.videoUrl+'" poster="'+(p.posterUrl||p.imageUrl||'')+'" loop playsinline muted preload="none" id="pinvid-'+pid+'" onclick="pinTogglePlay(this)"></video>'
+        +'<div class="pin-duration" id="pindur-'+pid+'">...</div>'
+        +'<div class="pin-mute"><svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15" stroke="rgba(255,255,255,0.7)" stroke-width="2"/><line x1="17" y1="9" x2="23" y2="15" stroke="rgba(255,255,255,0.7)" stroke-width="2"/></svg></div>';
+    } else if(hasImg){
+      mediaHtml = '<img class="pin-card-img" src="'+p.imageUrl+'" alt="'+(p.caption||'')+'" loading="lazy" decoding="async"/>';
+    } else {
+      var grads=['linear-gradient(135deg,#1a2a3a,#0d1520)','linear-gradient(135deg,#2a1a3a,#0d0d20)','linear-gradient(135deg,#1a3a2a,#0d2015)','linear-gradient(135deg,#3a1a2a,#200d15)'];
+      mediaHtml = '<div class="pin-card-img" style="'+grads[i%4]+';height:160px;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>';
+    }
+
+    return '<div class="pin-card" data-pid="'+p.id+'" onclick="pinCardClick(event,\x27'+p.id+'\x27)">'
+      +'<div class="pin-card-inner">'
+        +mediaHtml
+        // Save button
+        +'<button class="pin-save-btn" onclick="event.stopPropagation();pinSave(\x27'+p.id+'\x27,this)" title="Enregistrer">'
+          +'<svg width="14" height="14" viewBox="0 0 24 24" fill="'+(saved?'#fff':'none')+'" stroke="#fff" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
+        +'</button>'
+      +'</div>'
+      // Caption
+      +(p.caption?'<div class="pin-caption">'+p.caption.substring(0,80)+'</div>':'')
+      // Meta row
+      +'<div class="pin-meta">'
+        +'<div class="pin-meta-left">'+avHtml+'<span class="pin-author">'+(p.authorName||'')+'</span></div>'
+        +'<div class="pin-likes" onclick="event.stopPropagation();pinLike(\x27'+p.id+'\x27,this)">'
+          +'<svg width="12" height="12" viewBox="0 0 24 24" fill="'+(liked?'#ff3250':'none')+'" stroke="'+(liked?'#ff3250':'rgba(255,255,255,0.5)')+'" stroke-width="2" id="pinlike-'+pid+'"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+          +'<span id="pinlikes-'+pid+'">'+(p.likes||0)+'</span>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
   }).join('');
+
+  // Start video duration timers
+  document.querySelectorAll('#pinGrid video').forEach(function(vid){
+    vid.addEventListener('loadedmetadata', function(){
+      var dur = Math.round(vid.duration);
+      var id = vid.id.replace('pinvid-','pindur-');
+      var el = document.getElementById(id);
+      if(el) el.textContent = '0:'+( dur<10?'0':'')+dur;
+    });
+  });
+
+  // IntersectionObserver for video autoplay in grid
+  if('IntersectionObserver' in window){
+    if(window._pinObserver) window._pinObserver.disconnect();
+    window._pinObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var vid = e.target;
+        if(e.isIntersecting){ vid.muted=true; vid.play().catch(function(){}); }
+        else { vid.pause(); }
+      });
+    },{threshold:0.5});
+    document.querySelectorAll('#pinGrid video').forEach(function(v){
+      window._pinObserver.observe(v);
+    });
+  }
+}
+
+function pinCardClick(e, postId){
+  // Open post detail overlay
+  openPinDetail(postId);
+}
+
+function pinTogglePlay(vid){
+  if(vid.paused){ vid.play(); } else { vid.pause(); }
+}
+
+function pinLike(postId, btn){
+  tkLike(postId);
+  var pid = postId.replace(/[^a-zA-Z0-9]/g,'_');
+  var liked = (JSON.parse(localStorage.getItem('pl_likes')||'{}')||{})[postId];
+  var svg = document.getElementById('pinlike-'+pid);
+  if(svg){
+    svg.setAttribute('fill', liked ? '#ff3250' : 'none');
+    svg.setAttribute('stroke', liked ? '#ff3250' : 'rgba(255,255,255,0.5)');
+  }
+}
+
+function pinSave(postId, btn){
+  ftSave(postId);
+  var svg = btn ? btn.querySelector('svg') : null;
+  if(svg){
+    var saved = (JSON.parse(localStorage.getItem('pl_saved')||'{}')||{})[postId];
+    svg.setAttribute('fill', saved ? '#fff' : 'none');
+  }
+}
+
+function openPinDetail(postId){
+  // Find the post
+  var allPosts = DEMO_VIDEOS.concat(JSON.parse(localStorage.getItem('pl_posts')||'[]'));
+  var post = allPosts.find(function(p){ return p.id===postId; });
+  if(!post) return;
+
+  var isVideo = post.type==='video'||(post.videoUrl&&post.videoUrl.length>0);
+  var liked = (JSON.parse(localStorage.getItem('pl_likes')||'{}')||{})[postId];
+
+  var overlay = document.createElement('div');
+  overlay.id = 'pinDetailOverlay';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:400;background:#0a0a0a;overflow-y:auto;animation:fadeIn .2s ease';
+
+  var mediaHtml = isVideo
+    ? '<video src="'+(post.videoUrl||'')+'" poster="'+(post.imageUrl||'')+'" controls playsinline style="width:100%;max-height:75vh;object-fit:contain;background:#000;display:block"></video>'
+    : (post.imageUrl ? '<img src="'+post.imageUrl+'" style="width:100%;display:block;object-fit:contain;max-height:75vh;background:#000"/>' : '');
+
+  overlay.innerHTML =
+    '<div style="position:sticky;top:0;z-index:10;padding:12px 16px;display:flex;align-items:center;gap:12px;background:#0a0a0a">'
+      +'<button onclick="document.getElementById(\x27pinDetailOverlay\x27).remove()" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;cursor:pointer;color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center">&larr;</button>'
+      +'<span style="font-size:16px;font-weight:700;color:#fff;flex:1">'+(post.authorName||'')+'</span>'
+    +'</div>'
+    +'<div>'+mediaHtml+'</div>'
+    +'<div style="padding:16px">'
+      +(post.caption?'<div style="font-size:15px;color:#fff;line-height:1.5;margin-bottom:12px">'+post.caption+'</div>':'')
+      +(post.tags?'<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">'+(post.tags||'').split(',').map(function(t){return '<span style="font-size:13px;color:var(--primary);font-weight:600">#'+t.trim()+'</span>';}).join('')+'</div>':'')
+      +'<div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-top:1px solid rgba(255,255,255,0.08)">'
+        +'<button onclick="tkLike(\x27'+postId+'\x27)" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:'+(liked?'#ff3250':'rgba(255,255,255,0.7)')+';font-size:13px;font-weight:600">'
+          +'<svg width="20" height="20" viewBox="0 0 24 24" fill="'+(liked?'#ff3250':'none')+'" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+          +(post.likes||0)
+        +'</button>'
+        +'<button onclick="tkComment(\x27'+postId+'\x27)" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:13px;font-weight:600">'
+          +'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
+          +((post.comments&&post.comments.length)||0)
+        +'</button>'
+        +'<button onclick="sharePost(\x27'+postId+'\x27)" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:13px;font-weight:600">'
+          +'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+          +'Partager'
+        +'</button>'
+        +'<button onclick="pinSave(\x27'+postId+'\x27,this)" style="margin-left:auto;padding:10px 22px;border-radius:24px;background:var(--coral);color:#fff;border:none;font-weight:800;font-size:14px;cursor:pointer">Enregistrer</button>'
+      +'</div>'
+    +'</div>';
+
+  document.body.appendChild(overlay);
+  // Auto-play video in detail
+  var vid = overlay.querySelector('video');
+  if(vid){ vid.play().catch(function(){}); }
 }
 
 function toggleComments(id){
@@ -2303,38 +2517,12 @@ async function submitCommunity(){
 // ────── EXPLORE ──────
 // Demo videos + posts for Explorer
 var DEMO_VIDEOS = [
-  {
-    id:'demo-v1', type:'video',
-    videoUrl:'https://www.w3schools.com/html/mov_bbb.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-    authorName:'davieslay', authorAvatar:'',
-    caption:'Séance portrait en pleine nature  — Lumière naturelle, golden hour, magie pure ',
-    tags:'portrait,nature,goldenhour', cat:'Nature', likes:142
-  },
-  {
-    id:'demo-v2', type:'video',
-    videoUrl:'https://www.w3schools.com/html/movie.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1519741497674-611481863552?w=400',
-    authorName:'photographe_ci', authorAvatar:'',
-    caption:'Mariage à Abidjan  — Couleurs, joie et émotion au rendez-vous ',
-    tags:'mariage,abidjan,love', cat:'Mariage', likes:89
-  },
-  {
-    id:'demo-v3', type:'video',
-    videoUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
-    authorName:'studio_mode', authorAvatar:'',
-    caption:'Shooting mode urbain ️ — Entre béton et lumières, la beauté est partout ',
-    tags:'mode,urbain,shooting', cat:'Mode', likes:231
-  },
-  {
-    id:'demo-v4', type:'video',
-    videoUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    posterUrl:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400',
-    authorName:'archi_lens', authorAvatar:'',
-    caption:'Architecture moderne — Lignes, angles et perspectives ️',
-    tags:'architecture,urbain,moderne', cat:'Architecture', likes:67
-  }
+  {id:'demo-v1',type:'photo',imageUrl:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',authorId:'demo-davieslay',authorName:'davieslay',authorAvatar:'',caption:'Seance portrait en pleine nature — Lumiere naturelle, golden hour, magie pure',tags:'portrait,nature,goldenhour',cat:'Nature',likes:142,comments:[]},
+  {id:'demo-v2',type:'photo',imageUrl:'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',authorId:'demo-photoci',authorName:'photographe_ci',authorAvatar:'',caption:'Mariage a Abidjan — Couleurs, joie et emotion au rendez-vous',tags:'mariage,abidjan,love',cat:'Mariage',likes:89,comments:[]},
+  {id:'demo-v3',type:'photo',imageUrl:'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80',authorId:'demo-studio',authorName:'studio_mode',authorAvatar:'',caption:'Shooting mode urbain — Entre beton et lumieres, la beaute est partout',tags:'mode,urbain,shooting',cat:'Mode',likes:231,comments:[]},
+  {id:'demo-v4',type:'photo',imageUrl:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80',authorId:'demo-archi',authorName:'archi_lens',authorAvatar:'',caption:'Architecture moderne — Lignes, angles et perspectives',tags:'architecture,urbain,moderne',cat:'Architecture',likes:67,comments:[]},
+  {id:'demo-v5',type:'photo',imageUrl:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80',authorId:'demo-portrait',authorName:'portrait_pro',authorAvatar:'',caption:'Portrait en studio — La lumiere revele tout',tags:'portrait,studio,professionnel',cat:'Portrait',likes:198,comments:[]},
+  {id:'demo-v6',type:'photo',imageUrl:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',authorId:'demo-city',authorName:'city_shots',authorAvatar:'',caption:'Cityscape au crepuscule — La ville ne dort jamais',tags:'city,urban,nuit',cat:'Architecture',likes:115,comments:[]}
 ];
 
 function loadExplore(){
@@ -3200,6 +3388,35 @@ function detectDevice(){
 }
 window.addEventListener('resize',function(){clearTimeout(window._rt);window._rt=setTimeout(detectDevice,200);});
 detectDevice();
+
+
+function switchFeedTab(tab,el){
+  _currentFeedTab=tab;
+  document.querySelectorAll('.feed-tab').forEach(function(t){t.classList.remove('active');});
+  if(el) el.classList.add('active');
+  loadFeed();
+}
+function openStudio(){
+  window.open('studio.html','_blank');
+}
+
+
+function observeFeedCards(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window._feedObserver) window._feedObserver.disconnect();
+  window._feedObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var card=entry.target;
+      var vidId=card.getAttribute('data-videoid');
+      var vid=vidId?document.getElementById(vidId):null;
+      if(entry.isIntersecting){if(vid){vid.muted=true;vid.play().catch(function(){});}}
+      else{if(vid){vid.pause();vid.currentTime=0;}}
+    });
+  },{threshold:0.75});
+  document.querySelectorAll('#feedPosts .tiktok-card').forEach(function(c){
+    window._feedObserver.observe(c);
+  });
+}
 
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',function(){loadSavedTheme();initFirebase();});
