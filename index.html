@@ -615,8 +615,8 @@ select.inp{appearance:none;cursor:pointer}
 
 
 /* ═══ PINTEREST FEED ═══ */
-#page-feed{background:#0a0a0a!important;padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;height:100vh!important;height:100svh!important}
-.pin-topbar{position:fixed;top:60px;left:0;right:0;z-index:50;background:#0a0a0a;padding:10px 16px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)}
+#page-feed{background:#0a0a0a!important;padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;min-height:100vh!important;padding-top:60px!important}
+.pin-topbar{position:sticky;top:0;z-index:50;background:#0a0a0a;padding:10px 16px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)}
 .pin-tabs{display:flex;gap:4px;align-items:center}
 .pin-tab{font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);cursor:pointer;padding:8px 14px;border-radius:24px;transition:.2s;white-space:nowrap}
 .pin-tab.active{color:#fff;font-weight:800;background:rgba(255,255,255,0.1)}
@@ -625,11 +625,11 @@ select.inp{appearance:none;cursor:pointer}
 .pin-create-btn:active{transform:scale(0.9);background:var(--primary)}
 
 /* Grid */
-#pinGrid{padding:120px 8px 80px;column-count:2;column-gap:8px;-moz-column-count:2;-webkit-column-count:2}
+#pinGrid{padding:12px 8px 80px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;align-items:start}
 .pin-loading{column-span:all;text-align:center;padding:60px}
 
 /* Card */
-.pin-card{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:8px;cursor:pointer;position:relative}
+.pin-card{margin-bottom:0;cursor:pointer;position:relative}
 .pin-card-img{width:100%;border-radius:14px;display:block;background:#1a1a1a;min-height:100px}
 .pin-card-vid{width:100%;border-radius:14px;display:block;object-fit:cover;background:#000}
 .pin-card-inner{position:relative;border-radius:14px;overflow:hidden}
@@ -656,10 +656,10 @@ select.inp{appearance:none;cursor:pointer}
 .pin-likes{display:flex;align-items:center;gap:3px;font-size:11px;color:rgba(255,255,255,0.5)}
 
 /* 3-col on larger screens */
-@media(min-width:480px){#pinGrid{column-count:3}}
-@media(min-width:768px){#pinGrid{column-count:3;padding-left:230px}}
-@media(min-width:1024px){#pinGrid{column-count:4;padding-left:270px}}
-@media(min-width:1600px){#pinGrid{column-count:5;padding-left:310px}}
+@media(min-width:480px){#pinGrid{grid-template-columns:repeat(3,1fr)!important}}
+@media(min-width:768px){#pinGrid{grid-template-columns:repeat(3,1fr)!important;padding-left:230px!important}}
+@media(min-width:1024px){#pinGrid{grid-template-columns:repeat(4,1fr)!important;padding-left:270px!important}}
+@media(min-width:1600px){#pinGrid{grid-template-columns:repeat(5,1fr)!important;padding-left:310px!important}}
 
 /* Heart pop animation (already defined but ensure it's here) */
 @keyframes heartPop{0%{transform:translate(-50%,-50%) scale(0);opacity:1}60%{transform:translate(-50%,-50%) scale(1.3);opacity:1}100%{transform:translate(-50%,-50%) scale(0.8);opacity:0}}
@@ -1214,7 +1214,7 @@ select.inp{appearance:none;cursor:pointer}
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </div>
         <div style="font-size:13px;font-weight:600;color:var(--text2)">Choisir depuis la galerie</div>
-        <div style="font-size:11px;color:var(--text3)">ou sélectionner un emoji ci-dessous</div>
+        <div style="font-size:11px;color:var(--text3)"></div>
       </div>
     </label>
     <div class="field-label">Catégorie</div>
@@ -1929,7 +1929,8 @@ function loadFeed(){
 
 function renderFeedPosts(posts){
   var grid = document.getElementById('pinGrid');
-  if(!grid) return;
+  if(!grid){ console.error('pinGrid not found!'); return; }
+  try{
 
   if(!posts || !posts.length){
     grid.innerHTML = '<div class="pin-loading" style="text-align:center;padding:80px 20px">'
@@ -2011,6 +2012,7 @@ function renderFeedPosts(posts){
       window._pinObserver.observe(v);
     });
   }
+  }catch(e){ console.error('renderFeedPosts error:', e, e.stack); }
 }
 
 function pinCardClick(e, postId){
